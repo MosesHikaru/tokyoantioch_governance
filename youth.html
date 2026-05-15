@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Youth組織 リーダー体制方針まとめ</title>
+  <style>
+    :root {
+      --key: #4790f6;
+      --key-dark: #236fd2;
+      --ink: #162033;
+      --muted: #627086;
+      --line: #d9e4f2;
+      --soft: #f3f8ff;
+      --soft-2: #edf5ff;
+      --paper: #ffffff;
+      --ok: #2f9e6d;
+      --warn: #c77900;
+      --violet: #7357d8;
+      --shadow: 0 18px 46px rgba(24, 59, 103, .13);
+      --text-scale: 1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Segoe UI", sans-serif;
+      line-height: 1.78;
+      font-size: calc(16px * var(--text-scale));
+      background:
+        linear-gradient(180deg, rgba(71, 144, 246, .14), rgba(255, 255, 255, 0) 360px),
+        #f7faff;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 48px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .7fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--key-dark);
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--key);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 840px;
+      color: #10213a;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      color: #34445d;
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--key);
+      box-shadow: 0 12px 24px rgba(71, 144, 246, .28);
+    }
+
+    .button.secondary {
+      color: var(--key-dark);
+      background: #fff;
+      border-color: #c8dcf8;
+    }
+
+    .summary-box {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(200, 220, 248, .95);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-box h2 {
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+    }
+
+    .summary-box p {
+      margin: 0;
+      color: #42536a;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 14px;
+      border: 1px solid #dbe8f8;
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--key-dark);
+      font-size: 1.35rem;
+      line-height: 1.15;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-block: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(16px);
+    }
+
+    .toolbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab {
+      flex: 0 0 auto;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #3d4c61;
+      background: transparent;
+      cursor: pointer;
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .tab[aria-selected="true"] {
+      color: #fff;
+      background: var(--key);
+      box-shadow: 0 8px 18px rgba(71, 144, 246, .22);
+    }
+
+    .tools {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: .86rem;
+    }
+
+    .tools input {
+      width: 110px;
+      accent-color: var(--key);
+    }
+
+    main {
+      padding: 30px 0 72px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    section {
+      margin: 0 0 26px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 10px 28px rgba(24, 59, 103, .06);
+      scroll-margin-top: 84px;
+    }
+
+    .section-head {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--key);
+      font-weight: 900;
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.35;
+      color: #15243b;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: clamp(1.32rem, 2vw, 1.8rem);
+    }
+
+    h3 {
+      margin-top: 22px;
+      font-size: 1.12rem;
+    }
+
+    p {
+      margin: 12px 0 0;
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 0;
+      padding-left: 1.35em;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .callout {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--key);
+      border-radius: 8px;
+      background: var(--soft);
+      color: #31445f;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      min-height: 100%;
+      padding: 16px;
+      border: 1px solid #dbe8f8;
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--key-dark);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      width: 28%;
+      color: #173054;
+      background: #eef6ff;
+      font-weight: 900;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: .86rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.pending {
+      color: #7a4b00;
+      background: #fff1d6;
+    }
+
+    .status.yearly {
+      color: #5643a8;
+      background: #eeeaff;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid #dbe8f8;
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--key);
+      font-weight: 900;
+    }
+
+    .quote {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 8px;
+      color: #213852;
+      background: linear-gradient(135deg, #eef6ff, #ffffff);
+      border: 1px solid #d4e6fb;
+      font-weight: 800;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .toolbar-inner,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tools {
+        justify-content: space-between;
+      }
+
+      section {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page,
+      .toolbar-inner {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .number {
+        margin-bottom: 12px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .toolbar,
+      .hero-actions {
+        display: none;
+      }
+
+      .tab-panel {
+        display: block;
+      }
+
+      section {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="page hero-grid">
+      <div>
+        <p class="eyebrow">叩き台・修正版</p>
+        <h1>Youth組織<br>リーダー体制方針まとめ</h1>
+        <p class="subtitle">Youthの働きを継続的に整え、神学生を中心とした次世代奉仕者の育成につなげるための、任期・選出・任命・引き継ぎに関する基本方針です。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#overview">本文を読む</a>
+          <button class="button secondary" type="button" onclick="window.print()">印刷する</button>
+        </div>
+      </div>
+      <aside class="summary-box" aria-label="方針の要点">
+        <h2>方針の要点</h2>
+        <p>役職を単に回すのではなく、年度ごとの任命・フォロー・引き継ぎを通して、責任ある奉仕経験を次世代へ受け渡す体制を整える。</p>
+        <div class="metrics">
+          <div class="metric"><strong>1年</strong><span>任期は年度単位</span></div>
+          <div class="metric"><strong>原則</strong><span>神学生から選出</span></div>
+          <div class="metric"><strong>任命制</strong><span>牧師・伝道師が判断</span></div>
+          <div class="metric"><strong>育成</strong><span>交代より受け渡し</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <nav class="tabs" aria-label="本文タブ">
+        <button class="tab" type="button" aria-selected="true" data-tab="overview">概要</button>
+        <button class="tab" type="button" aria-selected="false" data-tab="rules">体制ルール</button>
+        <button class="tab" type="button" aria-selected="false" data-tab="operation">運用</button>
+        <button class="tab" type="button" aria-selected="false" data-tab="process">任命プロセス</button>
+        <button class="tab" type="button" aria-selected="false" data-tab="communication">周知・課題</button>
+      </nav>
+      <div class="tools">
+        <label for="textScale">文字サイズ</label>
+        <input id="textScale" type="range" min="90" max="118" value="100" aria-label="文字サイズ">
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <div id="overview" class="tab-panel active">
+      <section>
+        <div class="section-head">
+          <span class="number">1</span>
+          <div>
+            <h2>目的</h2>
+            <p>本方針は、Youthの働きを継続的に整え、神学生を中心とした次世代奉仕者の育成を進めるため、Youthリーダー・副リーダーの任期、選出、任命、引き継ぎに関する基本方針を定めるものである。</p>
+          </div>
+        </div>
+        <p>Youthは25歳を上限とする時限的な組織であり、構造上、すべてのメンバーがいずれ卒業する。そのため、限られた在籍期間の中で、できるだけ複数の人が責任ある役割を経験し、教会全体の奉仕へと接続されていく体制を整える必要がある。</p>
+        <p>特に神学生にとって、Youthにおけるリーダー・副リーダーの経験は、将来の牧会・奉仕に向けた実践的な訓練の一部となる。そのため、Youthリーダー体制は、単なる役職交代ではなく、次世代奉仕者育成の導線として位置づける。</p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">2</span>
+          <div>
+            <h2>この方針が生まれた背景</h2>
+            <p>Youthの働きが継続していく中で、特定の人に責任が固定化されるのではなく、限られたYouth在籍期間の中で複数の神学生がリーダー経験を積める体制が必要であるとの認識に至った。</p>
+          </div>
+        </div>
+        <ul>
+          <li>Youthは25歳上限の時限組織であり、構造上、全員がいつか卒業する。</li>
+          <li>限られた期間の中で、できるだけ多くの人に責任ある役割を経験させることが、教会全体の奉仕育成につながる。</li>
+          <li>特に神学生にとって、リーダー・副リーダーの経験は、将来の牧会・奉仕への実践的な準備となる。</li>
+          <li>特定の人に役割が固定化されると、次の人材育成や役割移行が難しくなる。</li>
+          <li>Youthの働きを、個人依存ではなく、継続的に次世代へ受け渡せる体制にする必要がある。</li>
+        </ul>
+        <div class="callout">したがって、Youthリーダー体制については、年度単位で見直し・任命を行う方針とする。</div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">13</span>
+          <div>
+            <h2>方針の要約</h2>
+            <p>Youthリーダー体制は、単なる交代制ではなく、神学生を中心とした次世代奉仕者育成のための任命制度である。</p>
+          </div>
+        </div>
+        <p>特定の人に責任を固定せず、年度ごとに役割を移行しながら、複数の人が責任ある奉仕経験を積めるようにする。</p>
+        <p>ただし、Youth全体の主体性を損なわないよう、神学生以外のメンバーもスタッフ・協力者として関われる体制を整える。</p>
+        <p>任命は互選ではなく、牧師・伝道師による確認と判断に基づいて行い、本人確認、引き継ぎ、任期中のフォロー、任期後の振り返りまで含めて、育成の導線として運用する。</p>
+      </section>
+    </div>
+
+    <div id="rules" class="tab-panel">
+      <section>
+        <div class="section-head">
+          <span class="number">3</span>
+          <div>
+            <h2>確定する基本体制ルール</h2>
+            <p>年度単位で見直し、複数の人が責任ある役割を経験できる体制を基本とする。</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>任期</th><td>1年（年度単位）</td></tr>
+              <tr><th>連続就任</th><td>原則不可。ただし、牧師・伝道師が必要と認める場合は例外的に継続を認める。</td></tr>
+              <tr><th>再任</th><td>可。1年以上の間隔を置けば再任できる。</td></tr>
+              <tr><th>通算回数制限</th><td>なし。ただし、未経験者を優先的に選出する。</td></tr>
+              <tr><th>選出母体</th><td>リーダー・副リーダーは、原則として神学生から選出する。</td></tr>
+              <tr><th>副リーダーからリーダーへの昇格</th><td>あり。</td></tr>
+              <tr><th>リーダー経験者の翌年度</th><td>原則としてスタッフまたはアドバイザー的役割として新体制を支援する。必要に応じて副リーダーとして任命することもできる。</td></tr>
+              <tr><th>任命権</th><td>Youth担当牧師・伝道師が候補を検討し、関係牧師・伝道師と協議のうえ、教会の責任体制に従って行う。</td></tr>
+              <tr><th>年度途中の欠員</th><td>牧師・伝道師が暫定措置を決定する。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">4</span>
+          <div>
+            <h2>設計の基本的な考え方</h2>
+            <p>役職交代ではなく、奉仕者としての成長を支える流れとして設計する。</p>
+          </div>
+        </div>
+
+        <h3>4-1. 「持ち回り」ではなく「育成の導線」として設計する</h3>
+        <p>この体制は、単なるローテーションや順番制ではない。副リーダーを経てリーダーへ、またリーダー経験後に新体制を支える側へ回るなど、段階的に責任を経験できる流れを作ることを目的とする。</p>
+        <p>任命にあたっては、単に「未経験だから選ぶ」のではなく、本人の霊的状態、奉仕姿勢、責任感、周囲との関係性、今後の成長可能性を総合的に確認する。</p>
+
+        <h3>4-2. リーダー・副リーダーは神学生から選出する</h3>
+        <p>リーダー・副リーダーは、原則として神学生から選出する。神学生は、将来の牧会・奉仕を目指して訓練を受けている立場にあるため、Youthのリーダー・副リーダーという役割は、その訓練の一部として位置づける。</p>
+        <p>Youthの働きは神学生だけが担うものではない。神学生を中心にしつつも、Youthメンバー全体がそれぞれの賜物と状況に応じて関わる奉仕・交わりの場である。</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>リーダー・副リーダー</th><td>神学生を中心に任命する訓練的役割。</td></tr>
+              <tr><th>スタッフ・協力者</th><td>神学生以外のYouthメンバーも含めて広く参加できる。</td></tr>
+              <tr><th>意見・提案</th><td>Youth全体から受けることができる。</td></tr>
+              <tr><th>最終責任</th><td>牧師・伝道師が持つ。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>この整理により、神学生中心の任命制と、Youth全体の参加意識を両立させる。</p>
+
+        <h3>4-3. 任命は互選ではなく上位任命制とする</h3>
+        <p>Youth内の互選によってリーダーを選出すると、人間関係や人気、声の大きさによって判断が歪むリスクがある。そのため、推薦や参考意見は受けるが、最終的な任命は牧師・伝道師が行う。</p>
+        <p>これにより、選ばれなかった人への配慮、候補者本人への牧会的確認、体制全体の安定性を確保する。</p>
+
+        <h3>4-4. 「連続就任不可」の趣旨は評価ではなく設計である</h3>
+        <p>連続就任を原則不可とする趣旨は、誰かの問題行動や能力不足に対する措置ではない。特定の人に責任を固定化させず、複数の神学生が限られたYouth在籍期間の中でリーダー経験を積めるようにするための制度設計である。</p>
+        <p>この方針は特定の個人に対する評価ではなく、全員に等しく適用される基本方針として扱う。ただし、現場の状況、神学生数、候補者の成熟度、Youth全体の状態によっては、牧師・伝道師の判断により例外的な継続を認めることができる。</p>
+
+        <h3>4-5. リーダー経験はYouthの外に活きる</h3>
+        <p>Youthは25歳で終わるが、そこで得た経験は終わらない。リーダー・副リーダーとして担った責任、調整、判断、祈り、メンバーとの関わり、課題への対応は、教会全体の奉仕に接続されるべきものである。</p>
+        <p>この体制の最終的な目的は、Youth内の役職を回すことではなく、Youthで得た経験を、将来の牧会・奉仕・教会全体の働きへとつなげることである。</p>
+      </section>
+    </div>
+
+    <div id="operation" class="tab-panel">
+      <section>
+        <div class="section-head">
+          <span class="number">5</span>
+          <div>
+            <h2>運用上の論点と方針</h2>
+            <p>原則を保ちながら、年度ごとの実情に応じて牧会的に運用する。</p>
+          </div>
+        </div>
+
+        <h3>5-1. 「未経験者優先」の判定</h3>
+        <p>リーダー・副リーダーをまだ経験していない神学生を優先的に候補とする。ただし、これは「未経験者を必ず選ばなければならない」という意味ではない。</p>
+        <p>適任者がいない場合、またはYouth全体の安定や牧会的判断のために必要と認められる場合は、再任や経験者の起用を妨げない。</p>
+        <div class="callout">「優先」であって「強制」ではない。</div>
+
+        <h3>5-2. 副リーダーの人数</h3>
+        <p>副リーダーは、原則として1〜2名とする。ただし、在籍神学生数、Youthの規模、活動内容、次年度の育成方針によって変動することを許容する。副リーダーが複数となる場合は、任命時に役割分担を明示する。</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>対外担当</th><td>牧師・伝道師、他部署、外部奉仕との連絡調整。</td></tr>
+              <tr><th>内部担当</th><td>Youthメンバーの状況把握、集まりの準備、フォロー。</td></tr>
+              <tr><th>企画担当</th><td>集会、交わり、イベント等の企画補助。</td></tr>
+              <tr><th>実務担当</th><td>連絡、出欠確認、資料・備品等の管理。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>役割分担は固定ではなく、その年度の実情に応じて牧師・伝道師が定める。</p>
+
+        <h3>5-3. 前年リーダーの扱い</h3>
+        <p>前年リーダーは、原則としてスタッフまたはアドバイザー的役割として継続参加する。これは、即座に「一般参加者」に戻すという意味ではなく、前年度の経験を新体制に還元する期間を設けるためである。</p>
+        <div class="grid">
+          <div class="mini-card"><strong>主な役割</strong>新リーダーの相談相手となり、前年度からの引き継ぎ事項を共有する。</div>
+          <div class="mini-card"><strong>補助範囲</strong>必要に応じて運営を補助し、継続課題や注意点を共有する。</div>
+          <div class="mini-card"><strong>支援姿勢</strong>牧師・伝道師から求められた範囲で支援する。</div>
+        </div>
+        <ul>
+          <li>意思決定の主担当にはならない。</li>
+          <li>新リーダーの前で主導権を奪わない。</li>
+          <li>周囲が前年リーダーに依存しすぎないようにする。</li>
+          <li>新リーダーの判断と成長機会を尊重する。</li>
+        </ul>
+        <p>必要に応じて、前年リーダーを副リーダーとして任命することもできる。ただし、その場合も新リーダーの責任と判断を尊重することを明確にする。</p>
+
+        <h3>5-4. 年度途中の欠員</h3>
+        <p>脱落、離任、健康上の理由、家庭・学業・奉仕上の事情等により、年度途中でリーダーまたは副リーダーに欠員が生じた場合は、牧師・伝道師が暫定措置を決定する。Youthメンバー内での自主的な補填には頼らない。</p>
+        <ul>
+          <li>副リーダーの一時昇格。</li>
+          <li>スタッフからの一時補助。</li>
+          <li>牧師・伝道師による直接的な運営支援。</li>
+          <li>次年度までの暫定体制の設定。</li>
+          <li>必要に応じた新任命。</li>
+        </ul>
+        <p>欠員時の対応は、本人の責任追及ではなく、Youth全体の安定と牧会的配慮を優先して行う。</p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">7</span>
+          <div>
+            <h2>任期中のフォローと振り返り</h2>
+            <p>この体制は育成を目的とするため、任命して終わりにしない。</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>任命時</th><td>役割説明、期待値確認、祈り、支援体制の確認。</td></tr>
+              <tr><th>任命後3か月程度</th><td>初期フォロー面談。負担、戸惑い、人間関係、実務上の課題を確認。</td></tr>
+              <tr><th>半年後</th><td>中間振り返り。成長点、課題、今後の支援を確認。</td></tr>
+              <tr><th>任期終了前</th><td>次年度への引き継ぎ事項を整理。</td></tr>
+              <tr><th>任期終了後</th><td>振り返り面談を行い、今後の奉仕接続を確認。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>振り返りは、評価や査定ではなく、奉仕者としての成長を確認し、次の奉仕へ接続するために行う。</p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">8</span>
+          <div>
+            <h2>引き継ぎ</h2>
+            <p>任期終了時には、前任者から新任者への引き継ぎを行う。</p>
+          </div>
+        </div>
+        <ul>
+          <li>年間の主な活動内容。</li>
+          <li>継続中の課題。</li>
+          <li>メンバーの状況。</li>
+          <li>集会・交わり・イベント等の運営上の注意点。</li>
+          <li>牧師・伝道師との連絡方法。</li>
+          <li>他部署・他奉仕との関係。</li>
+          <li>前年度にうまくいった点。</li>
+          <li>改善が必要な点。</li>
+          <li>次年度に引き継ぐべき祈りの課題。</li>
+        </ul>
+        <p>引き継ぎは、前任者が新任者を支配するためではなく、新任者が安心して責任を担えるようにするために行う。</p>
+      </section>
+    </div>
+
+    <div id="process" class="tab-panel">
+      <section>
+        <div class="section-head">
+          <span class="number">6</span>
+          <div>
+            <h2>候補選定・任命プロセス</h2>
+            <p>任命制であっても、現場の状況やメンバーの実情を無視して決定しないよう、候補選定には一定のプロセスを設ける。</p>
+          </div>
+        </div>
+
+        <h3>6-1. 候補選定の流れ</h3>
+        <div class="timeline">
+          <div class="step">Youth担当牧師・伝道師が、次年度の体制方針を確認する。</div>
+          <div class="step">神学生の在籍状況、年齢、奉仕状況、卒業予定等を確認する。</div>
+          <div class="step">未経験者を優先しつつ、候補者を複数検討する。</div>
+          <div class="step">現リーダー・副リーダーから参考意見を聞く。</div>
+          <div class="step">必要に応じてYouthスタッフから参考意見を聞く。</div>
+          <div class="step">Youth担当牧師・伝道師間で候補を協議する。</div>
+          <div class="step">関係牧師・伝道師と確認する。</div>
+          <div class="step">候補者本人と事前面談を行う。</div>
+          <div class="step">本人の受け止めと意思を確認する。</div>
+          <div class="step">任命を決定する。</div>
+          <div class="step">必要な引き継ぎを行う。</div>
+          <div class="step">Youth全体へ周知する。</div>
+        </div>
+
+        <h3>6-2. 推薦・参考意見の扱い</h3>
+        <p>現リーダー、副リーダー、スタッフ、Youthメンバーから推薦や参考意見を受けることはできる。ただし、推薦は任命を決定するものではない。最終的な任命判断は、牧師・伝道師が行う。</p>
+        <p>特に、現リーダーに次年度リーダーの決定権を持たせすぎないよう注意する。参考意見は聞くが、現リーダーが次のリーダーを決める構造にはしない。これは、派閥化や人間関係による偏りを防ぐためである。</p>
+
+        <h3>6-3. 任命前の本人確認</h3>
+        <p>任命前に、候補者本人と面談を行う。面談では、以下の内容を確認する。</p>
+        <ul>
+          <li>役割の内容。</li>
+          <li>任期。</li>
+          <li>期待される責任。</li>
+          <li>支援体制。</li>
+          <li>学業・家庭・他奉仕とのバランス。</li>
+          <li>本人の受け止め。</li>
+          <li>本人の意思。</li>
+          <li>不安や懸念事項。</li>
+        </ul>
+        <p>任命は、単に役職を与えることではなく、本人の成長と奉仕を支えるための牧会的なプロセスとして行う。</p>
+      </section>
+    </div>
+
+    <div id="communication" class="tab-panel">
+      <section>
+        <div class="section-head">
+          <span class="number">9</span>
+          <div>
+            <h2>現リーダーへの対応方針</h2>
+            <p>体制変更の説明は、Youth全体への周知より前に、現リーダーへ個別面談で行う。</p>
+          </div>
+        </div>
+        <ul>
+          <li>今回の体制変更は、現リーダー個人への評価や否定ではない。</li>
+          <li>Youthを継続的な育成の場にするため、役割を次に渡していく制度設計である。</li>
+          <li>これまでの働きは尊重されており、今後も必要とされている。</li>
+          <li>次年度は、新体制を支える側として関わってほしい。</li>
+          <li>具体的な関わり方は、本人の状況と新体制の必要に応じて相談する。</li>
+        </ul>
+        <div class="quote">あなたを外す話ではなく、Youthを継続的な育成の場にするために、役割を次に渡していく設計にする。これまでの働きは引き続き必要なので、次年度は新体制を支える側として関わってほしい。</div>
+        <p>面談後は、牧師・伝道師間で本人の反応や状況を共有し、必要なフォローを検討する。</p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">10</span>
+          <div>
+            <h2>Youth全体への周知方針</h2>
+            <p>Youth全体へ周知する際は、個人名や現リーダーの交代理由に焦点を当てない。</p>
+          </div>
+        </div>
+        <ul>
+          <li>Youthを継続的な育成の場として整える。</li>
+          <li>神学生を中心に、年度ごとにリーダー・副リーダーを任命する。</li>
+          <li>特定の人に責任を固定せず、複数の人が責任ある奉仕を経験できるようにする。</li>
+          <li>リーダー・副リーダー以外のYouthメンバーも、スタッフ・協力者として関わることができる。</li>
+          <li>牧師・伝道師が支援しながら進める。</li>
+        </ul>
+        <div class="callout">周知では、「交代」よりも「育成」と「役割の受け渡し」を強調する。</div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">11</span>
+          <div>
+            <h2>今後の課題・未決事項</h2>
+            <p>正式運用に向けて、以下の項目を整理する。</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>課題</th><th>状態</th><th>補足</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>次年度リーダー・副リーダー候補の選定</td><td><span class="status pending">未決</span></td><td>任命前にYouth担当牧師・伝道師間で協議が必要。</td></tr>
+              <tr><td>候補推薦プロセスの詳細</td><td><span class="status pending">未設計</span></td><td>推薦元、推薦方法、参考意見の扱いを整理する。</td></tr>
+              <tr><td>任命の文書化</td><td><span class="status pending">未決</span></td><td>任命記録、任期、役割分担を残す必要がある。</td></tr>
+              <tr><td>通知方法</td><td><span class="status pending">未決</span></td><td>本人通知、牧師・伝道師間共有、Youth全体周知の順序を決める。</td></tr>
+              <tr><td>年度ごとの体制記録の管理方法</td><td><span class="status pending">未決</span></td><td>歴代リーダー・副リーダー、任期、引き継ぎ事項を管理する。</td></tr>
+              <tr><td>振り返り面談の記録方法</td><td><span class="status pending">未決</span></td><td>詳細すぎる記録ではなく、育成上必要な範囲で残す。</td></tr>
+              <tr><td>前年リーダーの具体的役割</td><td><span class="status yearly">年度ごとに判断</span></td><td>スタッフ、アドバイザー、副リーダー等の扱いを個別に決める。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="number">12</span>
+          <div>
+            <h2>備考</h2>
+            <p>この方針は、現時点の叩き台であり、牧師・伝道師間での確認・合意を経て確定する。</p>
+          </div>
+        </div>
+        <p>正式運用に入る前に、以下を確認する必要がある。</p>
+        <ul>
+          <li>教会全体の責任体制との整合性。</li>
+          <li>Youth担当牧師・伝道師の範囲。</li>
+          <li>責任牧師への確認の要否。</li>
+          <li>次年度候補者の実情。</li>
+          <li>現リーダーへの面談順序。</li>
+          <li>Youth全体への周知文。</li>
+        </ul>
+        <p>Wordへの清書・正式文書化は、牧師・伝道師間での合意後に行う。</p>
+      </section>
+    </div>
+
+    <p class="footer-note">Youth組織 リーダー体制方針まとめ / 叩き台・修正版</p>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".tab-panel");
+    const textScale = document.querySelector("#textScale");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.tab;
+        tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+        panels.forEach((panel) => panel.classList.toggle("active", panel.id === target));
+        document.querySelector("main").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    textScale.addEventListener("input", (event) => {
+      document.documentElement.style.setProperty("--text-scale", event.target.value / 100);
+    });
+  </script>
+</body>
+</html>
