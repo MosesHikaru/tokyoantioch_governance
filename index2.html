@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京アンテオケ教会　ハラスメント対応規程案</title>
+<style>
+  :root {
+    --primary: #2c4a7c;
+    --primary-light: #3d6199;
+    --primary-dark: #1a2f50;
+    --accent: #c8a84b;
+    --accent-light: #e8c96a;
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --surface2: #f0f2f8;
+    --border: #dde1ed;
+    --text: #1a1d2e;
+    --text-secondary: #5a6080;
+    --text-muted: #8a8fa8;
+    --danger: #c0392b;
+    --danger-light: #fdf0ef;
+    --warning: #d68910;
+    --warning-light: #fef9ec;
+    --success: #1e8449;
+    --success-light: #eafaf1;
+    --info: #1a6fa0;
+    --info-light: #eaf4fb;
+    --l1: #27ae60;
+    --l2: #f39c12;
+    --l3: #e67e22;
+    --l4: #c0392b;
+    --radius: 8px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'Yu Gothic', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  /* ── ヘッダー ── */
+  header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+    color: white;
+    padding: 32px 40px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  header .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  header .church-name {
+    font-size: 13px;
+    opacity: 0.75;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+  header .badge {
+    background: var(--accent);
+    color: #1a1200;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  header .header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.18s;
+    text-decoration: none;
+  }
+  .btn-ghost {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+  .btn-accent {
+    background: var(--accent);
+    color: #1a1200;
+  }
+  .btn-accent:hover { background: var(--accent-light); }
+
+  /* ── 検索バー ── */
+  .search-bar {
+    margin-top: 16px;
+    position: relative;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.18s;
+  }
+  .search-bar input::placeholder { color: rgba(255,255,255,0.5); }
+  .search-bar input:focus { background: rgba(255,255,255,0.2); }
+  .search-bar .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    font-size: 16px;
+    pointer-events: none;
+  }
+  #searchCount {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    display: none;
+  }
+
+  /* ── 章ナビゲーション ── */
+  .chapter-nav {
+    background: var(--primary-dark);
+    border-bottom: 2px solid var(--accent);
+    overflow-x: auto;
+    display: flex;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .chapter-nav::-webkit-scrollbar { display: none; }
+  .chapter-nav button {
+    flex-shrink: 0;
+    padding: 12px 18px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.18s;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .chapter-nav button:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); }
+  .chapter-nav button.active {
+    color: var(--accent-light);
+    border-bottom-color: var(--accent);
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* ── レイアウト ── */
+  .layout {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* ── サイドバー ── */
+  aside {
+    width: 260px;
+    flex-shrink: 0;
+    padding: 24px 0;
+    position: sticky;
+    top: 140px;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  aside h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    padding: 0 20px 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar-chapter { margin-bottom: 4px; }
+  .sidebar-chapter-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-chapter-btn:hover { background: var(--surface2); color: var(--primary); }
+  .sidebar-chapter-btn.active {
+    background: #eef2fb;
+    color: var(--primary);
+    font-weight: 600;
+    border-left-color: var(--primary);
+  }
+  .sidebar-chapter-btn .ch-num {
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    flex-shrink: 0;
+  }
+  .sidebar-chapter-btn.active .ch-num { background: var(--primary); }
+
+  /* ── メインコンテンツ ── */
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 40px 80px;
+  }
+
+  /* ── セクション ── */
+  .chapter-section {
+    margin-bottom: 48px;
+    scroll-margin-top: 160px;
+  }
+  .chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--primary);
+  }
+  .chapter-badge {
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .chapter-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    letter-spacing: 0.02em;
+  }
+  .chapter-count {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── 条文 ── */
+  .article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.18s;
+  }
+  .article:hover { box-shadow: var(--shadow-md); }
+  .article-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .article-header:hover { background: #e8ecf6; }
+  .article-num {
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .article-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    flex: 1;
+  }
+  .article-toggle {
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .article.collapsed .article-toggle { transform: rotate(-90deg); }
+  .article-body {
+    padding: 20px 24px;
+    transition: all 0.25s;
+  }
+  .article.collapsed .article-body { display: none; }
+
+  /* ── テキスト要素 ── */
+  p { margin-bottom: 12px; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  ol, ul {
+    padding-left: 24px;
+    margin-bottom: 12px;
+  }
+  li { margin-bottom: 6px; line-height: 1.7; }
+  li:last-child { margin-bottom: 0; }
+
+  /* ── テーブル ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  thead tr { background: var(--primary); }
+  thead th {
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td { padding: 12px 16px; vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--primary-dark); white-space: nowrap; }
+
+  /* ── レベルバッジ ── */
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .level-l1 { background: #d5f5e3; color: #1e8449; }
+  .level-l2 { background: #fef5e7; color: #b7770d; }
+  .level-l3 { background: #fdebd0; color: #c0392b; }
+  .level-l4 { background: #fdf0ef; color: #922b21; border: 1px solid #e59590; }
+  .level-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .level-l1 .level-dot { background: var(--l1); }
+  .level-l2 .level-dot { background: var(--l2); }
+  .level-l3 .level-dot { background: var(--l3); }
+  .level-l4 .level-dot { background: var(--l4); }
+
+  /* ── ステップ ── */
+  .step-list { margin: 16px 0; }
+  .step-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; }
+  .step-label { font-weight: 700; color: var(--primary-dark); font-size: 14px; }
+  .step-desc { color: var(--text-secondary); font-size: 13.5px; margin-top: 2px; }
+
+  /* ── 注意ボックス ── */
+  .notice {
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .notice-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .notice-info { background: var(--info-light); border-left: 4px solid var(--info); }
+  .notice-warning { background: var(--warning-light); border-left: 4px solid var(--warning); }
+  .notice-danger { background: var(--danger-light); border-left: 4px solid var(--danger); }
+  .notice-success { background: var(--success-light); border-left: 4px solid var(--success); }
+
+  /* ── タグ ── */
+  .tag {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin: 2px;
+    font-weight: 500;
+  }
+
+  /* ── ハイライト検索 ── */
+  mark {
+    background: #fff176;
+    color: var(--text);
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* ── フローティングTOC ── */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 200;
+    transition: width 0.1s;
+  }
+
+  /* ── 印刷 ── */
+  @media print {
+    header, .chapter-nav, aside, .header-actions, .search-bar { display: none !important; }
+    main { padding: 0; }
+    .article { box-shadow: none; }
+    .article.collapsed .article-body { display: block !important; }
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 900px) {
+    aside { display: none; }
+    main { padding: 20px 16px 60px; }
+    header { padding: 20px 16px 16px; }
+    header h1 { font-size: 18px; }
+  }
+
+  /* ── トップへ戻るボタン ── */
+  #toTop {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: background 0.18s, transform 0.18s;
+  }
+  #toTop:hover { background: var(--primary-light); transform: translateY(-2px); }
+  #toTop.visible { display: flex; }
+
+  /* ── 補足セクション ── */
+  .appendix {
+    background: linear-gradient(135deg, #f0f3fa, #e8ecf6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .appendix h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .appendix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .appendix-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .appendix-item-num {
+    background: var(--primary);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── 強化ポイントセクション ── */
+  .enhancement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .enhancement-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+  .enhancement-card .enh-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── 条文インデックス ── */
+  .article-index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 6px;
+    margin: 8px 0 16px;
+  }
+  .article-index-btn {
+    padding: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    color: var(--primary);
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .article-index-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* ── 区切り ── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-top">
+    <div>
+      <div class="church-name">東京アンテオケ教会</div>
+      <h1>ハラスメント対応規程案</h1>
+      <span class="badge">草案・内部文書</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" onclick="toggleAll(true)">▼ すべて展開</button>
+      <button class="btn btn-ghost" onclick="toggleAll(false)">▲ すべて折りたたむ</button>
+      <button class="btn btn-accent" onclick="window.print()">🖨 印刷</button>
+    </div>
+  </div>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="キーワードで検索（例：霊的ハラスメント、四人委員会）" oninput="doSearch(this.value)">
+    <span id="searchCount"></span>
+  </div>
+</header>
+
+<!-- 章ナビ -->
+<nav class="chapter-nav" id="chapterNav">
+  <button class="active" onclick="scrollToChapter('ch1')">第1章 総則</button>
+  <button onclick="scrollToChapter('ch2')">第2章 相談受付</button>
+  <button onclick="scrollToChapter('ch3')">第3章 記録</button>
+  <button onclick="scrollToChapter('ch4')">第4章 重症度分類</button>
+  <button onclick="scrollToChapter('ch5')">第5章 調査・判断</button>
+  <button onclick="scrollToChapter('ch6')">第6章 是正・処分</button>
+  <button onclick="scrollToChapter('ch7')">第7章 報復禁止</button>
+  <button onclick="scrollToChapter('ch8')">第8章 再検討</button>
+  <button onclick="scrollToChapter('ch9')">第9章 責任役員会</button>
+  <button onclick="scrollToChapter('ch10')">第10章 守秘義務</button>
+  <button onclick="scrollToChapter('ch11')">第11章 研修・周知</button>
+  <button onclick="scrollToChapter('ch12')">第12章 附則</button>
+  <button onclick="scrollToChapter('chApp')">補足・別紙</button>
+</nav>
+
+<div class="layout">
+
+<!-- サイドバー -->
+<aside>
+  <h3>目次</h3>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn active" onclick="scrollToChapter('ch1')"><span class="ch-num">1</span>総則 §1–5</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch2')"><span class="ch-num">2</span>相談受付 §6–12</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch3')"><span class="ch-num">3</span>記録 §13–19</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch4')"><span class="ch-num">4</span>重症度分類 §20–22</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch5')"><span class="ch-num">5</span>調査・判断 §23–28</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch6')"><span class="ch-num">6</span>是正・処分 §29–31</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch7')"><span class="ch-num">7</span>報復禁止 §32–33</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch8')"><span class="ch-num">8</span>再検討 §34–35</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch9')"><span class="ch-num">9</span>責任役員会 §36–37</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch10')"><span class="ch-num">10</span>守秘義務 §38–40</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch11')"><span class="ch-num">11</span>研修・周知 §41–42</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch12')"><span class="ch-num">12</span>附則 §43–45</button>
+  </div>
+  <div class="sidebar-chapter">
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('chApp')"><span class="ch-num" style="background:#c8a84b;color:#1a1200">補</span>補足・別紙</button>
+  </div>
+</aside>
+
+<!-- メイン -->
+<main id="mainContent">
+
+<!-- 第1章 -->
+<section class="chapter-section" id="ch1">
+  <div class="chapter-header">
+    <div class="chapter-badge">第1章</div>
+    <h2 class="chapter-title">総則</h2>
+    <span class="chapter-count">第1条 ～ 第5条</span>
+  </div>
+
+  <!-- 第1条 -->
+  <div class="article" id="art1">
+    <div class="article-header" onclick="toggleArticle('art1')">
+      <div class="article-num">1</div>
+      <span class="article-title">第1条（目的）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程は、東京アンテオケ教会（以下「本教会」という）において、すべての牧師・伝道師・スタッフ・奉仕者・セミナリー生その他本教会に関わる者が、安心して礼拝・奉仕・学び・交わり・職務に関わることのできる環境を整えるため、ハラスメントの防止、相談、報告、調査、判断、是正、記録および再発防止に関する手続を定めるものである。</p>
+    </div>
+  </div>
+
+  <!-- 第2条 -->
+  <div class="article" id="art2">
+    <div class="article-header" onclick="toggleArticle('art2')">
+      <div class="article-num">2</div>
+      <span class="article-title">第2条（定義）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程において「ハラスメント」とは、相手の人格、尊厳、信仰生活、奉仕生活、職務上の立場または生活環境を害する不適切な言動をいう。ハラスメントには、以下のものを含む。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>種別</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag">パワーハラスメント</span></td>
+              <td>職務上、奉仕上、組織上、霊的指導上または人間関係上の優位性を背景として、相手に身体的・精神的苦痛を与え、または奉仕・職務・教会生活の環境を悪化させる言動</td>
+            </tr>
+            <tr>
+              <td><span class="tag">セクシャルハラスメント</span></td>
+              <td>性的な言動、身体接触、性的な冗談、交際・性的関係の要求、性的関心に基づく接近、性的内容の表示・送信等により、相手に不快感・苦痛・不利益を与える行為</td>
+            </tr>
+            <tr>
+              <td><span class="tag">霊的ハラスメント</span></td>
+              <td>霊的権威、信仰、聖書、預言、示し、奉仕、献身、教会への忠誠等を利用して、相手に不当な支配、強制、恐怖、罪責感、沈黙、服従を強いる言動</td>
+            </tr>
+            <tr>
+              <td><span class="tag">モラルハラスメント</span></td>
+              <td>人格否定、侮辱、無視、孤立化、威圧、執拗な非難、悪評の流布等により、相手の尊厳を傷つける言動</td>
+            </tr>
+            <tr>
+              <td><span class="tag">その他のハラスメント</span></td>
+              <td>上記に準ずる、相手の人格・尊厳・安全・信仰生活・奉仕生活を害する言動</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第3条 -->
+  <div class="article" id="art3">
+    <div class="article-header" onclick="toggleArticle('art3')">
+      <div class="article-num">3</div>
+      <span class="article-title">第3条（霊的ハラスメントの具体例）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>霊的ハラスメントには、例えば以下の行為を含む。</p>
+      <ol>
+        <li>「従わなければ祝福されない」「反抗は不信仰である」等の言葉により、相手の自由な判断を不当に拘束すること</li>
+        <li>預言、示し、霊的権威、牧会的立場を用いて、本人の意思決定を過度に支配すること</li>
+        <li>奉仕を断ること、休むこと、相談することを、信仰不足、愛の欠如、不従順、反抗として責めること</li>
+        <li>相談内容、弱さ、罪の告白、家庭事情、心理状態等を、霊的指導の名のもとに必要範囲を超えて共有すること</li>
+        <li>献金、奉仕、進路、結婚、人間関係、所属、教会生活について、不相当な圧力をかけること</li>
+        <li>牧会、訓練、指導の範囲を超えて、人格、尊厳、信仰そのものを否定すること</li>
+        <li>「赦すべき」「一致を乱している」「教会を傷つけている」等の言葉により、相談、申告、被害の訴え、調査協力を抑圧すること</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <div>聖書的教理に基づく一般的な教え、礼拝・奉仕上必要な範囲での指導、組織運営上必要かつ相当な注意・指示は、それ自体をもってハラスメントとはしない。ただし、その方法、頻度、言葉遣い、立場の優位性、相手の状態、密室性、継続性、影響の程度等に照らして、人格・尊厳・安全を害する場合はこの限りでない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第4条 -->
+  <div class="article" id="art4">
+    <div class="article-header" onclick="toggleArticle('art4')">
+      <div class="article-num">4</div>
+      <span class="article-title">第4条（適用範囲）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程は、本教会の牧師、伝道師、スタッフ、奉仕者、セミナリー生、部門責任者、委員会構成員、その他本教会から任命または委嘱を受けた者に適用する。</p>
+      <p>また、相談者、被害者、目撃者または関係者が、教会員、来会者、求道者、未成年者、外部協力者、出演者、業者、オンライン参加者等である場合にも、本教会関係者による行為については、本規程に準じて対応する。</p>
+    </div>
+  </div>
+
+  <!-- 第5条 -->
+  <div class="article" id="art5">
+    <div class="article-header" onclick="toggleArticle('art5')">
+      <div class="article-num">5</div>
+      <span class="article-title">第5条（基本原則）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程に基づく対応は、以下の原則に従う。</p>
+      <ol>
+        <li>相談者、申告者、報告者、調査協力者が不利益を被らないよう保護する</li>
+        <li>相談、申告、報告、調査協力を理由とする報復、威圧、接触強要、信仰上の非難、奉仕上の不利益取扱いを禁止する</li>
+        <li>被申告者の名誉および人格も、調査完了までの間、不必要に損なわない</li>
+        <li>調査、判断、処分、記録の各機能について、可能な限り担当者を分離し、相互牽制を確保する</li>
+        <li>守秘義務は、対応に関わるすべての者に課される</li>
+        <li>相談者に対し、「赦すべき」「愛がない」「信仰が足りない」「教会を傷つけている」等の言葉により、相談の撤回や沈黙を事実上求めてはならない</li>
+        <li>緊急性、安全確保、未成年者保護、二次被害防止を優先する</li>
+        <li>事実認定は、推測、噂、感情、立場の上下によらず、記録、聴取、証拠、状況をもとに行う</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 第2章 -->
+<section class="chapter-section" id="ch2">
+  <div class="chapter-header">
+    <div class="chapter-badge">第2章</div>
+    <h2 class="chapter-title">相談受付</h2>
+    <span class="chapter-count">第6条 ～ 第12条</span>
+  </div>
+
+  <!-- 第6条 -->
+  <div class="article" id="art6">
+    <div class="article-header" onclick="toggleArticle('art6')">
+      <div class="article-num">6</div>
+      <span class="article-title">第6条（相談窓口）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本教会は、ハラスメント相談に対応するため、以下の相談受付体制を設ける。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>区分</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>正式窓口</td>
+              <td>指定窓口担当牧師夫妻2組を置く。窓口担当牧師夫妻はそれぞれ独立した守秘義務を負う。相談内容の共有は、対応上必要な範囲に限り、相談者に説明した上で行う。相談者は、可能な限り、同性の窓口担当者、または相談者が希望する担当者を選択できるものとする。</td>
+            </tr>
+            <tr>
+              <td>非公式受付者・準窓口</td>
+              <td>本教会の任命または委嘱を受けた牧師・伝道師は、相談を受けた場合の非公式受付者、準窓口としての義務を負う。準窓口は、独自に判断、解決、仲裁、被申告者への連絡を行ってはならない。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第7条 -->
+  <div class="article" id="art7">
+    <div class="article-header" onclick="toggleArticle('art7')">
+      <div class="article-num">7</div>
+      <span class="article-title">第7条（相談方法）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>相談は、以下のいずれかの方法により受け付ける。</p>
+      <ol>
+        <li>対面</li>
+        <li>電話</li>
+        <li>メッセージ</li>
+        <li>電子メール</li>
+        <li>所定のオンラインフォーム</li>
+        <li>その他、相談者の安全および事情に応じた方法</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>オンラインフォームによる相談または報告は、記名・匿名のいずれも可能とする。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第8条 -->
+  <div class="article" id="art8">
+    <div class="article-header" onclick="toggleArticle('art8')">
+      <div class="article-num">8</div>
+      <span class="article-title">第8条（匿名相談の扱い）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>匿名相談については、匿名であることを理由に一律に不受理とはしない。四人委員会は、匿名相談について、相談内容の具体性、緊急性、被害拡大のおそれ、未成年者・性的被害・身体的危害の有無、被申告者の立場等を踏まえ、以下のいずれかの対応方針を決定する。</p>
+      <ol>
+        <li>情報提供として記録する</li>
+        <li>追加情報の提供を求める</li>
+        <li>関係部署または関係者に対する一般的注意喚起を行う</li>
+        <li>本人不明のまま、可能な範囲で事実確認を開始する</li>
+        <li>緊急性があるものとして、暫定措置または外部専門家への相談を行う</li>
+      </ol>
+      <p>匿名であることにより事実確認に限界がある場合は、その限界を記録に明記する。</p>
+    </div>
+  </div>
+
+  <!-- 第9条 -->
+  <div class="article" id="art9">
+    <div class="article-header" onclick="toggleArticle('art9')">
+      <div class="article-num">9</div>
+      <span class="article-title">第9条（非公式受付者の義務）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>任命または委嘱を受けた牧師・伝道師が相談を受けた場合、以下の手順に従う。</p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">相談を聴く</div>
+            <div class="step-desc">評価、断定、説教、叱責、安易な霊的解釈をしない。解決の約束、処分の約束、秘密保持の絶対保証をしない。被申告者への直接連絡をしない。</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">正式窓口または記録管理者への移送を説明</div>
+            <div class="step-desc">相談者に、正式窓口または記録管理者への移送について説明する。</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">移送の同意確認</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">受付メモ・報告フォームの作成</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">指定記録管理者へ提出</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">独自判断による接触禁止</div>
+            <div class="step-desc">以後、独自判断で被申告者、関係者、部門責任者等に連絡しない。</div>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>区分</th><th>提出期限</th></tr></thead>
+          <tbody>
+            <tr><td>通常案件</td><td>3営業日以内</td></tr>
+            <tr><td>L2以上が疑われる案件</td><td>翌営業日まで</td></tr>
+            <tr><td><span class="level-badge level-l4"><span class="level-dot"></span>L3・L4、未成年者、性的被害、身体的危害、自傷他害リスクが疑われる案件</span></td><td><strong>即日</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第10条 -->
+  <div class="article" id="art10">
+    <div class="article-header" onclick="toggleArticle('art10')">
+      <div class="article-num">10</div>
+      <span class="article-title">第10条（移送同意が得られない場合）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>相談者から移送同意が得られない場合、受付者はその旨を記録し、保留記録として指定記録管理者へ提出する。ただし、以下に該当する場合は、相談者の同意が得られない場合であっても、正式対応へ移送することができる。</p>
+      <ol>
+        <li>身体的危害、安全上の緊急リスクがある場合</li>
+        <li>自傷他害のおそれがある場合</li>
+        <li>被申告者が複数人に同種行為をしている可能性がある場合</li>
+        <li>被申告者が未成年者に関わる立場にある場合</li>
+        <li>相談者が継続的な被害状態にある場合</li>
+        <li>性的被害または身体接触が疑われる場合</li>
+        <li>犯罪、法的紛争、対外的リスクが生じる可能性がある場合</li>
+      </ol>
+      <div class="notice notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <span>移送する場合は、緊急性または安全上支障がある場合を除き、事前に相談者にその旨を通知する。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第11条 -->
+  <div class="article" id="art11">
+    <div class="article-header" onclick="toggleArticle('art11')">
+      <div class="article-num">11</div>
+      <span class="article-title">第11条（移送義務を果たせない場合）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>受付者が、上位者、部門責任者、被申告者、関係者等からの圧力、関係性、利害関係、恐怖、報復リスクその他の理由により、通常の移送義務を果たせない状況に置かれた場合、受付者は、その状況自体を四人委員会構成員または指定記録管理者に直接連絡する。</p>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚫</span>
+        <span>この連絡を行ったことを理由として、受付者に不利益を与えてはならない。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第12条 -->
+  <div class="article" id="art12">
+    <div class="article-header" onclick="toggleArticle('art12')">
+      <div class="article-num">12</div>
+      <span class="article-title">第12条（窓口担当者および受付者の除斥）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>窓口担当者または受付者が以下のいずれかに該当する場合、当該担当者は受付、聴取、調査、判断から離脱し、四人委員会または指定記録管理者に即時移送する。</p>
+      <ol>
+        <li>自身が相談者、被申告者、目撃者、関係者である場合</li>
+        <li>被申告者または相談者と親密な関係にある場合</li>
+        <li>被申告者または相談者と同一グループ、同一部署、同一奉仕チームに属し、中立性に疑義がある場合</li>
+        <li>被申告者または相談者の直属の指導者、部門責任者、上位者である場合</li>
+        <li>親族関係、経済的関係、強い利害関係がある場合</li>
+        <li>過去に当該案件について助言、介入、仲裁、指導を行っていた場合</li>
+        <li>相談者が、当該担当者による対応を望まない合理的理由を示した場合</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 第3章 -->
+<section class="chapter-section" id="ch3">
+  <div class="chapter-header">
+    <div class="chapter-badge">第3章</div>
+    <h2 class="chapter-title">記録</h2>
+    <span class="chapter-count">第13条 ～ 第19条</span>
+  </div>
+
+  <div class="article" id="art13">
+    <div class="article-header" onclick="toggleArticle('art13')">
+      <div class="article-num">13</div>
+      <span class="article-title">第13条（記録の作成）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>受付時には、以下の事項を記録する。</p>
+      <ol>
+        <li>受付日時</li>
+        <li>受付方法</li>
+        <li>受付者氏名</li>
+        <li>相談者の属性</li>
+        <li>記名・匿名の別</li>
+        <li>被申告者が判明している場合はその情報</li>
+        <li>相談内容の要旨</li>
+        <li>相談者が述べた事実</li>
+        <li>受付者による推測、評価、解釈を含まない聴取内容</li>
+        <li>緊急度の初期判断</li>
+        <li>移送同意の有無</li>
+        <li>未成年者、性的被害、身体的危害、自傷他害リスクの有無</li>
+        <li>添付資料または証拠資料の有無</li>
+        <li>今後の連絡方法に関する相談者の希望</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>記録は、相談者の言葉を尊重しつつ、事実、発言、日時、場所、関係者、経緯を区別して記載する。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art14">
+    <div class="article-header" onclick="toggleArticle('art14')">
+      <div class="article-num">14</div>
+      <span class="article-title">第14条（記録の正本管理）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>全記録の正本は、指定記録管理者が管理する。指定記録管理者は、四人委員会副責任者を原則とする。ただし、当該者が案件の当事者、関係者、利害関係者となる場合は、直ちに記録管理から離脱し、四人委員会の互選により代替記録管理者を指名する。記録管理者の復帰は、案件終結後、四人委員会が支障なしと判断した場合に限る。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art15">
+    <div class="article-header" onclick="toggleArticle('art15')">
+      <div class="article-num">15</div>
+      <span class="article-title">第15条（記録の保管場所）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>記録の保管場所は、一般のTeamsチャネル、通常の共有フォルダ、部門用ファイル保管場所とは分離する。保管場所は、アクセス権限を個別設定した専用のSharePointライブラリ、または同等のセキュアな保管領域とする。</p>
+      <p>保管領域については、以下を満たすものとする。</p>
+      <ol>
+        <li>閲覧権限、編集権限、ダウンロード権限を必要最小限に限定する</li>
+        <li>権限付与者を限定する</li>
+        <li>アクセスログを確認できる状態にする</li>
+        <li>個人端末への無断保存、転送、印刷を禁止する</li>
+        <li>チャネル会話、一般投稿、通常業務ファイルと混在させない</li>
+        <li>相談者、被申告者、第三者の個人情報を整理番号で管理する</li>
+        <li>台帳と詳細記録を分離する</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="article" id="art16">
+    <div class="article-header" onclick="toggleArticle('art16')">
+      <div class="article-num">16</div>
+      <span class="article-title">第16条（閲覧権限）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>記録の閲覧権限は、原則として以下の者に限定する。</p>
+      <ol>
+        <li>四人委員会構成員</li>
+        <li>指定記録管理者</li>
+        <li>調査担当者</li>
+        <li>責任牧師（第2項に従う）</li>
+        <li>外部専門家（必要最小限の範囲に限る）</li>
+      </ol>
+      <div class="notice notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <span>責任牧師は、原則として四人委員会からの報告書を通じて案件を把握する。生の記録への直接アクセスは、四人委員会が必要と判断した場合に限る。</span>
+      </div>
+      <p style="margin-top:12px">ただし、L3以上、未成年者、性的被害、身体的危害、自傷他害リスク、主要責任者が関係する案件については、速報として責任牧師へ報告する。</p>
+      <p>責任牧師が当事者、関係者、または中立性に疑義がある立場にある場合、責任牧師は当該案件の記録閲覧、調査、判断から離脱する。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art17">
+    <div class="article-header" onclick="toggleArticle('art17')">
+      <div class="article-num">17</div>
+      <span class="article-title">第17条（保管期間）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>区分</th><th>保管期間</th></tr></thead>
+          <tbody>
+            <tr><td>通常案件</td><td>案件終結から原則5年</td></tr>
+            <tr><td>未成年者が関係する案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+            <tr><td>性的被害が関係する案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+            <tr><td>身体的危害が関係する案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+            <tr><td>自傷他害リスクが関係する案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+            <tr><td>牧師・伝道師・主要責任者が被申告者の案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+            <tr><td>法的紛争・外部通報等が必要となった案件</td><td>案件終結から10年、または法的リスクが消滅するまで</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art18">
+    <div class="article-header" onclick="toggleArticle('art18')">
+      <div class="article-num">18</div>
+      <span class="article-title">第18条（受付控えおよび提出証跡）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>フォームによる相談または報告が行われた場合、報告者には、報告義務の履行を確認するため、提出証跡を発行する。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th colspan="2">提出証跡への記載</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--success)">✅ 記載する事項</td><td>整理番号 / 報告日時 / 報告者名 / 受付区分 / 緊急度区分 / 移送同意の有無 / 添付資料の有無 / 受領先 / 受付済みである旨</td></tr>
+            <tr><td style="color:var(--danger)">❌ 記載しない事項</td><td>相談者氏名 / 被申告者氏名 / 相談内容の詳細 / 性的被害・未成年者情報等の機微情報 / 証拠資料の内容 / 聴取メモ全文</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚫</span>
+        <span>報告者は、提出証跡を第三者に転送、共有、印刷、複製、無断保存してはならない。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art19">
+    <div class="article-header" onclick="toggleArticle('art19')">
+      <div class="article-num">19</div>
+      <span class="article-title">第19条（相談者本人への控え）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>相談者本人に対する控えの送付は、相談者が希望した場合に限り、相談者の安全に配慮した方法により行う。送付方法については、電子メール、SMS、郵送、対面での交付、整理番号のみの通知等から、相談者の安全を確認した上で選択する。</p>
+      <p>相談者本人に交付する控えは、必要最小限の内容とし、被申告者名、第三者名、性的被害、未成年者情報、その他機微情報については、必要に応じてマスキングする。</p>
+      <p>正本は、指定記録管理者が管理する記録とし、相談者または報告者に交付される控えは正本ではない。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第4章 -->
+<section class="chapter-section" id="ch4">
+  <div class="chapter-header">
+    <div class="chapter-badge">第4章</div>
+    <h2 class="chapter-title">重症度分類および初期対応</h2>
+    <span class="chapter-count">第20条 ～ 第22条</span>
+  </div>
+
+  <div class="article" id="art20">
+    <div class="article-header" onclick="toggleArticle('art20')">
+      <div class="article-num">20</div>
+      <span class="article-title">第20条（重症度分類）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>レベル</th>
+              <th>内容の例</th>
+              <th>対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="level-badge level-l1"><span class="level-dot"></span>L1</span></td>
+              <td>単発、軽微、緊急性が低い言い方の問題、不快感、誤解の可能性が高い案件</td>
+              <td>助言、注意喚起、記録、必要に応じた調整</td>
+            </tr>
+            <tr>
+              <td><span class="level-badge level-l2"><span class="level-dot"></span>L2</span></td>
+              <td>継続的な不適切言動、複数人への同種行為、権力差を背景とした圧力、不適切な指導、奉仕環境の悪化</td>
+              <td>四人委員会による調査、改善指導、再発防止措置</td>
+            </tr>
+            <tr>
+              <td><span class="level-badge level-l3"><span class="level-dot"></span>L3</span></td>
+              <td>性的言動、身体接触、職権濫用、霊的権威の濫用、報復、重大な精神的苦痛、主要責任者が関係する案件</td>
+              <td>四人委員会による調査、責任牧師への即報、必要に応じた暫定措置および外部専門家相談</td>
+            </tr>
+            <tr>
+              <td><span class="level-badge level-l4"><span class="level-dot"></span>L4</span></td>
+              <td>犯罪の疑い、未成年者が関係する案件、性的接触、身体的危害、自傷他害リスク、法的紛争、外部機関接続</td>
+              <td>即時安全確保、責任牧師への即報、外部専門家・警察・児童相談所等との連携検討</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚨</span>
+        <span>L3またはL4が疑われる案件、未成年者が関係する案件、性的被害、身体的危害、自傷他害リスクが疑われる案件については、<strong>即日</strong>で初期判断を行う。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art21">
+    <div class="article-header" onclick="toggleArticle('art21')">
+      <div class="article-num">21</div>
+      <span class="article-title">第21条（未成年者・性的被害に関する特則）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>未成年者が相談者、被害者、目撃者、関係者となる案件については、通常のレベル分類にかかわらず、原則としてL3以上として扱う。</p>
+      <p>以下に該当する場合は、原則としてL4相当として扱う。</p>
+      <ol>
+        <li>性的接触が疑われる場合</li>
+        <li>身体的危害が疑われる場合</li>
+        <li>グルーミングが疑われる場合</li>
+        <li>密室での不適切な関わりが疑われる場合</li>
+        <li>指導上・牧会上・奉仕上の立場を利用した個人的接近が疑われる場合</li>
+        <li>未成年者に対する継続的・秘密的な連絡が疑われる場合</li>
+        <li>被申告者が未成年者に関わる立場にある場合</li>
+      </ol>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚨</span>
+        <span>この場合、四人委員会は速やかに責任牧師へ報告し、必要に応じて、児童相談所、警察、弁護士、外部専門機関への相談または接続を検討する。未成年者保護を要する場合、相談者本人または保護者の同意の有無にかかわらず、安全確保を優先することができる。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art22">
+    <div class="article-header" onclick="toggleArticle('art22')">
+      <div class="article-num">22</div>
+      <span class="article-title">第22条（暫定措置）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>四人委員会は、相談者の安全確保、証拠保全、報復防止、被害拡大防止、調査の公正確保のため、調査完了前であっても、必要に応じて暫定措置を行うことができる。暫定措置には、以下のものを含む。</p>
+      <ol>
+        <li>相談者と被申告者の接触禁止</li>
+        <li>直接連絡の禁止</li>
+        <li>連絡経路の制限</li>
+        <li>奉仕配置の一時変更</li>
+        <li>指導、牧会、教育、面談、会議、奉仕からの一時離脱</li>
+        <li>未成年者と関わる奉仕からの一時離脱</li>
+        <li>同席者の指定</li>
+        <li>関係部署への必要最小限の注意喚起</li>
+        <li>証拠資料の保全</li>
+        <li>その他、安全確保のために必要な措置</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>暫定措置は、懲戒または処分ではなく、事実認定前の安全確保および調査保全のための措置である。暫定措置を行う場合は、その理由、内容、期間、対象者、解除条件を記録する。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第5章 -->
+<section class="chapter-section" id="ch5">
+  <div class="chapter-header">
+    <div class="chapter-badge">第5章</div>
+    <h2 class="chapter-title">調査および判断</h2>
+    <span class="chapter-count">第23条 ～ 第28条</span>
+  </div>
+
+  <div class="article" id="art23">
+    <div class="article-header" onclick="toggleArticle('art23')">
+      <div class="article-num">23</div>
+      <span class="article-title">第23条（判断権限）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>判断事項</th><th>権限者</th></tr></thead>
+          <tbody>
+            <tr><td>L1対応、助言、注意喚起</td><td>窓口担当牧師または四人委員会</td></tr>
+            <tr><td>L2調査開始</td><td>四人委員会</td></tr>
+            <tr><td>L2改善指導、再発防止措置案</td><td>四人委員会</td></tr>
+            <tr><td>L3調査開始</td><td>四人委員会（責任牧師へ即報）</td></tr>
+            <tr><td>L3処分案</td><td>四人委員会が答申</td></tr>
+            <tr><td>L3処分決定</td><td>責任牧師（必要に応じ外部専門家の意見を聴取）</td></tr>
+            <tr><td>L4外部専門家接続・法的対応・外部機関対応</td><td>責任牧師（四人委員会および外部専門家と連携）</td></tr>
+            <tr><td>責任牧師または四人委員会の中立性に疑義がある案件</td><td>特別対応体制</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art24">
+    <div class="article-header" onclick="toggleArticle('art24')">
+      <div class="article-num">24</div>
+      <span class="article-title">第24条（調査の原則）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <ol>
+        <li>相談者、被申告者、必要な関係者から聴取する</li>
+        <li>調査担当者は、原則として2名以上とする</li>
+        <li>聴取は密室性を避け、必要に応じて同性担当者または同席者を置く</li>
+        <li>相談者の心理的負担、信仰上の葛藤、二次被害リスクに配慮する</li>
+        <li>被申告者にも、必要な範囲で事実確認および弁明の機会を与える</li>
+        <li>聴取記録には、日時、場所、聴取者、同席者、発言要旨を記載する</li>
+        <li>相談者と被申告者の不必要な接触を避ける</li>
+        <li>証拠資料、メッセージ、メール、音声、画像、文書等を必要に応じて保全する</li>
+        <li>調査結果は書面にまとめ、判断権限者に提出する</li>
+        <li>調査は、可能な限り迅速かつ公正に行う</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="article" id="art25">
+    <div class="article-header" onclick="toggleArticle('art25')">
+      <div class="article-num">25</div>
+      <span class="article-title">第25条（被申告者の手続保障）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>被申告者に対して不利益措置または処分を行う場合、原則として、被申告者に事実確認および弁明の機会を与える。ただし、以下の場合には、通知の時期、方法、内容を制限することができる。</p>
+      <ol>
+        <li>相談者の安全確保が必要な場合</li>
+        <li>未成年者保護が必要な場合</li>
+        <li>証拠隠滅のおそれがある場合</li>
+        <li>報復または威圧のおそれがある場合</li>
+        <li>調査に重大な支障がある場合</li>
+        <li>外部専門家または外部機関から制限が必要と助言された場合</li>
+      </ol>
+      <p style="margin-top:12px">被申告者への説明は、相談者の個人情報、第三者情報、機微情報を必要以上に開示しない範囲で行う。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art26">
+    <div class="article-header" onclick="toggleArticle('art26')">
+      <div class="article-num">26</div>
+      <span class="article-title">第26条（四人委員会構成員の除斥）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>四人委員会構成員が以下のいずれかに該当する場合、当該構成員は当該案件の審議、調査、判断、記録閲覧から除斥される。</p>
+      <ol>
+        <li>自身が相談者、被申告者、目撃者、関係者である場合</li>
+        <li>被申告者または相談者と親密な関係にある場合</li>
+        <li>被申告者または相談者と同一グループ、同一部署、同一奉仕チームに属し、中立性に疑義がある場合</li>
+        <li>被申告者または相談者の直属の指導者、部門責任者、上位者である場合</li>
+        <li>親族関係、経済的関係、強い利害関係がある場合</li>
+        <li>過去に当該案件について助言、介入、仲裁、指導を行っていた場合</li>
+        <li>その他、四人委員会または責任牧師が中立性に疑義があると判断した場合</li>
+      </ol>
+      <p style="margin-top:12px">除斥により四人委員会の審議体制が不十分となる場合、残余構成員、責任牧師、利害関係のない責任役員、または外部専門家により、代替審議体を設置する。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art27">
+    <div class="article-header" onclick="toggleArticle('art27')">
+      <div class="article-num">27</div>
+      <span class="article-title">第27条（責任牧師の除斥および特別対応体制）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>責任牧師が以下のいずれかに該当する場合、当該案件の調査、判断、処分決定、記録閲覧から離脱する。</p>
+      <ol>
+        <li>自身が相談者、被申告者、目撃者、関係者である場合</li>
+        <li>被申告者または相談者と親族関係、経済的関係、強い利害関係がある場合</li>
+        <li>被申告者または相談者と特に近い指導関係、牧会関係、組織上の関係にあり、中立性に疑義がある場合</li>
+        <li>当該案件について過去に助言、介入、仲裁、判断を行っていた場合</li>
+        <li>その他、四人委員会または責任役員会の利害関係のない者が、中立性に疑義があると判断した場合</li>
+      </ol>
+      <div class="notice notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <span>この場合、責任役員会の利害関係のない者、四人委員会の残余構成員、外部専門家等により、<strong>特別対応体制</strong>を設置する。特別対応体制は、調査、判断、外部専門家接続、法人リスク対応について、責任牧師に代わる判断機能を担う。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art28">
+    <div class="article-header" onclick="toggleArticle('art28')">
+      <div class="article-num">28</div>
+      <span class="article-title">第28条（外部専門家との連携）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>次に該当する場合、弁護士、社会保険労務士、公認心理師、臨床心理士、警察、児童相談所、医療機関、その他専門機関への相談または接続を検討する。</p>
+      <ol>
+        <li>未成年者が関係する案件</li>
+        <li>性的被害、身体接触、暴力、自傷他害リスクがある案件</li>
+        <li>犯罪または法的紛争の可能性がある案件</li>
+        <li>牧師、伝道師、主要責任者、委員会構成員が被申告者である案件</li>
+        <li>内部対応のみでは中立性を確保できない案件</li>
+        <li>相談者または被申告者の心理的安全に専門的配慮が必要な案件</li>
+        <li>対外的説明、報道、SNS拡散、法人リスクが想定される案件</li>
+        <li>その他、四人委員会が外部専門家の助言を必要と判断した案件</li>
+      </ol>
+      <p style="margin-top:12px">外部専門家へ相談する場合は、個人情報および機微情報の提供範囲を必要最小限とする。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第6章 -->
+<section class="chapter-section" id="ch6">
+  <div class="chapter-header">
+    <div class="chapter-badge">第6章</div>
+    <h2 class="chapter-title">是正、処分および再発防止</h2>
+    <span class="chapter-count">第29条 ～ 第31条</span>
+  </div>
+
+  <div class="article" id="art29">
+    <div class="article-header" onclick="toggleArticle('art29')">
+      <div class="article-num">29</div>
+      <span class="article-title">第29条（是正プロセス）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ステップ</th><th>内容</th><th>担当</th></tr></thead>
+          <tbody>
+            <tr><td>① 指摘</td><td>是正が必要な事実、行為、環境、制度上の問題を特定する</td><td>四人委員会</td></tr>
+            <tr><td>② 報告</td><td>責任牧師または特別対応体制へ報告する</td><td>四人委員会</td></tr>
+            <tr><td>③ 是正計画</td><td>担当者、期限、完了条件、再発防止策を設定する</td><td>四人委員会、関係責任者</td></tr>
+            <tr><td>④ 是正実施</td><td>被認定者、関係部署、管理責任者、制度運用者が是正措置を実施する</td><td>対象者、関係責任者</td></tr>
+            <tr><td>⑤ 完了確認</td><td>是正措置の実施状況、再発防止状況を確認する</td><td>四人委員会</td></tr>
+            <tr><td>⑥ エスカレーション</td><td>期限超過、未対応、不十分な対応の場合、責任牧師または特別対応体制へ報告する</td><td>四人委員会</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚫</span>
+        <span>相談者に対して、和解、赦し、対面、関係修復、奉仕継続、沈黙を強制してはならない。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art30">
+    <div class="article-header" onclick="toggleArticle('art30')">
+      <div class="article-num">30</div>
+      <span class="article-title">第30条（処分または措置）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>ハラスメントが認定された場合、行為の内容、被害の程度、継続性、故意性、立場の優位性、反省の有無、再発可能性、組織への影響等を踏まえ、以下の措置を行うことができる。</p>
+      <ol>
+        <li>口頭注意</li>
+        <li>書面注意</li>
+        <li>指導</li>
+        <li>研修受講</li>
+        <li>謝罪または説明（相談者に強制しない）</li>
+        <li>奉仕配置の変更</li>
+        <li>指導、牧会、教育、面談、会議、奉仕からの一時離脱</li>
+        <li>未成年者に関わる奉仕からの離脱</li>
+        <li>謹慎</li>
+        <li>任務停止</li>
+        <li>役職解任</li>
+        <li>委嘱解除</li>
+        <li>その他、再発防止および安全確保に必要な措置</li>
+      </ol>
+      <p style="margin-top:12px">措置の内容、理由、期間、解除条件、再発防止策は記録する。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art31">
+    <div class="article-header" onclick="toggleArticle('art31')">
+      <div class="article-num">31</div>
+      <span class="article-title">第31条（再発防止）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>四人委員会は、案件終結後、必要に応じて再発防止策を検討し、責任牧師に報告する。再発防止策には、以下のものを含む。</p>
+      <ol>
+        <li>研修の実施</li>
+        <li>相談窓口の周知</li>
+        <li>奉仕配置、指導体制、面談体制の見直し</li>
+        <li>未成年者対応ルールの整備</li>
+        <li>密室面談、個別連絡、SNS連絡に関するルール整備</li>
+        <li>霊的指導と霊的ハラスメントの線引きに関する教育</li>
+        <li>記録管理および情報管理の改善</li>
+        <li>その他、四人委員会が必要と判断する措置</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 第7章 -->
+<section class="chapter-section" id="ch7">
+  <div class="chapter-header">
+    <div class="chapter-badge">第7章</div>
+    <h2 class="chapter-title">報復・二次加害の禁止</h2>
+    <span class="chapter-count">第32条 ～ 第33条</span>
+  </div>
+
+  <div class="article" id="art32">
+    <div class="article-header" onclick="toggleArticle('art32')">
+      <div class="article-num">32</div>
+      <span class="article-title">第32条（報復の禁止）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>相談、申告、報告、調査協力、証言、記録提出を理由として、以下の行為を行ってはならない。</p>
+      <ol>
+        <li>奉仕停止、配置転換、役割剥奪等の不利益取扱い</li>
+        <li>威圧、脅し、説得、接触強要</li>
+        <li>無視、孤立化、排除</li>
+        <li>悪評の流布</li>
+        <li>信仰上の非難</li>
+        <li>相談撤回の圧力</li>
+        <li>部門、グループ、交わりからの排除</li>
+        <li>その他、相談者、報告者、協力者に不利益または心理的圧力を与える行為</li>
+      </ol>
+      <div class="notice notice-danger">
+        <span class="notice-icon">🚫</span>
+        <span>報復が疑われる場合は、独立したハラスメント案件として扱う。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art33">
+    <div class="article-header" onclick="toggleArticle('art33')">
+      <div class="article-num">33</div>
+      <span class="article-title">第33条（二次加害の禁止）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本教会の関係者は、相談者、申告者、報告者、調査協力者に対し、以下の言動を行ってはならない。</p>
+      <ol>
+        <li>「赦すべきである」として相談を撤回させようとすること</li>
+        <li>「一致を乱している」と非難すること</li>
+        <li>「教会を傷つけている」と責めること</li>
+        <li>「信仰が足りない」「愛がない」と霊的に非難すること</li>
+        <li>相談内容を本人の許可なく共有すること</li>
+        <li>相談者と被申告者の対面、和解、謝罪受領を強制すること</li>
+        <li>調査中であるにもかかわらず、相談者または被申告者を一方的に断罪すること</li>
+        <li>その他、相談者または関係者を心理的に追い込む行為</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 第8章 -->
+<section class="chapter-section" id="ch8">
+  <div class="chapter-header">
+    <div class="chapter-badge">第8章</div>
+    <h2 class="chapter-title">再検討および不服申立て</h2>
+    <span class="chapter-count">第34条 ～ 第35条</span>
+  </div>
+
+  <div class="article" id="art34">
+    <div class="article-header" onclick="toggleArticle('art34')">
+      <div class="article-num">34</div>
+      <span class="article-title">第34条（再検討の申出）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>相談者または被申告者は、事実認定、対応方針、処分、是正措置について、以下に該当する場合、再検討を申し出ることができる。</p>
+      <ol>
+        <li>重大な事実誤認がある場合</li>
+        <li>手続上の重大な不備がある場合</li>
+        <li>新たな証拠が判明した場合</li>
+        <li>除斥すべき者が判断に関与していた場合</li>
+        <li>措置が著しく不相当であると考えられる場合</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>再検討の申出期間は、原則として結果通知後<strong>14日以内</strong>とする。ただし、未成年者、性的被害、報復、重大な心理的負担が関係する場合は、事情に応じて柔軟に取り扱う。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art35">
+    <div class="article-header" onclick="toggleArticle('art35')">
+      <div class="article-num">35</div>
+      <span class="article-title">第35条（再検討の方法）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>再検討は、原判断に関与していない者を可能な限り含めて行う。必要に応じて、外部専門家の意見を聴取する。再検討の結果は、書面で記録し、必要な範囲で相談者および被申告者に通知する。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第9章 -->
+<section class="chapter-section" id="ch9">
+  <div class="chapter-header">
+    <div class="chapter-badge">第9章</div>
+    <h2 class="chapter-title">責任役員会への報告</h2>
+    <span class="chapter-count">第36条 ～ 第37条</span>
+  </div>
+
+  <div class="article" id="art36">
+    <div class="article-header" onclick="toggleArticle('art36')">
+      <div class="article-num">36</div>
+      <span class="article-title">第36条（通常報告）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>責任役員会には、原則として以下の情報のみを報告する。</p>
+      <ol>
+        <li>四半期または年間の相談件数</li>
+        <li>レベル別件数分布</li>
+        <li>是正完了件数</li>
+        <li>再発防止策の実施状況</li>
+        <li>制度運用状況</li>
+        <li>研修実施状況</li>
+        <li>記録管理および相談窓口運用上の課題</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>通常報告においては、相談者、被申告者、関係者の氏名、相談内容の詳細、処分の具体的内容、個別案件の審議経緯は報告しない。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" id="art37">
+    <div class="article-header" onclick="toggleArticle('art37')">
+      <div class="article-num">37</div>
+      <span class="article-title">第37条（個別報告）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>次に該当する案件については、法人リスク管理上、個人情報を必要最小限に限定した上で、個別報告を行うことができる。</p>
+      <ol>
+        <li>L4案件</li>
+        <li>牧師、伝道師、主要責任者、委員会構成員が被申告者である案件</li>
+        <li>未成年者、性的被害、身体的危害を含む案件</li>
+        <li>法的紛争、警察、児童相談所、弁護士、外部専門家等との連携が必要となる案件</li>
+        <li>教会の信用、法人運営、財務、雇用関係に重大な影響を及ぼす案件</li>
+        <li>責任牧師または四人委員会の中立性に疑義がある案件</li>
+        <li>その他、責任牧師、四人委員会、特別対応体制が法人リスク上必要と判断した案件</li>
+      </ol>
+      <div class="notice notice-info">
+        <span class="notice-icon">ℹ️</span>
+        <span>責任役員会は、個別案件について事実認定を行う機関ではない。ただし、法人リスク、外部対応、責任体制、制度改善の観点から、必要な監督および確認を行う。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第10章 -->
+<section class="chapter-section" id="ch10">
+  <div class="chapter-header">
+    <div class="chapter-badge">第10章</div>
+    <h2 class="chapter-title">守秘義務</h2>
+    <span class="chapter-count">第38条 ～ 第40条</span>
+  </div>
+
+  <div class="article" id="art38">
+    <div class="article-header" onclick="toggleArticle('art38')">
+      <div class="article-num">38</div>
+      <span class="article-title">第38条（守秘義務の範囲）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程に基づく対応に関わったすべての者は、職務上知り得た情報を、正当な理由なく第三者に開示してはならない。この義務は、役職、奉仕、職務、委員、窓口担当、記録管理者等の任を離れた後も継続する。</p>
+      <p>守秘義務の対象には、以下の情報を含む。</p>
+      <ol>
+        <li>相談者、被申告者、関係者の氏名</li>
+        <li>相談、申告、報告があった事実</li>
+        <li>相談内容</li>
+        <li>調査内容</li>
+        <li>記録、証拠資料、聴取メモ</li>
+        <li>処分または是正内容</li>
+        <li>未成年者、性的被害、信仰、心理状態、家庭事情等に関する機微情報</li>
+        <li>その他、案件に関して知り得た一切の情報</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="article" id="art39">
+    <div class="article-header" onclick="toggleArticle('art39')">
+      <div class="article-num">39</div>
+      <span class="article-title">第39条（正当な情報共有）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>以下の場合は、守秘義務違反とはしない。ただし、情報共有は必要最小限の範囲に限る。</p>
+      <ol>
+        <li>相談者の安全確保のため必要な場合</li>
+        <li>未成年者保護のため必要な場合</li>
+        <li>法令上の通報、報告、対応が必要な場合</li>
+        <li>警察、児童相談所、弁護士、外部専門家に相談する場合</li>
+        <li>調査上必要な範囲で関係者聴取を行う場合</li>
+        <li>責任牧師、四人委員会、特別対応体制に報告する場合</li>
+        <li>責任役員会へ法人リスクとして限定報告する場合</li>
+        <li>再発防止のため、個人が特定されない形で制度改善に用いる場合</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="article" id="art40">
+    <div class="article-header" onclick="toggleArticle('art40')">
+      <div class="article-num">40</div>
+      <span class="article-title">第40条（守秘義務違反）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>守秘義務に違反した疑いがある場合、四人委員会が調査を行う。守秘義務違反が認められた場合、責任牧師または特別対応体制は、違反の内容、影響、故意性、再発可能性を踏まえ、必要な措置を決定する。</p>
+      <div class="notice notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <span>守秘義務違反は、独立したハラスメントまたは不適切行為として扱うことができる。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第11章 -->
+<section class="chapter-section" id="ch11">
+  <div class="chapter-header">
+    <div class="chapter-badge">第11章</div>
+    <h2 class="chapter-title">研修および周知</h2>
+    <span class="chapter-count">第41条 ～ 第42条</span>
+  </div>
+
+  <div class="article" id="art41">
+    <div class="article-header" onclick="toggleArticle('art41')">
+      <div class="article-num">41</div>
+      <span class="article-title">第41条（研修）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本教会は、牧師、伝道師、スタッフ、奉仕者、部門責任者、委員会構成員等に対し、必要に応じてハラスメント防止および対応に関する研修を行う。研修には、以下の内容を含む。</p>
+      <ol>
+        <li>ハラスメントの定義</li>
+        <li>霊的ハラスメントの具体例</li>
+        <li>正当な牧会指導と不適切な支配の違い</li>
+        <li>相談を受けた場合の初期対応</li>
+        <li>移送義務</li>
+        <li>報復・二次加害の禁止</li>
+        <li>未成年者保護</li>
+        <li>性的被害への対応</li>
+        <li>守秘義務</li>
+        <li>記録管理</li>
+        <li>相談窓口の利用方法</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="article" id="art42">
+    <div class="article-header" onclick="toggleArticle('art42')">
+      <div class="article-num">42</div>
+      <span class="article-title">第42条（周知）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本教会は、本規程および相談窓口について、関係者に対して必要な範囲で周知する。周知にあたっては、相談者が安心して相談できるよう、以下を明示する。</p>
+      <ol>
+        <li>相談してよいこと</li>
+        <li>相談したことを理由に不利益を受けないこと</li>
+        <li>匿名相談が可能であること</li>
+        <li>相談内容は必要最小限の範囲で管理されること</li>
+        <li>未成年者、性的被害、緊急安全リスクについては、安全確保を優先すること</li>
+        <li>相談窓口および報告方法</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 第12章 -->
+<section class="chapter-section" id="ch12">
+  <div class="chapter-header">
+    <div class="chapter-badge">第12章</div>
+    <h2 class="chapter-title">附則</h2>
+    <span class="chapter-count">第43条 ～ 第45条</span>
+  </div>
+
+  <div class="article" id="art43">
+    <div class="article-header" onclick="toggleArticle('art43')">
+      <div class="article-num">43</div>
+      <span class="article-title">第43条（改廃）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程の改廃は、四人委員会が案を作成し、責任牧師が承認する。ただし、制度の根幹に関わる改廃、相談窓口体制、調査体制、記録管理体制、責任役員会への報告範囲に関する重要な変更については、責任役員会に報告し、法人運営上の確認を受ける。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art44">
+    <div class="article-header" onclick="toggleArticle('art44')">
+      <div class="article-num">44</div>
+      <span class="article-title">第44条（細則および書式）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程の実施に必要な細則、書式、受付メモ、報告フォーム、聴取記録書、調査報告書、是正計画書、提出証跡様式、相談者説明文等は、四人委員会が作成し、責任牧師の承認を受ける。</p>
+    </div>
+  </div>
+
+  <div class="article" id="art45">
+    <div class="article-header" onclick="toggleArticle('art45')">
+      <div class="article-num">45</div>
+      <span class="article-title">第45条（施行）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程は、責任牧師の承認をもって施行する。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 補足 -->
+<section class="chapter-section" id="chApp">
+  <div class="chapter-header">
+    <div class="chapter-badge" style="background:var(--accent);color:#1a1200">補足</div>
+    <h2 class="chapter-title">補足・別紙一覧</h2>
+    <span class="chapter-count">強化点および運用書式</span>
+  </div>
+
+  <div class="appendix">
+    <h2>今回の修正版で特に強化された点</h2>
+    <div class="enhancement-grid">
+      <div class="enhancement-card"><span class="enh-icon">⛪</span><span>霊的ハラスメントの定義と具体例</span></div>
+      <div class="enhancement-card"><span class="enh-icon">⚖️</span><span>正当な牧会指導との線引き</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🚫</span><span>報復・二次加害の明確な禁止</span></div>
+      <div class="enhancement-card"><span class="enh-icon">👶</span><span>未成年者・性的被害の特則</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🛡️</span><span>暫定措置</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🔄</span><span>責任牧師・四人委員会の除斥</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🏛️</span><span>特別対応体制</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🤝</span><span>外部専門家・児相・警察への接続基準</span></div>
+      <div class="enhancement-card"><span class="enh-icon">📋</span><span>報告者への提出証跡と相談者控えの分離</span></div>
+      <div class="enhancement-card"><span class="enh-icon">📊</span><span>責任役員会への限定的個別報告</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🔒</span><span>SharePoint等での記録管理強化</span></div>
+      <div class="enhancement-card"><span class="enh-icon">🔁</span><span>再検討・不服申立て手続</span></div>
+    </div>
+  </div>
+
+  <div class="appendix" style="margin-top:24px">
+    <h2>運用書式一覧（別紙）</h2>
+    <p style="color:var(--text-secondary);font-size:14px;margin-bottom:12px">本規程の運用には以下の別紙（書式）の整備が必要です。</p>
+    <div class="appendix-grid">
+      <div class="appendix-item"><span class="appendix-item-num">別紙1</span>相談受付メモ</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙2</span>準窓口用・初期対応マニュアル</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙3</span>オンライン報告フォーム項目</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙4</span>提出証跡メール文面</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙5</span>重症度判定チェックシート</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙6</span>調査聴取記録書</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙7</span>暫定措置決定書</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙8</span>調査報告書</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙9</span>是正計画書</div>
+      <div class="appendix-item"><span class="appendix-item-num">別紙10</span>責任役員会向け匿名化報告様式</div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- トップへ戻る -->
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── 条文トグル ──
+function toggleArticle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('collapsed');
+}
+
+function toggleAll(expand) {
+  document.querySelectorAll('.article').forEach(a => {
+    if (expand) a.classList.remove('collapsed');
+    else a.classList.add('collapsed');
+  });
+}
+
+// ── 章ジャンプ ──
+function scrollToChapter(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── 進捗バー ──
+window.addEventListener('scroll', () => {
+  const main = document.getElementById('mainContent');
+  const top = main.getBoundingClientRect().top + window.scrollY - 160;
+  const h = main.scrollHeight;
+  const scrolled = window.scrollY - top;
+  const pct = Math.min(100, Math.max(0, (scrolled / h) * 100));
+  document.getElementById('progressBar').style.width = pct + '%';
+
+  // トップへボタン
+  const toTop = document.getElementById('toTop');
+  if (window.scrollY > 400) toTop.classList.add('visible');
+  else toTop.classList.remove('visible');
+
+  // 章ナビのアクティブ状態
+  updateNavActive();
+  updateSidebarActive();
+});
+
+function updateNavActive() {
+  const chapters = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11','ch12','chApp'];
+  const navBtns = document.querySelectorAll('.chapter-nav button');
+  let active = 0;
+  chapters.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 200) active = i;
+  });
+  navBtns.forEach((b, i) => b.classList.toggle('active', i === active));
+}
+
+function updateSidebarActive() {
+  const chapters = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11','ch12','chApp'];
+  const sidebarBtns = document.querySelectorAll('.sidebar-chapter-btn');
+  let active = 0;
+  chapters.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 200) active = i;
+  });
+  sidebarBtns.forEach((b, i) => b.classList.toggle('active', i === active));
+}
+
+// ── 検索 ──
+let originalContent = null;
+
+function doSearch(query) {
+  const countEl = document.getElementById('searchCount');
+
+  if (!query.trim()) {
+    countEl.style.display = 'none';
+    if (originalContent) {
+      document.getElementById('mainContent').innerHTML = originalContent;
+      originalContent = null;
+      // イベント再バインド
+      document.querySelectorAll('.article-header').forEach(h => {
+        h.addEventListener('click', () => h.parentElement.classList.toggle('collapsed'));
+      });
+    }
+    return;
+  }
+
+  if (!originalContent) {
+    originalContent = document.getElementById('mainContent').innerHTML;
+  }
+
+  // オリジナルから検索
+  const temp = document.createElement('div');
+  temp.innerHTML = originalContent;
+
+  const walker = document.createTreeWalker(temp, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.parentElement.tagName !== 'SCRIPT' && node.parentElement.tagName !== 'STYLE') {
+      nodes.push(node);
+    }
+  }
+
+  let count = 0;
+  const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  nodes.forEach(n => {
+    if (regex.test(n.textContent)) {
+      const span = document.createElement('span');
+      span.innerHTML = n.textContent.replace(regex, m => { count++; return `<mark>${m}</mark>`; });
+      n.parentElement.replaceChild(span, n);
+    }
+    regex.lastIndex = 0;
+  });
+
+  document.getElementById('mainContent').innerHTML = temp.innerHTML;
+
+  // イベント再バインド
+  document.querySelectorAll('.article-header').forEach(h => {
+    h.addEventListener('click', () => h.parentElement.classList.toggle('collapsed'));
+  });
+
+  // カウント表示
+  if (count > 0) {
+    countEl.style.display = 'block';
+    countEl.textContent = `${count}件`;
+    // ヒットしたものを展開
+    document.querySelectorAll('mark').forEach(m => {
+      const article = m.closest('.article');
+      if (article) article.classList.remove('collapsed');
+    });
+  } else {
+    countEl.style.display = 'block';
+    countEl.textContent = '0件';
+  }
+}
+</script>
+</body>
+</html>
