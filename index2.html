@@ -489,7 +489,8 @@
 
   /* ── 印刷 ── */
   @media print {
-    header, .chapter-nav, aside, .header-actions, .search-bar { display: none !important; }
+    header, .doc-tabs, .chapter-nav, aside, .header-actions, .search-bar { display: none !important; }
+    .tab-panel.hidden { display: block !important; }
     main { padding: 0; }
     .article { box-shadow: none; }
     .article.collapsed .article-body { display: block !important; }
@@ -501,6 +502,8 @@
     main { padding: 20px 16px 60px; }
     header { padding: 20px 16px 16px; }
     header h1 { font-size: 18px; }
+    .doc-tabs { padding: 10px 16px; }
+    .doc-tab-btn { flex: 1; padding: 9px 10px; }
   }
 
   /* ── トップへ戻るボタン ── */
@@ -614,6 +617,107 @@
   }
   .article-index-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
+  /* ── 文書タブ ── */
+  .doc-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .doc-tab-btn {
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--primary);
+    padding: 9px 18px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .doc-tab-btn:hover {
+    border-color: var(--primary-light);
+    background: #eef2fb;
+  }
+  .doc-tab-btn.active {
+    color: white;
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+  }
+  .tab-panel.hidden {
+    display: none;
+  }
+
+  /* ── 具体例・判断基準 ── */
+  .example-section {
+    max-width: 1120px;
+    margin: 0 auto 28px;
+  }
+  .example-section .chapter-header {
+    margin-bottom: 18px;
+  }
+  .example-lead {
+    color: var(--text-secondary);
+    margin-top: 10px;
+  }
+  .example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .example-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .example-card h3 {
+    font-size: 15px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+  }
+  .phrase-box {
+    display: grid;
+    gap: 10px;
+  }
+  .phrase-box strong {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .phrase-box .danger-phrase,
+  .phrase-box .safe-phrase {
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 13.5px;
+  }
+  .danger-phrase {
+    background: var(--danger-light);
+    border-left: 4px solid var(--danger);
+  }
+  .safe-phrase {
+    background: var(--success-light);
+    border-left: 4px solid var(--success);
+  }
+  .emphasis-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow-md);
+  }
+  .emphasis-box p {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.9;
+  }
+
   /* ── 区切り ── */
   hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 </style>
@@ -643,6 +747,14 @@
   </div>
 </header>
 
+<!-- 文書タブ -->
+<div class="doc-tabs" role="tablist" aria-label="文書切り替え">
+  <button class="doc-tab-btn active" id="tabBtnRules" role="tab" aria-selected="true" onclick="switchDocTab('rules')">規程本文</button>
+  <button class="doc-tab-btn" id="tabBtnExamples" role="tab" aria-selected="false" onclick="switchDocTab('examples')">具体例・判断基準</button>
+</div>
+
+<section id="rulesPanel" class="tab-panel" role="tabpanel" aria-labelledby="tabBtnRules">
+
 <!-- 章ナビ -->
 <nav class="chapter-nav" id="chapterNav">
   <button class="active" onclick="scrollToChapter('ch1')">第1章 総則</button>
@@ -666,40 +778,40 @@
 <aside>
   <h3>目次</h3>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn active" onclick="scrollToChapter('ch1')"><span class="ch-num">1</span>総則 §1–5</button>
+    <button class="sidebar-chapter-btn active" onclick="scrollToChapter('ch1')"><span class="ch-num">1</span>総則 §1–6</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch2')"><span class="ch-num">2</span>相談受付 §6–12</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch2')"><span class="ch-num">2</span>相談受付 §7–13</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch3')"><span class="ch-num">3</span>記録 §13–23</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch3')"><span class="ch-num">3</span>記録 §14–24</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch4')"><span class="ch-num">4</span>重症度分類 §24–26</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch4')"><span class="ch-num">4</span>重症度分類 §25–27</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch5')"><span class="ch-num">5</span>調査・判断 §27–32</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch5')"><span class="ch-num">5</span>調査・判断 §28–33</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch6')"><span class="ch-num">6</span>是正・処分 §33–35</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch6')"><span class="ch-num">6</span>是正・処分 §34–36</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch7')"><span class="ch-num">7</span>報復禁止 §36–37</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch7')"><span class="ch-num">7</span>報復禁止 §37–38</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch8')"><span class="ch-num">8</span>再検討 §38–39</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch8')"><span class="ch-num">8</span>再検討 §39–40</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch9')"><span class="ch-num">9</span>責任役員会 §40–41</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch9')"><span class="ch-num">9</span>責任役員会 §41–42</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch10')"><span class="ch-num">10</span>守秘義務 §42–44</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch10')"><span class="ch-num">10</span>守秘義務 §43–45</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch11')"><span class="ch-num">11</span>研修・周知 §45–46</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch11')"><span class="ch-num">11</span>研修・周知 §46–47</button>
   </div>
   <div class="sidebar-chapter">
-    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch12')"><span class="ch-num">12</span>附則 §47–49</button>
+    <button class="sidebar-chapter-btn" onclick="scrollToChapter('ch12')"><span class="ch-num">12</span>附則 §48–50</button>
   </div>
   <div class="sidebar-chapter">
     <button class="sidebar-chapter-btn" onclick="scrollToChapter('chApp')"><span class="ch-num" style="background:#c8a84b;color:#1a1200">補</span>補足・別紙</button>
@@ -714,7 +826,7 @@
   <div class="chapter-header">
     <div class="chapter-badge">第1章</div>
     <h2 class="chapter-title">総則</h2>
-    <span class="chapter-count">第1条 ～ 第5条</span>
+    <span class="chapter-count">第1条 ～ 第6条</span>
   </div>
 
   <!-- 第1条 -->
@@ -798,11 +910,38 @@
     </div>
   </div>
 
+
   <!-- 第4条 -->
   <div class="article" id="art4">
     <div class="article-header" onclick="toggleArticle('art4')">
       <div class="article-num">4</div>
-      <span class="article-title">第4条（適用範囲）</span>
+      <span class="article-title">第4条（正当な指導）</span>
+      <span class="article-toggle">▾</span>
+    </div>
+    <div class="article-body">
+      <p>本規程において「正当な指導」とは、教会の信仰、秩序、奉仕、職務、教育、牧会、安全および共同体の健全性を守るため、権限または責任を有する者が、必要かつ相当な範囲で行う助言、注意、確認、改善要請、訓練、戒め、配置調整その他の指導をいう。</p>
+      <p>正当な指導は、以下の要件を満たすものとする。</p>
+      <ol>
+        <li>指導の目的が、相手の人格攻撃、支配、報復、見せしめではなく、改善、成長、安全確保、秩序維持、再発防止にあること</li>
+        <li>指導の根拠が、事実、記録、具体的な行動、奉仕上または職務上の必要性に基づいていること</li>
+        <li>指導する者が、当該事項について適切な責任または権限を有していること</li>
+        <li>指導の内容が、問題となる行為または状況に対して必要かつ相当な範囲にとどまること</li>
+        <li>指導の方法が、相手の人格、尊厳、信仰を否定せず、過度な威圧、侮辱、恐怖、孤立化、密室的圧力を伴わないこと</li>
+        <li>必要に応じて、日時、内容、指導者、同席者、今後の改善事項を記録すること</li>
+        <li>相手に対して、必要な範囲で説明、確認、質問、意見表明の機会を与えること</li>
+      </ol>
+      <p>聖書に基づく勧め、悔い改めへの促し、奉仕上の注意、教会秩序に関する指導は、それ自体をもってハラスメントとはしない。</p>
+      <div class="notice notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <div>ただし、指導の名目であっても、その方法、頻度、言葉遣い、立場の優位性、相手の状態、密室性、継続性、影響の程度等に照らし、相手の人格、尊厳、安全、信仰生活または奉仕生活を害する場合は、ハラスメントに該当し得る。</div>
+      </div>
+    </div>
+  </div>
+  <!-- 第6条 -->
+  <div class="article" id="art5">
+    <div class="article-header" onclick="toggleArticle('art5')">
+      <div class="article-num">5</div>
+      <span class="article-title">第5条（適用範囲）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -811,11 +950,11 @@
     </div>
   </div>
 
-  <!-- 第5条 -->
-  <div class="article" id="art5">
-    <div class="article-header" onclick="toggleArticle('art5')">
-      <div class="article-num">5</div>
-      <span class="article-title">第5条（基本原則）</span>
+  <!-- 第7条 -->
+  <div class="article" id="art6">
+    <div class="article-header" onclick="toggleArticle('art6')">
+      <div class="article-num">6</div>
+      <span class="article-title">第6条（基本原則）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -839,14 +978,14 @@
   <div class="chapter-header">
     <div class="chapter-badge">第2章</div>
     <h2 class="chapter-title">相談受付</h2>
-    <span class="chapter-count">第6条 ～ 第12条</span>
+    <span class="chapter-count">第7条 ～ 第13条</span>
   </div>
 
-  <!-- 第6条 -->
-  <div class="article" id="art6">
-    <div class="article-header" onclick="toggleArticle('art6')">
-      <div class="article-num">6</div>
-      <span class="article-title">第6条（相談窓口）</span>
+  <!-- 第8条 -->
+  <div class="article" id="art7">
+    <div class="article-header" onclick="toggleArticle('art7')">
+      <div class="article-num">7</div>
+      <span class="article-title">第7条（相談窓口）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -869,11 +1008,11 @@
     </div>
   </div>
 
-  <!-- 第7条 -->
-  <div class="article" id="art7">
-    <div class="article-header" onclick="toggleArticle('art7')">
-      <div class="article-num">7</div>
-      <span class="article-title">第7条（相談方法）</span>
+  <!-- 第9条 -->
+  <div class="article" id="art8">
+    <div class="article-header" onclick="toggleArticle('art8')">
+      <div class="article-num">8</div>
+      <span class="article-title">第8条（相談方法）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -893,11 +1032,11 @@
     </div>
   </div>
 
-  <!-- 第8条 -->
-  <div class="article" id="art8">
-    <div class="article-header" onclick="toggleArticle('art8')">
-      <div class="article-num">8</div>
-      <span class="article-title">第8条（匿名相談の扱い）</span>
+  <!-- 第10条 -->
+  <div class="article" id="art9">
+    <div class="article-header" onclick="toggleArticle('art9')">
+      <div class="article-num">9</div>
+      <span class="article-title">第9条（匿名相談の扱い）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -913,11 +1052,11 @@
     </div>
   </div>
 
-  <!-- 第9条 -->
-  <div class="article" id="art9">
-    <div class="article-header" onclick="toggleArticle('art9')">
-      <div class="article-num">9</div>
-      <span class="article-title">第9条（非公式受付者の義務）</span>
+  <!-- 第11条 -->
+  <div class="article" id="art10">
+    <div class="article-header" onclick="toggleArticle('art10')">
+      <div class="article-num">10</div>
+      <span class="article-title">第10条（非公式受付者の義務）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -976,11 +1115,11 @@
     </div>
   </div>
 
-  <!-- 第10条 -->
-  <div class="article" id="art10">
-    <div class="article-header" onclick="toggleArticle('art10')">
-      <div class="article-num">10</div>
-      <span class="article-title">第10条（移送同意が得られない場合）</span>
+  <!-- 第12条 -->
+  <div class="article" id="art11">
+    <div class="article-header" onclick="toggleArticle('art11')">
+      <div class="article-num">11</div>
+      <span class="article-title">第11条（移送同意が得られない場合）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1001,11 +1140,11 @@
     </div>
   </div>
 
-  <!-- 第11条 -->
-  <div class="article" id="art11">
-    <div class="article-header" onclick="toggleArticle('art11')">
-      <div class="article-num">11</div>
-      <span class="article-title">第11条（移送義務を果たせない場合）</span>
+  <!-- 第13条 -->
+  <div class="article" id="art12">
+    <div class="article-header" onclick="toggleArticle('art12')">
+      <div class="article-num">12</div>
+      <span class="article-title">第12条（移送義務を果たせない場合）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1017,11 +1156,11 @@
     </div>
   </div>
 
-  <!-- 第12条 -->
-  <div class="article" id="art12">
-    <div class="article-header" onclick="toggleArticle('art12')">
-      <div class="article-num">12</div>
-      <span class="article-title">第12条（窓口担当者および受付者の除斥）</span>
+  <!-- 第14条 -->
+  <div class="article" id="art13">
+    <div class="article-header" onclick="toggleArticle('art13')">
+      <div class="article-num">13</div>
+      <span class="article-title">第13条（窓口担当者および受付者の除斥）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1044,13 +1183,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第3章</div>
     <h2 class="chapter-title">記録</h2>
-    <span class="chapter-count">第13条 ～ 第23条</span>
+    <span class="chapter-count">第14条 ～ 第24条</span>
   </div>
 
-  <div class="article" id="art13">
-    <div class="article-header" onclick="toggleArticle('art13')">
-      <div class="article-num">13</div>
-      <span class="article-title">第13条（記録の作成）</span>
+  <div class="article" id="art14">
+    <div class="article-header" onclick="toggleArticle('art14')">
+      <div class="article-num">14</div>
+      <span class="article-title">第14条（記録の作成）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1078,10 +1217,10 @@
     </div>
   </div>
 
-  <div class="article" id="art14">
-    <div class="article-header" onclick="toggleArticle('art14')">
-      <div class="article-num">14</div>
-      <span class="article-title">第14条（記録の正本管理）</span>
+  <div class="article" id="art15">
+    <div class="article-header" onclick="toggleArticle('art15')">
+      <div class="article-num">15</div>
+      <span class="article-title">第15条（記録の正本管理）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1089,10 +1228,10 @@
     </div>
   </div>
 
-  <div class="article" id="art15">
-    <div class="article-header" onclick="toggleArticle('art15')">
-      <div class="article-num">15</div>
-      <span class="article-title">第15条（記録の保管場所）</span>
+  <div class="article" id="art16">
+    <div class="article-header" onclick="toggleArticle('art16')">
+      <div class="article-num">16</div>
+      <span class="article-title">第16条（記録の保管場所）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1110,10 +1249,10 @@
     </div>
   </div>
 
-  <div class="article" id="art16">
-    <div class="article-header" onclick="toggleArticle('art16')">
-      <div class="article-num">16</div>
-      <span class="article-title">第16条（記録閲覧の基本原則）</span>
+  <div class="article" id="art17">
+    <div class="article-header" onclick="toggleArticle('art17')">
+      <div class="article-num">17</div>
+      <span class="article-title">第17条（記録閲覧の基本原則）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1126,10 +1265,10 @@
     </div>
   </div>
 
-  <div class="article" id="art17">
-    <div class="article-header" onclick="toggleArticle('art17')">
-      <div class="article-num">17</div>
-      <span class="article-title">第17条（記録区分および閲覧範囲）</span>
+  <div class="article" id="art18">
+    <div class="article-header" onclick="toggleArticle('art18')">
+      <div class="article-num">18</div>
+      <span class="article-title">第18条（記録区分および閲覧範囲）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1171,10 +1310,10 @@
     </div>
   </div>
 
-  <div class="article" id="art18">
-    <div class="article-header" onclick="toggleArticle('art18')">
-      <div class="article-num">18</div>
-      <span class="article-title">第18条（閲覧制限対象者）</span>
+  <div class="article" id="art19">
+    <div class="article-header" onclick="toggleArticle('art19')">
+      <div class="article-num">19</div>
+      <span class="article-title">第19条（閲覧制限対象者）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1193,10 +1332,10 @@
     </div>
   </div>
 
-  <div class="article" id="art19">
-    <div class="article-header" onclick="toggleArticle('art19')">
-      <div class="article-num">19</div>
-      <span class="article-title">第19条（閲覧権限の付与および解除）</span>
+  <div class="article" id="art20">
+    <div class="article-header" onclick="toggleArticle('art20')">
+      <div class="article-num">20</div>
+      <span class="article-title">第20条（閲覧権限の付与および解除）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1219,10 +1358,10 @@
     </div>
   </div>
 
-  <div class="article" id="art20">
-    <div class="article-header" onclick="toggleArticle('art20')">
-      <div class="article-num">20</div>
-      <span class="article-title">第20条（アクセスログの確認）</span>
+  <div class="article" id="art21">
+    <div class="article-header" onclick="toggleArticle('art21')">
+      <div class="article-num">21</div>
+      <span class="article-title">第21条（アクセスログの確認）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1239,10 +1378,10 @@
     </div>
   </div>
 
-  <div class="article" id="art21">
-    <div class="article-header" onclick="toggleArticle('art21')">
-      <div class="article-num">21</div>
-      <span class="article-title">第21条（保管期間）</span>
+  <div class="article" id="art22">
+    <div class="article-header" onclick="toggleArticle('art22')">
+      <div class="article-num">22</div>
+      <span class="article-title">第22条（保管期間）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1263,10 +1402,10 @@
     </div>
   </div>
 
-  <div class="article" id="art22">
-    <div class="article-header" onclick="toggleArticle('art22')">
-      <div class="article-num">22</div>
-      <span class="article-title">第22条（受付控えおよび提出証跡）</span>
+  <div class="article" id="art23">
+    <div class="article-header" onclick="toggleArticle('art23')">
+      <div class="article-num">23</div>
+      <span class="article-title">第23条（受付控えおよび提出証跡）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1287,10 +1426,10 @@
     </div>
   </div>
 
-  <div class="article" id="art23">
-    <div class="article-header" onclick="toggleArticle('art23')">
-      <div class="article-num">23</div>
-      <span class="article-title">第23条（相談者本人への控え）</span>
+  <div class="article" id="art24">
+    <div class="article-header" onclick="toggleArticle('art24')">
+      <div class="article-num">24</div>
+      <span class="article-title">第24条（相談者本人への控え）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1306,13 +1445,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第4章</div>
     <h2 class="chapter-title">重症度分類および初期対応</h2>
-    <span class="chapter-count">第24条 ～ 第26条</span>
+    <span class="chapter-count">第25条 ～ 第27条</span>
   </div>
 
-  <div class="article" id="art24">
-    <div class="article-header" onclick="toggleArticle('art24')">
-      <div class="article-num">24</div>
-      <span class="article-title">第24条（重症度分類）</span>
+  <div class="article" id="art25">
+    <div class="article-header" onclick="toggleArticle('art25')">
+      <div class="article-num">25</div>
+      <span class="article-title">第25条（重症度分類）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1356,10 +1495,10 @@
     </div>
   </div>
 
-  <div class="article" id="art25">
-    <div class="article-header" onclick="toggleArticle('art25')">
-      <div class="article-num">25</div>
-      <span class="article-title">第25条（未成年者・性的被害に関する特則）</span>
+  <div class="article" id="art26">
+    <div class="article-header" onclick="toggleArticle('art26')">
+      <div class="article-num">26</div>
+      <span class="article-title">第26条（未成年者・性的被害に関する特則）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1381,10 +1520,10 @@
     </div>
   </div>
 
-  <div class="article" id="art26">
-    <div class="article-header" onclick="toggleArticle('art26')">
-      <div class="article-num">26</div>
-      <span class="article-title">第26条（暫定措置）</span>
+  <div class="article" id="art27">
+    <div class="article-header" onclick="toggleArticle('art27')">
+      <div class="article-num">27</div>
+      <span class="article-title">第27条（暫定措置）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1414,13 +1553,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第5章</div>
     <h2 class="chapter-title">調査および判断</h2>
-    <span class="chapter-count">第27条 ～ 第32条</span>
+    <span class="chapter-count">第28条 ～ 第33条</span>
   </div>
 
-  <div class="article" id="art27">
-    <div class="article-header" onclick="toggleArticle('art27')">
-      <div class="article-num">27</div>
-      <span class="article-title">第27条（判断権限）</span>
+  <div class="article" id="art28">
+    <div class="article-header" onclick="toggleArticle('art28')">
+      <div class="article-num">28</div>
+      <span class="article-title">第28条（判断権限）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1442,10 +1581,10 @@
     </div>
   </div>
 
-  <div class="article" id="art28">
-    <div class="article-header" onclick="toggleArticle('art28')">
-      <div class="article-num">28</div>
-      <span class="article-title">第28条（調査の原則）</span>
+  <div class="article" id="art29">
+    <div class="article-header" onclick="toggleArticle('art29')">
+      <div class="article-num">29</div>
+      <span class="article-title">第29条（調査の原則）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1464,10 +1603,10 @@
     </div>
   </div>
 
-  <div class="article" id="art29">
-    <div class="article-header" onclick="toggleArticle('art29')">
-      <div class="article-num">29</div>
-      <span class="article-title">第29条（被申告者の手続保障）</span>
+  <div class="article" id="art30">
+    <div class="article-header" onclick="toggleArticle('art30')">
+      <div class="article-num">30</div>
+      <span class="article-title">第30条（被申告者の手続保障）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1484,10 +1623,10 @@
     </div>
   </div>
 
-  <div class="article" id="art30">
-    <div class="article-header" onclick="toggleArticle('art30')">
-      <div class="article-num">30</div>
-      <span class="article-title">第30条（四人委員会構成員の除斥）</span>
+  <div class="article" id="art31">
+    <div class="article-header" onclick="toggleArticle('art31')">
+      <div class="article-num">31</div>
+      <span class="article-title">第31条（四人委員会構成員の除斥）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1505,10 +1644,10 @@
     </div>
   </div>
 
-  <div class="article" id="art31">
-    <div class="article-header" onclick="toggleArticle('art31')">
-      <div class="article-num">31</div>
-      <span class="article-title">第31条（責任牧師の除斥および特別対応体制）</span>
+  <div class="article" id="art32">
+    <div class="article-header" onclick="toggleArticle('art32')">
+      <div class="article-num">32</div>
+      <span class="article-title">第32条（責任牧師の除斥および特別対応体制）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1527,10 +1666,10 @@
     </div>
   </div>
 
-  <div class="article" id="art32">
-    <div class="article-header" onclick="toggleArticle('art32')">
-      <div class="article-num">32</div>
-      <span class="article-title">第32条（外部専門家との連携）</span>
+  <div class="article" id="art33">
+    <div class="article-header" onclick="toggleArticle('art33')">
+      <div class="article-num">33</div>
+      <span class="article-title">第33条（外部専門家との連携）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1555,13 +1694,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第6章</div>
     <h2 class="chapter-title">是正、処分および再発防止</h2>
-    <span class="chapter-count">第33条 ～ 第35条</span>
+    <span class="chapter-count">第34条 ～ 第36条</span>
   </div>
 
-  <div class="article" id="art33">
-    <div class="article-header" onclick="toggleArticle('art33')">
-      <div class="article-num">33</div>
-      <span class="article-title">第33条（是正プロセス）</span>
+  <div class="article" id="art34">
+    <div class="article-header" onclick="toggleArticle('art34')">
+      <div class="article-num">34</div>
+      <span class="article-title">第34条（是正プロセス）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1585,10 +1724,10 @@
     </div>
   </div>
 
-  <div class="article" id="art34">
-    <div class="article-header" onclick="toggleArticle('art34')">
-      <div class="article-num">34</div>
-      <span class="article-title">第34条（処分または措置）</span>
+  <div class="article" id="art35">
+    <div class="article-header" onclick="toggleArticle('art35')">
+      <div class="article-num">35</div>
+      <span class="article-title">第35条（処分または措置）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1612,10 +1751,10 @@
     </div>
   </div>
 
-  <div class="article" id="art35">
-    <div class="article-header" onclick="toggleArticle('art35')">
-      <div class="article-num">35</div>
-      <span class="article-title">第35条（再発防止）</span>
+  <div class="article" id="art36">
+    <div class="article-header" onclick="toggleArticle('art36')">
+      <div class="article-num">36</div>
+      <span class="article-title">第36条（再発防止）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1639,13 +1778,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第7章</div>
     <h2 class="chapter-title">報復・二次加害の禁止</h2>
-    <span class="chapter-count">第36条 ～ 第37条</span>
+    <span class="chapter-count">第37条 ～ 第38条</span>
   </div>
 
-  <div class="article" id="art36">
-    <div class="article-header" onclick="toggleArticle('art36')">
-      <div class="article-num">36</div>
-      <span class="article-title">第36条（報復の禁止）</span>
+  <div class="article" id="art37">
+    <div class="article-header" onclick="toggleArticle('art37')">
+      <div class="article-num">37</div>
+      <span class="article-title">第37条（報復の禁止）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1667,10 +1806,10 @@
     </div>
   </div>
 
-  <div class="article" id="art37">
-    <div class="article-header" onclick="toggleArticle('art37')">
-      <div class="article-num">37</div>
-      <span class="article-title">第37条（二次加害の禁止）</span>
+  <div class="article" id="art38">
+    <div class="article-header" onclick="toggleArticle('art38')">
+      <div class="article-num">38</div>
+      <span class="article-title">第38条（二次加害の禁止）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1694,13 +1833,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第8章</div>
     <h2 class="chapter-title">再検討および不服申立て</h2>
-    <span class="chapter-count">第38条 ～ 第39条</span>
+    <span class="chapter-count">第39条 ～ 第40条</span>
   </div>
 
-  <div class="article" id="art38">
-    <div class="article-header" onclick="toggleArticle('art38')">
-      <div class="article-num">38</div>
-      <span class="article-title">第38条（再検討の申出）</span>
+  <div class="article" id="art39">
+    <div class="article-header" onclick="toggleArticle('art39')">
+      <div class="article-num">39</div>
+      <span class="article-title">第39条（再検討の申出）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1719,10 +1858,10 @@
     </div>
   </div>
 
-  <div class="article" id="art39">
-    <div class="article-header" onclick="toggleArticle('art39')">
-      <div class="article-num">39</div>
-      <span class="article-title">第39条（再検討の方法）</span>
+  <div class="article" id="art40">
+    <div class="article-header" onclick="toggleArticle('art40')">
+      <div class="article-num">40</div>
+      <span class="article-title">第40条（再検討の方法）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1736,13 +1875,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第9章</div>
     <h2 class="chapter-title">責任役員会への報告</h2>
-    <span class="chapter-count">第40条 ～ 第41条</span>
+    <span class="chapter-count">第41条 ～ 第42条</span>
   </div>
 
-  <div class="article" id="art40">
-    <div class="article-header" onclick="toggleArticle('art40')">
-      <div class="article-num">40</div>
-      <span class="article-title">第40条（通常報告）</span>
+  <div class="article" id="art41">
+    <div class="article-header" onclick="toggleArticle('art41')">
+      <div class="article-num">41</div>
+      <span class="article-title">第41条（通常報告）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1763,10 +1902,10 @@
     </div>
   </div>
 
-  <div class="article" id="art41">
-    <div class="article-header" onclick="toggleArticle('art41')">
-      <div class="article-num">41</div>
-      <span class="article-title">第41条（個別報告）</span>
+  <div class="article" id="art42">
+    <div class="article-header" onclick="toggleArticle('art42')">
+      <div class="article-num">42</div>
+      <span class="article-title">第42条（個別報告）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1793,13 +1932,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第10章</div>
     <h2 class="chapter-title">守秘義務</h2>
-    <span class="chapter-count">第42条 ～ 第44条</span>
+    <span class="chapter-count">第43条 ～ 第45条</span>
   </div>
 
-  <div class="article" id="art42">
-    <div class="article-header" onclick="toggleArticle('art42')">
-      <div class="article-num">42</div>
-      <span class="article-title">第42条（守秘義務の範囲）</span>
+  <div class="article" id="art43">
+    <div class="article-header" onclick="toggleArticle('art43')">
+      <div class="article-num">43</div>
+      <span class="article-title">第43条（守秘義務の範囲）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1818,10 +1957,10 @@
     </div>
   </div>
 
-  <div class="article" id="art43">
-    <div class="article-header" onclick="toggleArticle('art43')">
-      <div class="article-num">43</div>
-      <span class="article-title">第43条（正当な情報共有）</span>
+  <div class="article" id="art44">
+    <div class="article-header" onclick="toggleArticle('art44')">
+      <div class="article-num">44</div>
+      <span class="article-title">第44条（正当な情報共有）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1839,10 +1978,10 @@
     </div>
   </div>
 
-  <div class="article" id="art44">
-    <div class="article-header" onclick="toggleArticle('art44')">
-      <div class="article-num">44</div>
-      <span class="article-title">第44条（守秘義務違反）</span>
+  <div class="article" id="art45">
+    <div class="article-header" onclick="toggleArticle('art45')">
+      <div class="article-num">45</div>
+      <span class="article-title">第45条（守秘義務違反）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1860,13 +1999,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第11章</div>
     <h2 class="chapter-title">研修および周知</h2>
-    <span class="chapter-count">第45条 ～ 第46条</span>
+    <span class="chapter-count">第46条 ～ 第47条</span>
   </div>
 
-  <div class="article" id="art45">
-    <div class="article-header" onclick="toggleArticle('art45')">
-      <div class="article-num">45</div>
-      <span class="article-title">第45条（研修）</span>
+  <div class="article" id="art46">
+    <div class="article-header" onclick="toggleArticle('art46')">
+      <div class="article-num">46</div>
+      <span class="article-title">第46条（研修）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1887,10 +2026,10 @@
     </div>
   </div>
 
-  <div class="article" id="art46">
-    <div class="article-header" onclick="toggleArticle('art46')">
-      <div class="article-num">46</div>
-      <span class="article-title">第46条（周知）</span>
+  <div class="article" id="art47">
+    <div class="article-header" onclick="toggleArticle('art47')">
+      <div class="article-num">47</div>
+      <span class="article-title">第47条（周知）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1912,13 +2051,13 @@
   <div class="chapter-header">
     <div class="chapter-badge">第12章</div>
     <h2 class="chapter-title">附則</h2>
-    <span class="chapter-count">第47条 ～ 第49条</span>
+    <span class="chapter-count">第48条 ～ 第50条</span>
   </div>
 
-  <div class="article" id="art47">
-    <div class="article-header" onclick="toggleArticle('art47')">
-      <div class="article-num">47</div>
-      <span class="article-title">第47条（改廃）</span>
+  <div class="article" id="art48">
+    <div class="article-header" onclick="toggleArticle('art48')">
+      <div class="article-num">48</div>
+      <span class="article-title">第48条（改廃）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1926,10 +2065,10 @@
     </div>
   </div>
 
-  <div class="article" id="art48">
-    <div class="article-header" onclick="toggleArticle('art48')">
-      <div class="article-num">48</div>
-      <span class="article-title">第48条（細則および書式）</span>
+  <div class="article" id="art49">
+    <div class="article-header" onclick="toggleArticle('art49')">
+      <div class="article-num">49</div>
+      <span class="article-title">第49条（細則および書式）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1937,10 +2076,10 @@
     </div>
   </div>
 
-  <div class="article" id="art49">
-    <div class="article-header" onclick="toggleArticle('art49')">
-      <div class="article-num">49</div>
-      <span class="article-title">第49条（施行）</span>
+  <div class="article" id="art50">
+    <div class="article-header" onclick="toggleArticle('art50')">
+      <div class="article-num">50</div>
+      <span class="article-title">第50条（施行）</span>
       <span class="article-toggle">▾</span>
     </div>
     <div class="article-body">
@@ -1995,11 +2134,149 @@
 
 </main>
 </div>
+</section>
+
+<section id="examplesPanel" class="tab-panel hidden" role="tabpanel" aria-labelledby="tabBtnExamples">
+  <main>
+    <section class="example-section">
+      <div class="chapter-header">
+        <div class="chapter-badge">研修資料</div>
+        <h2 class="chapter-title">正当な指導とハラスメントの線引き</h2>
+        <span class="chapter-count">具体例・判断基準</span>
+      </div>
+      <div class="appendix">
+        <p class="example-lead">この資料は、ハラスメント対応規程を運用する際に、必要な牧会的指導・奉仕上の注意・組織上の改善要請と、ハラスメントに該当し得る言動を区別するための補足資料である。正当な指導は止めてはならない。一方で、指導の名を借りた支配、威圧、人格否定、霊的圧力は許容されない。</p>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <div class="chapter-header">
+        <div class="chapter-badge">1</div>
+        <h2 class="chapter-title">ハラスメントにならない例</h2>
+        <span class="chapter-count">正当な指導の例</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>No</th><th>例</th><th>ハラスメントにならない理由</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>奉仕の遅刻・無断欠席が続いたため、責任者が事実を確認し、改善を求める</td><td>人格ではなく、具体的な行動に対する指導だから</td></tr>
+            <tr><td>2</td><td>礼拝奉仕で手順ミスが続いたため、再確認・再訓練・一時的な配置変更を行う</td><td>礼拝運営の安全性・秩序維持のための合理的対応だから</td></tr>
+            <tr><td>3</td><td>賛美、司会、音響、配信などで品質や準備不足があり、責任者が具体的にフィードバックする</td><td>奉仕の質に関する具体的改善要請だから</td></tr>
+            <tr><td>4</td><td>聖書理解や教理に誤解がある発言について、牧師が聖書に基づいて修正・説明する</td><td>教会の教理的整合性を守るための牧会的指導だから</td></tr>
+            <tr><td>5</td><td>祈り・預言・示しについて、内容の吟味や慎重な扱いを指導する</td><td>霊的な働きを否定するのではなく、秩序と吟味を守る指導だから</td></tr>
+            <tr><td>6</td><td>奉仕者が個人情報や相談内容を不用意に共有したため、守秘義務違反として注意する</td><td>相談者保護と情報管理のために必要だから</td></tr>
+            <tr><td>7</td><td>未成年者対応について、個別連絡・密室面談・車での送迎などを制限する</td><td>子どもと奉仕者双方を守る安全管理だから</td></tr>
+            <tr><td>8</td><td>奉仕者が疲労・混乱・感情的反応を繰り返しているため、一時的に奉仕を休ませる</td><td>処罰ではなく、本人と周囲を守る暫定的配慮だから</td></tr>
+            <tr><td>9</td><td>経理・会計・備品購入でルール違反があったため、申請手順や承認ルートを守るよう指導する</td><td>組織運営上の正当な管理だから</td></tr>
+            <tr><td>10</td><td>教会の方針と異なる独自判断で人を動かした責任者に対し、権限範囲を確認する</td><td>権限逸脱を整理する組織上の指導だから</td></tr>
+            <tr><td>11</td><td>牧師が、明らかな罪や不適切行動について、聖書に基づいて悔い改めを勧める</td><td>人格否定ではなく、行動と信仰生活の回復を目的としているから</td></tr>
+            <tr><td>12</td><td>奉仕者に対して、「今の段階ではこの役割は早い」と伝え、訓練期間を設ける</td><td>能力・成熟度・安全性に応じた配置判断だから</td></tr>
+            <tr><td>13</td><td>部門責任者が、会議で決まったことを守っていないメンバーに対し、記録に基づいて確認する</td><td>事実・決定事項・役割責任に基づく確認だから</td></tr>
+            <tr><td>14</td><td>個人的な霊的体験や示しについて、教会全体の判断として採用しないと伝える</td><td>個人の信仰を否定せず、共同体の判断権限を整理しているから</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <div class="chapter-header">
+        <div class="chapter-badge">2</div>
+        <h2 class="chapter-title">ハラスメントになってしまうパターン</h2>
+        <span class="chapter-count">注意が必要な言動</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>No</th><th>パターン</th><th>問題点</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>「従わないなら祝福されない」「神に逆らっている」と言って、判断や服従を強制する</td><td>霊的権威を使った支配になっている</td></tr>
+            <tr><td>2</td><td>奉仕を断った人に対し、「愛がない」「献身が足りない」「信仰が弱い」と責める</td><td>奉仕を信仰評価にすり替えている</td></tr>
+            <tr><td>3</td><td>相談や異議申し立てをした人に、「一致を乱している」「教会を傷つけている」と圧力をかける</td><td>相談・申告・確認を封じる二次加害になり得る</td></tr>
+            <tr><td>4</td><td>預言・示し・霊的判断を根拠に、本人の進路、結婚、奉仕、所属を強く拘束する</td><td>本人の自由な意思決定を奪っている</td></tr>
+            <tr><td>5</td><td>皆の前で失敗を責める、人格を否定する、笑いものにする</td><td>指導ではなく公開羞恥・人格攻撃になっている</td></tr>
+            <tr><td>6</td><td>長時間、密室で、逃げられない形で叱責や説得を続ける</td><td>方法が過度で、心理的圧迫が強い</td></tr>
+            <tr><td>7</td><td>「これは牧会だから」と言って、私生活・家庭・交友関係・結婚・金銭に過度に介入する</td><td>牧会の範囲を超えた支配になっている</td></tr>
+            <tr><td>8</td><td>罪の告白、弱さ、家庭事情、相談内容を、本人の同意なく他の責任者やグループに共有する</td><td>守秘義務違反であり、霊的ハラスメントにもなり得る</td></tr>
+            <tr><td>9</td><td>指導を受けた側が説明や確認を求めた時、「反抗」「不従順」と決めつける</td><td>正当な質問・確認を封じている</td></tr>
+            <tr><td>10</td><td>奉仕ミスに対して、改善点ではなく「あなたは霊的に鈍い」「祈っていないからだ」と断定する</td><td>具体的問題を霊的評価にすり替えている</td></tr>
+            <tr><td>11</td><td>献金や奉仕量をもって、信仰の深さや忠実さを評価する</td><td>信仰と金銭・労働量を不適切に結びつけている</td></tr>
+            <tr><td>12</td><td>特定の人を「問題人物」として共有し、本人のいないところで悪評を広げる</td><td>孤立化・名誉侵害・組織的排除になり得る</td></tr>
+            <tr><td>13</td><td>ハラスメント相談をした人に、「赦しなさい」「もう終わったことにしなさい」と迫る</td><td>赦しを使って安全確保や事実確認を省略している</td></tr>
+            <tr><td>14</td><td>「牧師に従うのが信仰だ」として、説明責任や手続を省く</td><td>霊的権威による手続無視になっている</td></tr>
+            <tr><td>15</td><td>失敗した奉仕者を、説明なく突然外し、理由も告げず周囲にも曖昧にする</td><td>必要な配置変更でも、手続と説明がなければ不利益取扱いになり得る</td></tr>
+            <tr><td>16</td><td>未成年者に対して、個人的なメッセージ、秘密の相談、密室面談を繰り返す</td><td>グルーミングや安全上の重大リスクになり得る</td></tr>
+            <tr><td>17</td><td>「あなたのためを思っている」と言いながら、本人の意思や限界を無視して奉仕・訓練・面談を続けさせる</td><td>善意の名を借りた圧迫になっている</td></tr>
+            <tr><td>18</td><td>教会の評判を守るために、相談者へ沈黙や内々処理を求める</td><td>組織防衛が相談者保護を上回っている</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <div class="chapter-header">
+        <div class="chapter-badge">3</div>
+        <h2 class="chapter-title">教会特有の危険パターン</h2>
+        <span class="chapter-count">言い換え例</span>
+      </div>
+      <div class="example-grid">
+        <div class="example-card"><h3>1. 霊的権威を使った服従強制</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「これは神の権威に従うかどうかの問題です」<br>「従えないなら、あなたの信仰に問題があります」<br>「この指導を受け入れないなら、祝福を失います」</div><div class="safe-phrase"><strong>適切な言い方</strong>「この件について、教会としてはこのように判断しています。理由は〇〇です。疑問があれば確認してください」</div></div></div>
+        <div class="example-card"><h3>2. 預言・示しを使った意思決定の拘束</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「あなたはこの奉仕を続けるべきだと示されています」<br>「この人と結婚するのは神のみこころではありません」<br>「あなたがそこに行くのは聞き従っていません」</div><div class="safe-phrase"><strong>適切な言い方</strong>「そのことについて祈り、吟味する必要があります。最終的な判断は、聖書、祈り、助言、状況を含めて慎重に確認しましょう」</div></div></div>
+        <div class="example-card"><h3>3. 奉仕を信仰評価にする</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「休むのは信仰が弱いからだ」<br>「本当に神を愛しているなら奉仕できるはず」<br>「みんな頑張っているのに、なぜあなたはできないのか」</div><div class="safe-phrase"><strong>適切な言い方</strong>「今の状況でこの奉仕を続けられるか確認しましょう。難しければ、配置や期間を調整します」</div></div></div>
+        <div class="example-card"><h3>4. 赦しを使って相談を止める</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「クリスチャンなら赦すべきです」<br>「もう祈ったのだから終わりにしましょう」<br>「相手も悪気はなかったのだから、これ以上言わない方がいい」</div><div class="safe-phrase"><strong>適切な言い方</strong>「赦しの課題と、安全確保・事実確認・再発防止は別に扱います。まず必要な確認を行います」</div></div></div>
+        <div class="example-card"><h3>5. 一致を理由に異議を封じる</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「今それを言うと一致が壊れます」<br>「教会全体の流れを乱さないでください」<br>「問題を外に出すのは教会を傷つけます」</div><div class="safe-phrase"><strong>適切な言い方</strong>「一致を守るためにも、問題を適切な手続で扱います。感情的に広げず、必要な窓口で確認します」</div></div></div>
+        <div class="example-card"><h3>6. 牧会を理由に私生活へ過干渉する</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な言い方</strong>「その友人関係は切りなさい」<br>「その進路は神のみこころではない」<br>「結婚については教会の判断に従いなさい」</div><div class="safe-phrase"><strong>適切な言い方</strong>「牧会的な助言としては〇〇を懸念しています。ただし、最終的には本人が神の前に祈り、責任をもって判断する領域です」</div></div></div>
+        <div class="example-card"><h3>7. 罪の告白や相談内容の共有</h3><div class="phrase-box"><div class="danger-phrase"><strong>危険な対応</strong>相談された内容を、祈りの課題として他の責任者やグループに共有する<br>本人の弱さを、指導上必要だとして複数人に知らせる<br>相談内容を説教や証しの中で特定可能な形で触れる</div><div class="safe-phrase"><strong>適切な対応</strong>共有は、本人の同意と対応上の必要性がある場合に限る。共有範囲・目的・内容を明確にする。</div></div></div>
+      </div>
+    </section>
+
+    <section class="example-section">
+      <div class="chapter-header">
+        <div class="chapter-badge">4</div>
+        <h2 class="chapter-title">実務的な判断基準</h2>
+        <span class="chapter-count">確認ポイント</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>判断項目</th><th>正当な指導に近い</th><th>ハラスメントに近い</th></tr></thead>
+          <tbody>
+            <tr><td>目的</td><td>改善・成長・安全・秩序</td><td>支配・報復・見せしめ・沈黙</td></tr>
+            <tr><td>対象</td><td>行動・事実・役割</td><td>人格・信仰・存在</td></tr>
+            <tr><td>根拠</td><td>記録・具体例・ルール</td><td>印象・噂・好悪・霊的断定</td></tr>
+            <tr><td>方法</td><td>冷静・短時間・必要範囲</td><td>威圧・長時間・密室・執拗</td></tr>
+            <tr><td>権限</td><td>役割上必要な範囲</td><td>権限外の介入</td></tr>
+            <tr><td>余地</td><td>質問・確認・説明が可能</td><td>反論を不信仰扱い</td></tr>
+            <tr><td>結果</td><td>改善行動が明確</td><td>萎縮・孤立・恐怖・沈黙</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="emphasis-box" style="margin-top:20px">
+        <p>正当な指導は、相手の行動を整えるために行う。<br>ハラスメントは、相手の人格・信仰・自由を支配する形で行われる。<br>厳しさそのものが問題なのではなく、目的・根拠・方法・範囲・影響が問題である。</p>
+      </div>
+    </section>
+  </main>
+</section>
 
 <!-- トップへ戻る -->
 <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+// ── 文書タブ切り替え ──
+function switchDocTab(tabName) {
+  const isRules = tabName === 'rules';
+  const rulesPanel = document.getElementById('rulesPanel');
+  const examplesPanel = document.getElementById('examplesPanel');
+  const rulesBtn = document.getElementById('tabBtnRules');
+  const examplesBtn = document.getElementById('tabBtnExamples');
+
+  rulesPanel.classList.toggle('hidden', !isRules);
+  examplesPanel.classList.toggle('hidden', isRules);
+  rulesBtn.classList.toggle('active', isRules);
+  examplesBtn.classList.toggle('active', !isRules);
+  rulesBtn.setAttribute('aria-selected', String(isRules));
+  examplesBtn.setAttribute('aria-selected', String(!isRules));
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // ── 条文トグル ──
 function toggleArticle(id) {
   const el = document.getElementById(id);
@@ -2015,6 +2292,9 @@ function toggleAll(expand) {
 
 // ── 章ジャンプ ──
 function scrollToChapter(id) {
+  if (document.getElementById('rulesPanel').classList.contains('hidden')) {
+    switchDocTab('rules');
+  }
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -2077,6 +2357,12 @@ function doSearch(query) {
       });
     }
     return;
+  }
+
+  // 既存検索は規程本文の mainContent を差し替える実装のため、
+  // 具体例タブではなく規程本文タブのみを検索対象とする。
+  if (document.getElementById('rulesPanel').classList.contains('hidden')) {
+    switchDocTab('rules');
   }
 
   if (!originalContent) {
