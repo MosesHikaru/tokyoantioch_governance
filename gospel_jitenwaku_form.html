@@ -17,6 +17,10 @@
       --danger: #b42318;
       --success: #237a4b;
       --shadow: 0 16px 40px rgba(23, 32, 51, .1);
+      /* 選択済みスタイル */
+      --selected-bg: #e2e8f0;
+      --selected-border: #94a3b8;
+      --selected-text: #64748b;
     }
 
     * {
@@ -116,6 +120,11 @@
       font-weight: 800;
     }
 
+    /* A: 選択済み順位の label をグレーアウト */
+    label.is-selected {
+      color: var(--selected-text);
+    }
+
     .required {
       display: inline-flex;
       align-items: center;
@@ -129,6 +138,11 @@
       line-height: 1;
     }
 
+    /* 選択済み: 必須バッジをグレーに */
+    label.is-selected .required {
+      background: var(--selected-border);
+    }
+
     select {
       width: 100%;
       min-height: 46px;
@@ -138,6 +152,7 @@
       color: var(--ink);
       background: #fff;
       outline: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
 
     select:focus {
@@ -145,8 +160,17 @@
       box-shadow: 0 0 0 3px rgba(36, 87, 166, .14);
     }
 
+    /* A: 選択済み順位のセレクトボックスをグレーアウト */
+    select.is-selected {
+      background: var(--selected-bg);
+      border-color: var(--selected-border);
+      color: var(--selected-text);
+    }
+
+    /* B: 他の選択肢内で disabled になったグループ（選択済み）を明示的にグレー表示 */
     option:disabled {
-      color: #a1a9b8;
+      color: #b0b8c9;
+      background: #f0f2f7;
     }
 
     .actions {
@@ -271,7 +295,7 @@
       <p class="eyebrow">Hakuba World Gospel Festival</p>
       <h1>Hakuba World Gospel Festival 次点枠審査フォーム</h1>
       <p class="description">
-        次点枠審査のため、対象グループを1位から21位まで順位付けしてください。<br>
+        次点枠審査のため、対象グループを1位から22位まで順位付けしてください。<br>
         同じグループを複数の順位に選ぶことはできません。審査結果は集計のために使用します。
       </p>
     </header>
@@ -391,8 +415,23 @@
       const selectedValues = new Set(getSelectedRanks().map((select) => select.value));
 
       rankSelects.forEach((select) => {
+        const hasValue = Boolean(select.value);
+
+        // A: セレクトボックス自体のグレーアウト
+        select.classList.toggle("is-selected", hasValue);
+
+        // A: ラベルのグレーアウト
+        const label = document.querySelector(`label[for="${select.id}"]`);
+        if (label) {
+          label.classList.toggle("is-selected", hasValue);
+        }
+
+        // B: 他の選択肢内で選択済みグループを disabled にする
         Array.from(select.options).forEach((option) => {
-          option.disabled = option.value !== "" && option.value !== select.value && selectedValues.has(option.value);
+          option.disabled =
+            option.value !== "" &&
+            option.value !== select.value &&
+            selectedValues.has(option.value);
         });
       });
     }
