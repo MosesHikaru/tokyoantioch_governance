@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hakuba World Gospel Festival 次点枠審査フォーム</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --ink: #172033;
+      --muted: #657085;
+      --line: #d8e0ec;
+      --primary: #2457a6;
+      --primary-dark: #183d78;
+      --primary-soft: #e9f0fb;
+      --danger: #b42318;
+      --success: #237a4b;
+      --shadow: 0 16px 40px rgba(23, 32, 51, .1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Segoe UI", sans-serif;
+      line-height: 1.7;
+      background:
+        linear-gradient(180deg, rgba(36, 87, 166, .13), rgba(244, 247, 251, 0) 340px),
+        var(--bg);
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 56px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--primary-dark);
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .description {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: #3f4c63;
+      font-size: 1rem;
+    }
+
+    .form-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .notice {
+      display: grid;
+      gap: 6px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--primary-soft);
+      color: #23395f;
+      font-size: .95rem;
+    }
+
+    .notice strong {
+      color: var(--primary-dark);
+    }
+
+    .form-body {
+      display: grid;
+      gap: 18px;
+      padding: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 18px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+    }
+
+    .required {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--danger);
+      font-size: .72rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #c8d2e2;
+      border-radius: 8px;
+      padding: 9px 42px 9px 12px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(36, 87, 166, .14);
+    }
+
+    option:disabled {
+      color: #a1a9b8;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--primary);
+    }
+
+    .button.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .button.secondary {
+      color: var(--primary-dark);
+      background: #fff;
+      border-color: #bdcadc;
+    }
+
+    .button.secondary:hover {
+      background: #f7f9fd;
+    }
+
+    .status {
+      min-height: 24px;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    .status.success {
+      color: var(--success);
+    }
+
+    .result {
+      display: none;
+      margin-top: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+
+    .result.visible {
+      display: block;
+    }
+
+    .result h2 {
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+    }
+
+    .result-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .result-list li {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 8px;
+      padding: 10px 16px;
+      border-top: 1px solid #ecf0f6;
+    }
+
+    .result-list li:nth-child(-n+2) {
+      border-top: 0;
+    }
+
+    .rank-label {
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 22px, 980px);
+        padding-top: 24px;
+      }
+
+      .rank-grid,
+      .result-list {
+        grid-template-columns: 1fr;
+      }
+
+      .result-list li:nth-child(2) {
+        border-top: 1px solid #ecf0f6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">Hakuba World Gospel Festival</p>
+      <h1>Hakuba World Gospel Festival 次点枠審査フォーム</h1>
+      <p class="description">
+        次点枠審査のため、対象グループを1位から21位まで順位付けしてください。<br>
+        同じグループを複数の順位に選ぶことはできません。審査結果は集計のために使用します。
+      </p>
+    </header>
+
+    <form class="form-card" id="judgingForm">
+      <div class="notice">
+        <strong>入力方法</strong>
+        <span>各順位のプルダウンから候補グループを選択してください。選択済みのグループは、他の順位では選べなくなります。</span>
+      </div>
+
+      <div class="form-body">
+        <div class="field">
+          <label for="judgeName">審査員名 <span class="required">必須</span></label>
+          <select id="judgeName" name="審査員名" required>
+            <option value="">選択してください</option>
+          </select>
+        </div>
+
+        <div class="rank-grid" id="rankFields"></div>
+
+        <div class="actions">
+          <button class="button primary" type="submit">回答を送信</button>
+          <button class="button secondary" type="button" id="downloadCsv">CSVをダウンロード</button>
+          <button class="button secondary" type="reset">入力をリセット</button>
+          <span class="status" id="status" role="status" aria-live="polite"></span>
+        </div>
+
+        <section class="result" id="result" aria-live="polite">
+          <h2>回答内容</h2>
+          <ul class="result-list" id="resultList"></ul>
+        </section>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = "";
+    const RANK_COUNT = 21;
+
+    const judges = [
+      "パウロ秋元牧師",
+      "ペテロ永藤牧師",
+      "イザヤ木原真牧師",
+      "エルサレム杉澤牧師",
+      "テモテ山川牧師",
+      "サムエル笠原信生牧師",
+      "ミラクル佐藤正浩牧師"
+    ];
+
+    const groups = [
+      "Beracha(関東)",
+      "ラ・スポーザ(関東)",
+      "Noah(関東)",
+      "Immanuel(関東)",
+      "プレジール(関東)",
+      "Lightning(関東)",
+      "星名悠葵(関東)",
+      "ゴスペルクワイヤー(沖縄)",
+      "わきみず(沖縄)",
+      "JOY JOY(沖縄)",
+      "神戸賛美隊(関西)",
+      "ルツ(関西)",
+      "H &Eゴスペルクワイヤー（名古屋）",
+      "Zionゴスペルクワイヤー（四日市）",
+      "Restoration Project(九州)",
+      "Miracle(九州)",
+      "Give(九州)",
+      "幸齢者ごすぺるくらぶ(九州)",
+      "Putao(東北)",
+      "ハピネス(四地区)",
+      "ホサナ(アメリカ)",
+      "ハワイ(アメリカ)"
+    ];
+
+    const judgeSelect = document.querySelector("#judgeName");
+    const rankFields = document.querySelector("#rankFields");
+    const statusText = document.querySelector("#status");
+    const result = document.querySelector("#result");
+    const resultList = document.querySelector("#resultList");
+    const form = document.querySelector("#judgingForm");
+    const downloadButton = document.querySelector("#downloadCsv");
+
+    judges.forEach((judge) => {
+      judgeSelect.append(new Option(judge, judge));
+    });
+
+    for (let rank = 1; rank <= RANK_COUNT; rank += 1) {
+      const field = document.createElement("div");
+      field.className = "field";
+
+      const label = document.createElement("label");
+      label.htmlFor = `rank${rank}`;
+      label.innerHTML = `${rank}位 <span class="required">必須</span>`;
+
+      const select = document.createElement("select");
+      select.id = `rank${rank}`;
+      select.name = `${rank}位`;
+      select.required = true;
+      select.dataset.rank = String(rank);
+      select.append(new Option("選択してください", ""));
+
+      groups.forEach((group) => {
+        select.append(new Option(group, group));
+      });
+
+      field.append(label, select);
+      rankFields.append(field);
+    }
+
+    const rankSelects = Array.from(document.querySelectorAll("[data-rank]"));
+
+    function getSelectedRanks() {
+      return rankSelects.filter((select) => select.value);
+    }
+
+    function updateOptionAvailability() {
+      const selectedValues = new Set(getSelectedRanks().map((select) => select.value));
+
+      rankSelects.forEach((select) => {
+        Array.from(select.options).forEach((option) => {
+          option.disabled = option.value !== "" && option.value !== select.value && selectedValues.has(option.value);
+        });
+      });
+    }
+
+    function getFormData() {
+      return {
+        judge: judgeSelect.value,
+        rankings: rankSelects.map((select) => ({
+          rank: `${select.dataset.rank}位`,
+          group: select.value
+        }))
+      };
+    }
+
+    function validateForm() {
+      const selected = getSelectedRanks();
+      const values = selected.map((select) => select.value);
+      const duplicateValues = values.filter((value, index) => values.indexOf(value) !== index);
+
+      if (!judgeSelect.value) {
+        return "審査員名を選択してください。";
+      }
+
+      if (selected.length < RANK_COUNT) {
+        return `1位から${RANK_COUNT}位まですべて選択してください。`;
+      }
+
+      if (duplicateValues.length > 0) {
+        return "同じグループが複数の順位で選ばれています。選択内容を確認してください。";
+      }
+
+      return "";
+    }
+
+    async function submitToGoogleSheet() {
+      const data = getFormData();
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        judge: data.judge,
+        rankings: data.rankings
+      };
+
+      if (!GOOGLE_SCRIPT_URL) {
+        return "Google Sheetsの接続URLが未設定です。回答内容の確認とCSVダウンロードはできます。";
+      }
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      return "回答を送信しました。";
+    }
+
+    function renderResult() {
+      const data = getFormData();
+      resultList.innerHTML = "";
+
+      data.rankings.forEach((item) => {
+        const li = document.createElement("li");
+        const rank = document.createElement("span");
+        const group = document.createElement("span");
+        rank.className = "rank-label";
+        rank.textContent = item.rank;
+        group.textContent = item.group;
+        li.append(rank, group);
+        resultList.append(li);
+      });
+
+      result.classList.add("visible");
+    }
+
+    function makeCsv() {
+      const data = getFormData();
+      const headers = ["審査員名", ...data.rankings.map((item) => item.rank)];
+      const values = [data.judge, ...data.rankings.map((item) => item.group)];
+      const escapeCsv = (value) => `"${String(value).replaceAll('"', '""')}"`;
+
+      return [
+        headers.map(escapeCsv).join(","),
+        values.map(escapeCsv).join(",")
+      ].join("\n");
+    }
+
+    function setStatus(message, type = "") {
+      statusText.textContent = message;
+      statusText.className = `status ${type}`.trim();
+    }
+
+    rankSelects.forEach((select) => {
+      select.addEventListener("change", () => {
+        updateOptionAvailability();
+        result.classList.remove("visible");
+        setStatus("");
+      });
+    });
+
+    judgeSelect.addEventListener("change", () => {
+      result.classList.remove("visible");
+      setStatus("");
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      updateOptionAvailability();
+
+      const error = validateForm();
+      if (error) {
+        setStatus(error, "error");
+        result.classList.remove("visible");
+        return;
+      }
+
+      renderResult();
+      setStatus("送信中です...");
+
+      try {
+        const message = await submitToGoogleSheet();
+        setStatus(message, GOOGLE_SCRIPT_URL ? "success" : "");
+      } catch (error) {
+        setStatus("送信できませんでした。時間をおいて再度お試しください。", "error");
+      }
+    });
+
+    downloadButton.addEventListener("click", () => {
+      const error = validateForm();
+      if (error) {
+        setStatus(error, "error");
+        result.classList.remove("visible");
+        return;
+      }
+
+      const csv = "\uFEFF" + makeCsv();
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `次点枠審査_${judgeSelect.value}_${date}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      renderResult();
+      setStatus("CSVをダウンロードしました。", "success");
+    });
+
+    form.addEventListener("reset", () => {
+      setTimeout(() => {
+        updateOptionAvailability();
+        result.classList.remove("visible");
+        setStatus("");
+      });
+    });
+
+    updateOptionAvailability();
+  </script>
+</body>
+</html>
