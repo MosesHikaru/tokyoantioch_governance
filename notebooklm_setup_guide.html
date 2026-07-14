@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事前準備ガイド:NotebookLMを使えるようにする | 白馬キャンプ</title>
+<style>
+  :root {
+    --bg: #F6F8FA;
+    --bg-card: #FFFFFF;
+    --ink: #1F2933;
+    --ink-soft: #52606D;
+    --navy: #234E70;
+    --navy-deep: #16324A;
+    --amber: #C7791E;
+    --amber-bg: #FCF1E1;
+    --green: #2F7D5C;
+    --green-bg: #E8F5EE;
+    --red: #A8321F;
+    --red-bg: #FBEAE7;
+    --line: #D9E2EC;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.8;
+    font-size: 17px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  a { color: var(--navy); text-decoration-thickness: 1.5px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 18px 80px;
+  }
+
+  header.hero {
+    background: linear-gradient(160deg, var(--navy-deep), var(--navy));
+    color: #fff;
+    padding: 40px 18px 34px;
+    text-align: center;
+  }
+  header.hero .eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: #BFD6E6;
+    margin: 0 0 10px;
+  }
+  header.hero h1 {
+    font-size: 26px;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  header.hero p {
+    font-size: 15px;
+    color: #DCEAF3;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .notice {
+    background: var(--amber-bg);
+    border: 1px solid #EAC48C;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 15px;
+    color: #6B4416;
+  }
+  .notice strong { color: var(--amber); }
+
+  nav.toc {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px 20px;
+    margin: 26px 0;
+  }
+  nav.toc h2 {
+    font-size: 15px;
+    margin: 0 0 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+  nav.toc li { margin-bottom: 8px; }
+  nav.toc a { font-size: 16px; }
+
+  section {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    margin: 22px 0;
+    scroll-margin-top: 16px;
+  }
+
+  section h2 {
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: var(--navy-deep);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  section .lead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 20px;
+  }
+
+  ol.steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+  }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 4px 0 4px 40px;
+    margin-bottom: 20px;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  ol.steps > li:last-child { margin-bottom: 0; }
+  ol.steps .step-title { font-weight: bold; margin-bottom: 4px; }
+  ol.steps .step-detail { color: var(--ink-soft); font-size: 15px; }
+
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff !important;
+    padding: 12px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+  .btn.secondary {
+    background: #fff;
+    color: var(--navy) !important;
+    border: 2px solid var(--navy);
+  }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+  .check-tip {
+    background: var(--green-bg);
+    border: 1px solid #A9D6BE;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14.5px;
+    color: #205339;
+    margin-top: 14px;
+  }
+  .caution-tip {
+    background: var(--red-bg);
+    border: 1px solid #E3B2A8;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14.5px;
+    color: #7A2A1B;
+    margin-top: 14px;
+  }
+
+  details.faq {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 16px;
+    margin-bottom: 12px;
+    background: #FBFCFD;
+  }
+  details.faq summary {
+    cursor: pointer;
+    padding: 14px 0;
+    font-weight: bold;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: "＋";
+    color: var(--navy);
+    font-size: 20px;
+    margin-left: 12px;
+  }
+  details.faq[open] summary::after { content: "－"; }
+  details.faq p { color: var(--ink-soft); font-size: 15px; margin: 0 0 16px; }
+
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: var(--green);
+  }
+  .checklist label.done { color: var(--ink-soft); text-decoration: line-through; }
+
+  .back-top {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 30px 18px 10px;
+  }
+
+  @media print {
+    header.hero { background: none; color: #000; padding: 0 0 16px; }
+    header.hero .eyebrow, header.hero p { color: #333; }
+    nav.toc { display: none; }
+    section { break-inside: avoid; border: none; box-shadow: none; padding: 14px 0; }
+    .btn-row, .back-top { display: none; }
+    body { font-size: 14px; }
+    details.faq { border: none; }
+    details.faq summary::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">白馬キャンプ 事前準備ガイド</p>
+  <h1 id="top">NotebookLMを<br>使えるようにしておきましょう</h1>
+  <p>キャンプ2日目の講座までに、この3つだけ済ませておいてください。<br>所要時間の目安は5〜10分です。</p>
+</header>
+
+<div class="wrap">
+
+  <div class="notice">
+    <strong>大事なお願い:</strong>この準備は、講座の前日までにご自宅やお部屋の、通信環境が安定した場所で行ってください。キャンプ会場での作業は避けてください。うまくいかない場合も、キャンプ1日目の夕食後にフォローの時間がありますので、無理をしないでください。
+  </div>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次(タップすると該当箇所に移動します)</h2>
+    <ol>
+      <li><a href="#step-overview">準備の全体の流れ</a></li>
+      <li><a href="#step-ios">① アプリを入れる(iPhoneをお使いの方)</a></li>
+      <li><a href="#step-android">① アプリを入れる(Androidをお使いの方)</a></li>
+      <li><a href="#step-login">② Googleアカウントでログインする</a></li>
+      <li><a href="#step-noaccount">Googleアカウントをお持ちでない方へ</a></li>
+      <li><a href="#step-faq">うまくいかない時は</a></li>
+      <li><a href="#step-checklist">完了チェックリスト</a></li>
+    </ol>
+  </nav>
+
+  <section id="step-overview">
+    <h2><span class="num">・</span>準備の全体の流れ</h2>
+    <p class="lead">難しく考えなくて大丈夫です。やることは3つだけです。</p>
+    <ol class="steps">
+      <li>
+        <div class="step-title">① アプリを入れる</div>
+        <div class="step-detail">お使いのスマートフォンに「NotebookLM」という無料アプリを入れます。</div>
+      </li>
+      <li>
+        <div class="step-title">② ログインする</div>
+        <div class="step-detail">お持ちのGoogleアカウント(Gmailのアドレス)でログインします。</div>
+      </li>
+      <li>
+        <div class="step-title">③ アプリを開けることを確認する</div>
+        <div class="step-detail">アプリを開いて、質問を入力する画面が見えれば準備完了です。資料の追加は講座の中で行いますので、事前には不要です。</div>
+      </li>
+    </ol>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-ios">
+    <h2><span class="num">1</span>アプリを入れる(iPhoneをお使いの方)</h2>
+    <p class="lead">App Store(アイフォンに最初から入っている、青い水色のアイコンのアプリ)を使います。</p>
+    <ol class="steps">
+      <li>
+        <div class="step-title">App Storeを開く</div>
+        <div class="step-detail">ホーム画面から「App Store」のアイコンをタップします。</div>
+      </li>
+      <li>
+        <div class="step-title">「NotebookLM」を検索する</div>
+        <div class="step-detail">下の検索ボタンから「NotebookLM」と入力して検索します。下のリンクから検索結果に直接進むこともできます。</div>
+        <div class="btn-row">
+          <a class="btn" href="https://apps.apple.com/search?term=NotebookLM" target="_blank" rel="noopener">App Storeで検索する</a>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">提供元を確認して入手する</div>
+        <div class="step-detail">検索結果に出てきたアプリの「提供元」が <strong>Google LLC</strong> であることを必ず確認してから、「入手」ボタンをタップしてください。似たアイコンの別アプリと間違えないようにご注意ください。</div>
+      </li>
+      <li>
+        <div class="step-title">インストール完了を待つ</div>
+        <div class="step-detail">アイコンがホーム画面に表示されたら完了です。</div>
+      </li>
+    </ol>
+    <div class="check-tip">✓ アプリのアイコンをタップして開けたら、次は「②ログインする」に進んでください。</div>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-android">
+    <h2><span class="num">1</span>アプリを入れる(Androidをお使いの方)</h2>
+    <p class="lead">Google Play ストア(三角のカラフルなアイコンのアプリ)を使います。</p>
+    <ol class="steps">
+      <li>
+        <div class="step-title">Google Playストアを開く</div>
+        <div class="step-detail">ホーム画面から「Playストア」のアイコンをタップします。</div>
+      </li>
+      <li>
+        <div class="step-title">「NotebookLM」を検索する</div>
+        <div class="step-detail">上部の検索欄に「NotebookLM」と入力します。下のリンクから検索結果に直接進むこともできます。</div>
+        <div class="btn-row">
+          <a class="btn" href="https://play.google.com/store/search?q=NotebookLM&c=apps" target="_blank" rel="noopener">Google Playで検索する</a>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">提供元を確認してインストールする</div>
+        <div class="step-detail">検索結果に出てきたアプリの提供元が <strong>Google LLC</strong> であることを必ず確認してから、「インストール」ボタンをタップしてください。</div>
+      </li>
+      <li>
+        <div class="step-title">インストール完了を待つ</div>
+        <div class="step-detail">「開く」ボタンに変わったら完了です。</div>
+      </li>
+    </ol>
+    <div class="check-tip">✓ アプリを開けたら、次は「②ログインする」に進んでください。</div>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-login">
+    <h2><span class="num">2</span>Googleアカウントでログインする</h2>
+    <p class="lead">Googleアカウント、つまり「@gmail.com」で終わるメールアドレスをお持ちの方は、こちらの手順です。</p>
+    <ol class="steps">
+      <li>
+        <div class="step-title">アプリを開く</div>
+        <div class="step-detail">インストールしたNotebookLMのアイコンをタップします。</div>
+      </li>
+      <li>
+        <div class="step-title">ログイン画面でアカウントを選ぶ</div>
+        <div class="step-detail">お使いのスマートフォンにすでにログインしているGoogleアカウントが表示された場合は、それをタップするだけで完了することが多いです。</div>
+      </li>
+      <li>
+        <div class="step-title">表示されない場合はメールアドレスを入力する</div>
+        <div class="step-detail">「別のアカウントを使用」などの表示から、ご自身のGmailアドレスとパスワードを入力してログインしてください。</div>
+      </li>
+    </ol>
+    <div class="check-tip">✓ アプリを開いたときに、下の方に文字を入力する欄(質問を入力する場所)が見えていればログイン完了です。</div>
+    <div class="caution-tip">パスワードを忘れてしまった場合は、ログイン画面の「パスワードをお忘れの場合」から再設定できます。時間がかかることがあるため、早めにお試しください。</div>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-noaccount">
+    <h2>Googleアカウントをお持ちでない方へ</h2>
+    <p class="lead">Gmailのアドレスをお持ちでない方は、まず無料のGoogleアカウントを作成する必要があります。</p>
+    <ol class="steps">
+      <li>
+        <div class="step-title">Googleアカウント作成ページを開く</div>
+        <div class="step-detail">パソコンでもスマートフォンでも作成できます。下のボタンから公式の作成ページに進んでください。</div>
+        <div class="btn-row">
+          <a class="btn secondary" href="https://accounts.google.com/signup" target="_blank" rel="noopener">Googleアカウントを作成する</a>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">案内にそって入力する</div>
+        <div class="step-detail">お名前、生年月日、電話番号(確認のため使われます)などを画面の案内にそって入力します。既存のメールアドレスを使うこともできますし、新しくGmailアドレスを作ることもできます。</div>
+      </li>
+      <li>
+        <div class="step-title">作成できたら「①アプリを入れる」に戻る</div>
+        <div class="step-detail">アカウントができたら、上の目次から「①アプリを入れる」に戻り、通常の手順を進めてください。</div>
+      </li>
+    </ol>
+    <div class="caution-tip">
+      電話番号の確認など、当日ではなく時間のある時に済ませておくことを強くおすすめします。うまく作成できない場合は無理をせず、キャンプ1日目のフォロー時間にスタッフがサポートします。その場合は隣の方とペアで講座に参加していただく形でも大丈夫です。
+    </div>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-faq">
+    <h2>うまくいかない時は</h2>
+    <p class="lead">よくあるつまずきをまとめました。当てはまるものがないか確認してください。</p>
+
+    <details class="faq">
+      <summary>アプリが見つからない・違うアプリが出てくる</summary>
+      <p>「NotebookLM」は比較的新しいアプリです。似た名前のアプリと間違えないよう、提供元が必ず「Google LLC」になっているものを選んでください。それでも見つからない場合は、お使いの端末のOSが古すぎる可能性があります。</p>
+    </details>
+
+    <details class="faq">
+      <summary>ログインしようとすると止まってしまう</summary>
+      <p>通信環境が不安定な場所では時間がかかることがあります。Wi-Fiにつないだ状態で、もう一度お試しください。それでも進まない場合は、機内モードを一度オンにしてからオフに戻し、再度お試しください。</p>
+    </details>
+
+    <details class="faq">
+      <summary>会社や学校のGoogleアカウントしか持っていない</summary>
+      <p>職場や学校から配布されたアカウントでは、管理者の設定によりアプリの利用が制限されている場合があります。個人のGmailアドレスをお持ちでない場合は、上の「Googleアカウントをお持ちでない方へ」から新しく作成することをおすすめします。</p>
+    </details>
+
+    <details class="faq">
+      <summary>パスワードが分からない</summary>
+      <p>ログイン画面の「パスワードをお忘れの場合」から再設定できます。再設定には電話番号や別のメールアドレスでの確認が必要になることが多いため、時間に余裕をもってお試しください。</p>
+    </details>
+
+    <details class="faq">
+      <summary>ここまでやってもうまくいかない</summary>
+      <p>大丈夫です。キャンプ1日目の夕食後に、準備が整っていない方向けのフォローの時間があります。無理に一人で解決しようとせず、その時間にスタッフへお声がけください。</p>
+    </details>
+
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+  <section id="step-checklist">
+    <h2>完了チェックリスト</h2>
+    <p class="lead">タップすると、チェックした内容がこの端末に保存されます(他の人には共有されません)。</p>
+    <ul class="checklist" id="checklist">
+      <li>
+        <input type="checkbox" id="c1">
+        <label for="c1">NotebookLMアプリをインストールした</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2">
+        <label for="c2">アプリを開いて、Googleアカウントでログインできた</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3">
+        <label for="c3">質問を入力する画面が表示されることを確認した</label>
+      </li>
+    </ul>
+    <div class="check-tip">3つすべてチェックできれば、事前準備は完了です。当日は手ぶら(スマートフォンだけ)で講座にご参加ください。</div>
+    <a class="back-top" href="#top">↑ 目次にもどる</a>
+  </section>
+
+</div>
+
+<footer>
+  白馬キャンプ 事前準備ガイド / このページの手順は2026年時点のものです。アプリの画面はOSやバージョンにより多少異なる場合があります。<br>
+  ご不明な点はキャンプ担当者までお問い合わせください。
+</footer>
+
+<script>
+  (function () {
+    var boxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+    boxes.forEach(function (box) {
+      var key = 'nblm-camp-' + box.id;
+      try {
+        if (localStorage.getItem(key) === '1') {
+          box.checked = true;
+          box.nextElementSibling.classList.add('done');
+        }
+      } catch (e) {}
+      box.addEventListener('change', function () {
+        try {
+          localStorage.setItem(key, box.checked ? '1' : '0');
+        } catch (e) {}
+        box.nextElementSibling.classList.toggle('done', box.checked);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
