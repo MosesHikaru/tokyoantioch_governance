@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>教会内情報発信体制 差分チェック資料</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --line: #d9e2ec;
+      --blue: #2e5f8a;
+      --blue2: #e8f1f8;
+      --green: #2f7d59;
+      --green2: #e8f7ef;
+      --amber: #9a6700;
+      --amber2: #fff4d6;
+      --red: #a43d3d;
+      --red2: #fdeaea;
+      --purple: #5b4b8a;
+      --purple2: #eeeafd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.72;
+    }
+    header {
+      background: linear-gradient(135deg, #243746, #2e5f8a);
+      color: #fff;
+      padding: 28px 20px 24px;
+    }
+    header .wrap, main { max-width: 1120px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.45rem, 4vw, 2.1rem); line-height: 1.35; }
+    .subtitle { color: #d8e6f2; margin: 0; font-size: 0.98rem; }
+    main { padding: 20px; }
+    section, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      margin: 16px 0;
+      box-shadow: 0 8px 24px rgba(36,55,70,0.06);
+    }
+    h2 { margin: 0 0 12px; color: #243746; font-size: 1.28rem; border-left: 6px solid var(--blue); padding-left: 10px; }
+    h3 { margin: 18px 0 8px; color: #243746; font-size: 1.05rem; }
+    p { margin: 8px 0; }
+    .meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .meta .box { background: #f8fafc; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+    .badge { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: .78rem; font-weight: 700; margin-right: 6px; }
+    .b-blue { background: var(--blue2); color: var(--blue); }
+    .b-green { background: var(--green2); color: var(--green); }
+    .b-amber { background: var(--amber2); color: var(--amber); }
+    .b-red { background: var(--red2); color: var(--red); }
+    .b-purple { background: var(--purple2); color: var(--purple); }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .94rem; }
+    th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; }
+    th { background: #edf4fa; color: #243746; text-align: left; }
+    tr:nth-child(even) td { background: #fbfdff; }
+    ul { padding-left: 1.3em; }
+    .decision { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mini { padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: #fafcff; }
+    .mini strong { display: block; margin-bottom: 4px; color: #243746; }
+    .proposal { border-left: 6px solid var(--amber); background: #fffaf0; }
+    .check { border-left: 6px solid var(--green); background: #f6fff9; }
+    .note { color: var(--muted); font-size: .9rem; }
+    .quote { background: #f8fafc; border-left: 4px solid var(--blue); padding: 10px 12px; border-radius: 10px; }
+    .toc a { color: var(--blue); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    footer { color: var(--muted); font-size: .82rem; padding: 16px 0 28px; }
+    @media (max-width: 760px) {
+      main { padding: 12px; }
+      section, .card { padding: 14px; border-radius: 12px; }
+      .meta, .decision { grid-template-columns: 1fr; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { border: 1px solid var(--line); border-radius: 12px; margin: 10px 0; overflow: hidden; }
+      td { border: 0; border-bottom: 1px solid var(--line); }
+      td:last-child { border-bottom: 0; }
+      td::before { content: attr(data-label); display: block; font-weight: 700; color: var(--blue); margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>教会内情報発信体制 差分チェック資料</h1>
+    <p class="subtitle">原案・会議資料案・追加修正案の比較／退避版｜作成日：2026-08-07</p>
+  </div>
+</header>
+<main>
+  <section id="summary">
+    <h2>1. 結論サマリー</h2>
+    <p>会議資料案は、原案の「情報発信体制の整理」を、より実務的な「権限委任と発信責任」の資料へ組み替えています。特に、BOTを意思決定者ではなく公式発信手段と位置づけた点、担当部署から発信できる範囲を整理した点、担当者の業務連絡の考え方を明文化した点は強化されています。</p>
+    <p>一方で、原案にあったTeams投稿ルール、緊急表示、投稿前チェック、4人委員会を通す確認経路、移行計画、9万人規模を見据えた全体像は、会議資料案では大きく圧縮または未記載になっています。そのため、今回の壁打ちで出た追加論点は「本文へ直接統合するもの」と「注記・運用補足として退避するもの」に分けて見える化するのがよいです。</p>
+    <div class="decision">
+      <div class="mini"><strong>本文に入れるべき</strong>4人委員会の定義、BOT発信の責任主体、多言語対応の最低限方針。</div>
+      <div class="mini"><strong>運用補足でよい</strong>目標時間、判定例、移行マイルストーン、Teams投稿形式。</div>
+      <div class="mini"><strong>注意して扱う</strong>人事・処分・奉仕停止などは、重要でも全体発信しないケースがある。</div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <h2>2. 比較対象</h2>
+    <div class="meta">
+      <div class="box">
+        <span class="badge b-blue">原案</span>
+        <strong>20260724_church-communication-framework_v01.docx</strong>
+        <p class="note">主題：9万人規模を見据えた、シンプルで秩序ある情報発信体制。</p>
+      </div>
+      <div class="box">
+        <span class="badge b-green">会議資料案</span>
+        <strong>教会内の情報発信と権限委任_会議資料案.docx</strong>
+        <p class="note">主題：各部署の権限委任、BOT発信範囲、担当者の業務連絡。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="major-diff">
+    <h2>3. 大きな差分</h2>
+    <table>
+      <thead><tr><th>観点</th><th>原案</th><th>会議資料案</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td data-label="観点">資料の軸</td><td data-label="原案">情報発信体制、媒体整理、ブランド統一。</td><td data-label="会議資料案">権限委任、責任主体、BOT発信範囲。</td><td data-label="評価"><span class="badge b-green">強化</span>実務判断には会議資料案の方が使いやすい。</td></tr>
+        <tr><td data-label="観点">公式発信</td><td data-label="原案">東京アンテオケ公式を公式情報発信窓口として位置づけ。</td><td data-label="会議資料案">BOTは意思決定者ではなく、公式情報を伝える発信手段と明記。</td><td data-label="評価"><span class="badge b-green">強化</span>BOTと決定主体の混同を避けられる。</td></tr>
+        <tr><td data-label="観点">各部署の権限</td><td data-label="原案">各部署の責任範囲に触れるが、詳細な権限項目は少ない。</td><td data-label="会議資料案">部署目的、所管業務、再委任、上位確認、予算・契約上限等を列挙。</td><td data-label="評価"><span class="badge b-green">強化</span>現場判断の基準にしやすい。</td></tr>
+        <tr><td data-label="観点">Teams運用</td><td data-label="原案">タイトル形式、緊急表示、投稿テンプレート、投稿前チェックあり。</td><td data-label="会議資料案">連絡文の書き方はあるが、Teams投稿ルールは明確ではない。</td><td data-label="評価"><span class="badge b-amber">要補足</span>運用資料か付録に退避推奨。</td></tr>
+        <tr><td data-label="観点">確認経路</td><td data-label="原案">担当部署 → 4人委員会 → 責任牧師確認 → 東京アンテオケ公式。</td><td data-label="会議資料案">責任牧師、役員会、四人委員会などが決定した公式情報に言及。</td><td data-label="評価"><span class="badge b-amber">要補足</span>4人委員会の定義と役割が必要。</td></tr>
+        <tr><td data-label="観点">移行計画</td><td data-label="原案">第1段階から第3段階までの段階整理あり。</td><td data-label="会議資料案">移行計画は未記載。</td><td data-label="評価"><span class="badge b-red">不足</span>マイルストーンを追加修正案へ退避。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="reflected">
+    <h2>4. 修正案に反映済みと見られる点</h2>
+    <table>
+      <thead><tr><th>論点</th><th>反映状況</th><th>確認メモ</th></tr></thead>
+      <tbody>
+        <tr><td data-label="論点">BOTが決定主体に見える問題</td><td data-label="反映状況"><span class="badge b-green">反映済み</span></td><td data-label="確認メモ">BOTは意思決定者ではなく発信手段と明記。さらに決定主体・発信部署・担当・問い合わせ先の表示例もある。</td></tr>
+        <tr><td data-label="論点">担当部署から発信できる範囲</td><td data-label="反映状況"><span class="badge b-green">反映済み</span></td><td data-label="確認メモ">通常の募集、登録、申込み、締切、運用連絡などを担当部署から発信する整理になっている。</td></tr>
+        <tr><td data-label="論点">人事・処分等の限定連絡</td><td data-label="反映状況"><span class="badge b-green">反映済み</span></td><td data-label="確認メモ">重要であっても全体発信とは限らず、業務上知る必要のある範囲に限定する旨が明記されている。</td></tr>
+        <tr><td data-label="論点">担当者からの業務連絡</td><td data-label="反映状況"><span class="badge b-green">反映済み</span></td><td data-label="確認メモ">担当者個人の命令ではなく、委任された職務遂行として扱う考え方が追加されている。</td></tr>
+        <tr><td data-label="論点">「決定」という言葉の使い方</td><td data-label="反映状況"><span class="badge b-green">反映済み</span></td><td data-label="確認メモ">正式な決定手続きの有無で表現を使い分ける整理がある。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="parking" class="proposal">
+    <h2>5. 追加修正案 退避リスト</h2>
+    <p>以下は、会議資料案に直接入れるか、付録・運用補足に退避して管理する追加修正案です。本文を重くしすぎないため、まずはこの一覧で論点を保持することを推奨します。</p>
+    <table>
+      <thead><tr><th>No.</th><th>追加修正案</th><th>推奨挿入位置</th><th>扱い</th><th>文案例</th></tr></thead>
+      <tbody>
+        <tr><td data-label="No.">A1</td><td data-label="追加修正案">4人委員会の定義がない</td><td data-label="推奨挿入位置">2章または新設「確認機関の定義」</td><td data-label="扱い"><span class="badge b-red">本文必須</span></td><td data-label="文案例">四人委員会とは、教会全体に関わる情報発信について、担当部署だけでは判断しにくい事項を確認し、必要に応じて責任牧師確認へつなぐための確認機関である。構成員・選任方法・権限範囲は別途定める。</td></tr>
+        <tr><td data-label="No.">A2</td><td data-label="追加修正案">確認が遅くならないための目標時間</td><td data-label="推奨挿入位置">2章の判断基準後、または運用補足</td><td data-label="扱い"><span class="badge b-amber">運用補足</span></td><td data-label="文案例">教会全体に関わる情報であっても、通常の実務が過度に遅れないよう、確認依頼を受けた機関は原則として速やかに判断する。目標時間は運用開始後に実績を見ながら定める。</td></tr>
+        <tr><td data-label="No.">A3</td><td data-label="追加修正案">個人発信と公式発信の分離が仕組みとして弱い</td><td data-label="推奨挿入位置">2章・4章</td><td data-label="扱い"><span class="badge b-red">本文必須</span></td><td data-label="文案例">部署としての公式情報は、原則としてBOTまたは部署名が明確に分かる形式で発信し、個人の判断による発信と混在しないようにする。ただし、問い合わせ対応や実務連絡では担当者名を明記する。</td></tr>
+        <tr><td data-label="No.">A4</td><td data-label="追加修正案">判定基準が主観的</td><td data-label="推奨挿入位置">2章「BOTを使用する主な判断基準」の後</td><td data-label="扱い"><span class="badge b-amber">例示追加</span></td><td data-label="文案例">例：全体に適用される新しいルール、礼拝時間の重大な変更、災害・事故対応はBOT発信の対象となる。通常の奉仕募集、既承認イベントの案内、部署内の提出依頼は担当部署から発信する。</td></tr>
+        <tr><td data-label="No.">A5</td><td data-label="追加修正案">移行計画にマイルストーンがない</td><td data-label="推奨挿入位置">新設「移行計画」または付録</td><td data-label="扱い"><span class="badge b-amber">付録推奨</span></td><td data-label="文案例">第1段階は現状整理と試行、第2段階は部署ごとの権限表の作成、第3段階は正式運用と定期見直しとする。各段階の終了条件は、関係部署が運用可能と判断できることを基準とする。</td></tr>
+        <tr><td data-label="No.">A6</td><td data-label="追加修正案">海外関係者・多言語対応のフローがない</td><td data-label="推奨挿入位置">2章または新設「多言語対応」</td><td data-label="扱い"><span class="badge b-purple">将来対応</span></td><td data-label="文案例">海外関係者に影響する情報については、必要に応じて翻訳または要約版を準備し、発信前に担当部署と確認する。具体的な翻訳体制は別途運用ルールで定める。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="recommended-structure">
+    <h2>6. 統合後の推奨構成</h2>
+    <ol>
+      <li>基本原則：情報発信の責任は、内容を決定する権限を持つ部署または機関にある。</li>
+      <li>判断機関の定義：責任牧師、役員会、四人委員会、各部署責任者、担当者の役割。</li>
+      <li>BOT発信の範囲：公式決定、正式見解、重大変更、緊急情報。</li>
+      <li>担当部署から発信する情報：通常運用、募集、登録、申込み、既承認企画。</li>
+      <li>限定連絡：人事・処分・奉仕停止等は必要範囲に限定。</li>
+      <li>BOT発信時の責任主体表記：決定主体、発信部署、担当、問い合わせ先。</li>
+      <li>担当者からの業務連絡：委任された職務として扱う。</li>
+      <li>連絡文の書き方と「決定」の使い方。</li>
+      <li>運用補足：Teams投稿形式、緊急表示、確認目標時間、移行マイルストーン、多言語対応。</li>
+    </ol>
+  </section>
+
+  <section id="double-check" class="check">
+    <h2>7. ダブルチェック結果</h2>
+    <table>
+      <thead><tr><th>チェック項目</th><th>結果</th><th>メモ</th></tr></thead>
+      <tbody>
+        <tr><td data-label="チェック項目">原案の主要要素を拾えているか</td><td data-label="結果"><span class="badge b-green">OK</span></td><td data-label="メモ">背景、課題、媒体整理、BOT、Teams運用、確認経路、移行計画を差分表に反映。</td></tr>
+        <tr><td data-label="チェック項目">会議資料案の強化点を拾えているか</td><td data-label="結果"><span class="badge b-green">OK</span></td><td data-label="メモ">権限委任、BOT範囲、限定連絡、業務連絡、決定表現を反映。</td></tr>
+        <tr><td data-label="チェック項目">壁打ちの追加論点を退避できているか</td><td data-label="結果"><span class="badge b-green">OK</span></td><td data-label="メモ">未定義要素、スピード、個人/公式分離、主観基準、移行計画、海外関係者をA1〜A6で退避。</td></tr>
+        <tr><td data-label="チェック項目">本文必須と運用補足を分けているか</td><td data-label="結果"><span class="badge b-green">OK</span></td><td data-label="メモ">4人委員会定義・公式発信分離は本文必須、目標時間・マイルストーンは運用補足に分類。</td></tr>
+        <tr><td data-label="チェック項目">主観的断定を避けているか</td><td data-label="結果"><span class="badge b-green">OK</span></td><td data-label="メモ">文案例は「別途定める」「運用開始後に実績を見ながら」など、未確定事項を確定表現にしていない。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>参照元：20260724_church-communication-framework_v01.docx（reference_id: turn1search1）／教会内の情報発信と権限委任_会議資料案.docx（reference_id: turn1search2）</p>
+  </footer>
+</main>
+</body>
+</html>
