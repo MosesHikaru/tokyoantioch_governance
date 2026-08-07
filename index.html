@@ -28,26 +28,28 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.7}
 button,input,select{font-family:inherit}
 a{color:inherit}
-.app{min-height:100vh;display:grid;grid-template-columns:278px 1fr}
-.sidebar{height:100vh;position:sticky;top:0;background:#143852;color:#eaf4ff;padding:18px 15px;display:flex;flex-direction:column;gap:14px}
+.app{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:278px minmax(0,1fr)}
+.sidebar{min-height:100vh;min-height:100svh;position:sticky;top:0;align-self:start;background:#143852;color:#eaf4ff;padding:18px 15px;display:flex;flex-direction:column;gap:14px}
 .brand{display:flex;gap:10px;align-items:center;padding:6px 5px 16px;border-bottom:1px solid rgba(255,255,255,.14)}
 .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#89c7e8,#fff);display:grid;place-items:center;color:#123850;font-weight:800;letter-spacing:.02em}
 .brand h1{font-size:16px;margin:0;line-height:1.25}.brand small{display:block;font-size:11px;color:#b9d0e2;font-weight:400;margin-top:2px}
 .nav{display:flex;flex-direction:column;gap:6px}.nav button{border:0;background:transparent;color:#cfe3f3;text-align:left;padding:12px 12px;border-radius:13px;cursor:pointer;font-size:14px;display:flex;align-items:center;gap:10px}.nav button.active{background:rgba(255,255,255,.14);color:#fff;font-weight:700}.nav span.icon{width:24px;text-align:center}
 .sidebar-footer{margin-top:auto;font-size:11px;color:#b9d0e2;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
 .main{min-width:0;padding:22px 24px 82px}.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}.title h2{font-size:22px;margin:0}.title p{margin:4px 0 0;color:var(--muted);font-size:12px}.search{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 13px;display:flex;align-items:center;gap:8px;min-width:330px;box-shadow:0 3px 10px rgba(30,60,90,.05)}.search input{border:0;outline:0;background:transparent;width:100%;font-size:14px}
-.section{display:none}.section.active{display:block}.grid{display:grid;gap:14px}.kpi-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card.pad{padding:16px}.card h3{font-size:15px;margin:0 0 12px}.kpi{padding:15px;min-height:96px}.kpi .num{font-size:27px;font-weight:800;line-height:1}.kpi .label{font-size:12px;color:var(--muted);margin-top:7px}.kpi .sub{font-size:11px;color:#98a2b3;margin-top:7px}.kpi.red .num{color:var(--red)}.kpi.amber .num{color:var(--amber)}.kpi.green .num{color:var(--green)}.kpi.blue .num{color:var(--blue)}
-.layout{grid-template-columns:1.35fr .78fr}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.toolbar button,.toolbar select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.toolbar button.active{background:#eaf3fb;color:#1f5b84;border-color:#a9cde5;font-weight:700}
-.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:11px;background:#eef2f7;color:#344054;white-space:nowrap}.pill.red{background:#fff0ee;color:var(--red)}.pill.amber{background:#fff7e6;color:var(--amber)}.pill.green{background:#eaf8f0;color:var(--green)}.pill.blue{background:#eaf3fb;color:var(--blue)}.pill.purple{background:#f1eff8;color:var(--purple)}.pill.gray{background:#f2f4f7;color:#667085}
-.list{display:flex;flex-direction:column;gap:9px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px}.score{width:40px;height:40px;border-radius:14px;background:#eef5fb;color:#24587d;display:grid;place-items:center;font-weight:800}.item h4{font-size:14px;margin:0}.item p{margin:3px 0 0;color:var(--muted);font-size:12px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.right{text-align:right}.btn{border:0;background:#24587d;color:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.btn.ghost{background:#eef2f7;color:#344054}
+.section{display:none;min-width:0}.section.active{display:block}.grid{display:grid;gap:14px;min-width:0}.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card.pad{padding:16px}.card h3{font-size:15px;margin:0 0 12px}.kpi{padding:15px;min-height:96px}.kpi .num{font-size:27px;font-weight:800;line-height:1}.kpi .label{font-size:12px;color:var(--muted);margin-top:7px}.kpi .sub{font-size:11px;color:#98a2b3;margin-top:7px}.kpi.red .num{color:var(--red)}.kpi.amber .num{color:var(--amber)}.kpi.green .num{color:var(--green)}.kpi.blue .num{color:var(--blue)}.kpi.purple .num{color:var(--purple)}
+.layout{grid-template-columns:1.35fr .78fr}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;min-width:0}.toolbar button,.toolbar select{min-height:38px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.toolbar button.active{background:#eaf3fb;color:#1f5b84;border-color:#a9cde5;font-weight:700}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:11px;background:#eef2f7;color:#344054;white-space:nowrap}.pill.red{background:#fff0ee;color:var(--red)}.pill.amber{background:#fff7e6;color:var(--amber)}.pill.green{background:#eaf8f0;color:var(--green)}.pill.blue{background:#eaf3fb;color:var(--blue)}.pill.purple,.pill.defer{background:#f1eff8;color:var(--purple)}.pill.review{background:#fff5d6;color:#8a6116}.pill.gray{background:#f2f4f7;color:#667085}.pill.meta-pill{max-width:260px;overflow:hidden;text-overflow:ellipsis}
+.list{display:flex;flex-direction:column;gap:9px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px}.item.item-deferred{background:#f8f6fc;border-color:#e2ddee}.item.item-review{background:#fffaf0;border-color:#eedda9}.score{width:40px;height:40px;border-radius:14px;background:#eef5fb;color:#24587d;display:grid;place-items:center;font-weight:800}.item h4{font-size:14px;margin:0}.item p{margin:3px 0 0;color:var(--muted);font-size:12px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.right{text-align:right}.btn{border:0;background:#24587d;color:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.btn.ghost{background:#eef2f7;color:#344054}
 .thread-link{display:inline-flex;align-items:center;gap:6px;color:#1f5b84;text-decoration:none;font-weight:700}.thread-link:hover{text-decoration:underline}.thread-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:3px;border-radius:4px}.external-mark{font-size:12px;color:#5f86a1}.btn.external-link{display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap}
-.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f6fa;color:#475467;font-size:12px;position:sticky;top:0;z-index:1}td{font-size:13px}.row-red td{background:#fff4f2}.row-amber td{background:#fff9e8}.row-green td{background:#f1fbf5}.row-gray td{color:#8a9099;background:#f8f9fb}
+.tablewrap{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f6fa;color:#475467;font-size:12px;position:sticky;top:0;z-index:1}td{font-size:13px}.row-red td{background:#fff4f2}.row-amber td,.row-review td{background:#fff9e8}.row-green td{background:#f1fbf5}.row-gray td{color:#8a9099;background:#f8f9fb}.row-deferred td{background:#f7f5fb}
 .reader{display:grid;grid-template-columns:minmax(210px,260px) minmax(0,860px);gap:20px;align-items:start;justify-content:center}.timeline{position:sticky;top:22px;max-height:calc(100vh - 44px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}.timecard{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:12px;cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.timecard:hover{border-color:#a9cde5;transform:translateY(-1px)}.timecard.active{border-color:#5ea6d2;background:#eaf5fc;box-shadow:inset 4px 0 #2f6f9f}.timecard b{font-size:13px}.timecard small{display:block;color:var(--muted);font-size:11px;margin-top:3px;overflow-wrap:anywhere}.doc{width:100%;max-width:860px;padding:clamp(22px,3vw,38px);overflow:visible}.doc h3{font-size:22px;line-height:1.4;margin:0}.doc .caption{font-size:12px;color:var(--muted);margin:6px 0 22px;padding-bottom:15px;border-bottom:1px solid var(--line)}.minute-section{margin:0 0 18px;border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden}.minute-section h4{margin:0;padding:12px 16px;border-left:5px solid var(--blue);background:#f4f8fc;font-size:15px;line-height:1.45}.minute-section.decision h4{border-left-color:var(--green);background:#f0f9f4}.minute-section.pending h4{border-left-color:var(--amber);background:#fff8ea}.minute-section.taskh h4{border-left-color:var(--blue);background:#eef6fc}.minute-section.warning h4{border-left-color:var(--red);background:#fff3f1}.minute-body{padding:16px 18px 18px;color:#25313d}.minute-body p{margin:0 0 .85em;line-height:1.95}.minute-body p:last-child{margin-bottom:0}.minute-subhead{margin:18px 0 9px;padding:8px 11px;border-left:3px solid #8fb9d5;background:#f7fafc;border-radius:0 9px 9px 0;font-weight:700;color:#244e6c}.minute-subhead:first-child{margin-top:0}.minute-list-row{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;margin:7px 0;line-height:1.8}.minute-marker{width:22px;height:22px;border-radius:7px;background:#eaf3fb;color:#24587d;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}.minute-note{margin:10px 0;padding:10px 12px;border-radius:10px;background:#fff9e8;color:#76571d}.minute-rule{border:0;border-top:1px dashed var(--line);margin:16px 0}.minute-tablewrap{overflow:auto;margin:13px 0;border:1px solid var(--line);border-radius:11px}.minute-table{min-width:620px}.minute-table th,.minute-table td{padding:8px 10px;font-size:12px;line-height:1.55}.minute-table th{position:static;background:#edf3f8}.minute-empty{padding:34px 18px;text-align:center;color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}
-.mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.mobilebar button{border:0;background:transparent;border-radius:12px;padding:8px 4px;font-size:11px;color:#667085}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.fab{display:none;position:fixed;right:18px;bottom:84px;border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);z-index:90}
-@media(max-width:1180px){.app{grid-template-columns:236px 1fr}.kpi-grid{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.reader{grid-template-columns:220px 1fr}.search{min-width:260px}}
-@media(max-width:760px){body{font-size:13px}.app{display:block}.sidebar{display:none}.main{padding:14px 12px 90px}.topbar{display:block}.title h2{font-size:18px}.search{min-width:0;width:100%;border-radius:14px;margin-top:10px}.kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}.kpi{padding:13px;min-height:84px}.kpi .num{font-size:23px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);grid-template-columns:none;overflow:auto;margin-bottom:12px;padding:0 0 5px}.timecard{min-width:150px}.doc{padding:18px 14px}.doc h3{font-size:19px}.minute-body{padding:14px}.minute-section h4{padding:11px 13px}.minute-table{min-width:560px}.item{grid-template-columns:1fr;gap:8px}.score{width:auto;height:auto;display:inline-flex;padding:4px 9px;border-radius:999px}.right{text-align:left}.toolbar{flex-wrap:nowrap;overflow:auto}.toolbar button,.toolbar select{white-space:nowrap}.flow{grid-template-columns:1fr}.tablewrap table{min-width:720px}th,td{padding:9px}.mobilebar,.fab{display:block}.card{border-radius:16px}}
-@media(max-width:420px){.kpi-grid{grid-template-columns:1fr 1fr}.pill{font-size:10px}.item h4{font-size:13px}.minute-list-row{grid-template-columns:22px minmax(0,1fr)}.minute-body p{line-height:1.85}}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}.deferred-panel{margin-top:14px;border-color:#ded8ec}.deferred-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.deferred-panel-head p{margin:2px 0 12px;color:var(--muted);font-size:12px}.deferred-panel .item{background:#fbfafe}
+.mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.mobilebar button{min-height:48px;border:0;background:transparent;border-radius:12px;padding:8px 4px;font-size:11px;color:#667085}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.fab{display:none;position:fixed;right:18px;bottom:calc(82px + var(--bottom-safe));border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);z-index:90}
+@media(max-width:1180px){.app{grid-template-columns:220px minmax(0,1fr)}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:1fr}.reader{grid-template-columns:200px minmax(0,1fr)}.search{min-width:260px}}
+@media(max-width:1024px){body{font-size:14px}.app{display:block;min-height:100svh}.sidebar{display:none}.main{width:100%;padding:20px 20px calc(104px + var(--bottom-safe))}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);grid-template-columns:none;overflow:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;padding:0 0 6px}.timecard{min-width:170px;min-height:72px}.doc{max-width:none;padding:24px 22px}.toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}.toolbar button,.toolbar select{min-height:44px;white-space:nowrap;flex:0 0 auto}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.mobilebar,.fab{display:block}.card.pad{padding:18px}.tablewrap table{min-width:820px}}
+@media(max-width:900px){.main{padding:18px 16px calc(104px + var(--bottom-safe))}.topbar{gap:12px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search{min-width:250px}.doc{padding:22px 18px}.pill.meta-pill{max-width:220px}}
+@media(max-width:640px){body{font-size:13px}.main{padding:14px 12px calc(98px + var(--bottom-safe))}.topbar{display:block}.title h2{font-size:19px}.search{min-width:0;width:100%;border-radius:14px;margin-top:10px}.kpi-grid{gap:10px}.kpi{padding:13px;min-height:88px}.kpi .num{font-size:23px}.timeline{grid-auto-columns:minmax(150px,78vw)}.timecard{min-width:150px}.doc{padding:18px 14px}.doc h3{font-size:19px}.minute-body{padding:14px}.minute-section h4{padding:11px 13px}.minute-table{min-width:560px}.item{grid-template-columns:1fr;gap:8px}.score{width:auto;height:auto;display:inline-flex;padding:4px 9px;border-radius:999px}.right{text-align:left}.flow{grid-template-columns:1fr}.tablewrap table{min-width:720px}th,td{padding:9px}.card{border-radius:16px}.card.pad{padding:14px}.deferred-panel-head{display:block}.pill.meta-pill{max-width:min(260px,72vw)}}
+@media(max-width:420px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pill{font-size:10px}.item h4{font-size:13px}.minute-list-row{grid-template-columns:22px minmax(0,1fr)}.minute-body p{line-height:1.85}.mobilebar button{font-size:10px;padding-inline:2px}}
 </style>
 </head>
 <body>
@@ -82,6 +84,13 @@ a{color:inherit}
           <div class="note" style="margin-top:14px">完了報告は「完了」ではなく「確認待ち」。確認者が完了根拠リンクを確認して、はじめて完了です。</div>
         </div>
       </div>
+      <div class="card pad deferred-panel">
+        <div class="deferred-panel-head">
+          <div><h3>後回し・再確認</h3><p>後回しまたは見送り候補で、再確認日が到来した未完了項目です。</p></div>
+          <span class="pill review">今日以前を表示</span>
+        </div>
+        <div class="list" id="deferredList"></div>
+      </div>
     </section>
 
     <section id="minutes" class="section">
@@ -94,7 +103,7 @@ a{color:inherit}
     <section id="tasks" class="section">
       <div class="card pad">
         <h3>タスク管理</h3>
-        <div class="toolbar"><button class="active" data-task="open">未完了</button><button data-task="waiting">確認待ち</button><button data-task="danger">要是正</button><button data-task="all">すべて</button></div>
+        <div class="toolbar"><button class="active" data-task="open">未完了</button><button data-task="waiting">確認待ち</button><button data-task="danger">要是正</button><button data-task="deferred">後回し</button><button data-task="all">すべて</button></div>
         <div class="tablewrap"><table><thead><tr><th>状態</th><th>タスク</th><th>実行者</th><th>確認者</th><th>期限</th><th>完了判定</th><th>チェック</th></tr></thead><tbody id="taskRows"></tbody></table></div>
       </div>
     </section>
@@ -102,7 +111,7 @@ a{color:inherit}
     <section id="threads" class="section">
       <div class="card pad">
         <h3>スレッド管理</h3>
-        <div class="toolbar"><button class="active" data-thread="open">進行中</button><button data-thread="transfer">未転記</button><button data-thread="all">すべて</button></div>
+        <div class="toolbar"><button class="active" data-thread="open">進行中</button><button data-thread="transfer">未転記</button><button data-thread="deferred">後回し</button><button data-thread="all">すべて</button></div>
         <div class="tablewrap"><table><thead><tr><th>状態</th><th>件名・論点</th><th>チャネル</th><th>期限目安</th><th>決定ID</th><th>チェック</th></tr></thead><tbody id="threadRows"></tbody></table></div>
       </div>
     </section>
@@ -147,6 +156,53 @@ a{color:inherit}
 <script>
 const DATA={
   "minutes": [
+    {
+      "date": "2026/08/07",
+      "file": "260807_4PC_mtg.docx",
+      "title": "四人委員会 定例会議",
+      "sections": [
+        [
+          "会議概要",
+          "会議名 | 四人委員会（4PC）定例会議\n開催日時 | 2026年8月7日（金）\n開催形式 | Microsoft Teams\n参加者 | Moses DenishiHikaru、Akimoto、Samuel、Peter Majikina\n欠席者 | 未確認\n作成日 | 2026年8月7日"
+        ],
+        [
+          "会議の目的",
+          "組織運営における情報発信、文書管理、タスク管理、理念運用の方針を整理し、運用ルールを明確化する。"
+        ],
+        [
+          "主要論点",
+          "情報発信と権限委譲の整理\nファイル管理と命名ルールの策定\n会議・タスク管理とダッシュボード運用\n組織理念・行動規範の確認と運用"
+        ],
+        [
+          "決定事項",
+          "No | 区分 | 件名 | 決定内容\n1 | 発信 | 公式情報発信ルール | 発信時は責任主体・問い合わせ先を明記する。\n2 | 体制 | 権限委譲運用 | 各部署へ柔軟に権限委譲し、必要時は委員会確認を行う。\n3 | 発信 | 広報区分 | 内部広報・外部広報・情報共有を区分して運用する。\n4 | AI | ファイル管理標準化 | 統一命名規則とフォルダー構成を導入する。\n5 | AI | 議事録・タスク管理運用 | 台帳とダッシュボードを連携して運用する。\n6 | 理念 | 理念基準承認 | 理念・ビジョン・フェイスを基準として承認する。"
+        ],
+        [
+          "継続検討事項",
+          "No | 件名 | 現状 | 次に必要なこと\n1 | ボット運用拡大 | 必要性を見極める段階 | 権限委譲整理後に再検討\n2 | 行動規範整備 | 方向性を議論 | ルールブック案作成\n3 | 決済権限 | 次回議題予定 | 権限範囲を整理"
+        ],
+        [
+          "アクションアイテム",
+          "担当者 | 内容 | 期限 | 状態\nSamuel | 広報業務内容の文書化 | 未設定 | 未着手\nMoses DenishiHikaru | 命名ルール運用とREADME整備 | 未設定 | 未着手\nMoses DenishiHikaru | Gem運用環境構築 | 未設定 | 未着手\nMoses DenishiHikaru | 決定事項フォルダ整理 | 未設定 | 未着手\nMoses DenishiHikaru | スレッド作成ルール整備 | 未設定 | 未着手\nMoses DenishiHikaru | 台帳運用テスト | 約1か月 | 未着手"
+        ],
+        [
+          "要確認事項",
+          "期限の明確化\n参加者一覧の最終確認"
+        ],
+        [
+          "次回会議までの確認事項",
+          "各担当タスクの着手\n決済権限議論の資料準備"
+        ],
+        [
+          "次回議題候補",
+          "決済権限の整理\n行動規範・ルールブック"
+        ],
+        [
+          "AI判定で不確実な箇所",
+          "Speaker 2の氏名\n各タスクの具体期限"
+        ]
+      ]
+    },
     {
       "date": "2026/07/31",
       "file": "260731_4PC_mtg.docx",
@@ -249,7 +305,146 @@ const DATA={
       ]
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "A202511-001",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "発信",
+      "name": "広報業務内容の具体化",
+      "owner": "Samuel Kasahara Nobuo",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "高",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    },
+    {
+      "id": "A202511-002",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "AI",
+      "name": "ファイル名・フォルダ命名ルール運用",
+      "owner": "Moses DenishiHikaru",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "高",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    },
+    {
+      "id": "A202511-003",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "AI",
+      "name": "Gem運用環境の構築",
+      "owner": "Moses DenishiHikaru",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "中",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    },
+    {
+      "id": "A202511-004",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "AI",
+      "name": "決定事項フォルダの整理",
+      "owner": "Moses DenishiHikaru",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "中",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    },
+    {
+      "id": "A202511-005",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "AI",
+      "name": "スレッドタイトル・概要ルール整備",
+      "owner": "Moses DenishiHikaru",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "中",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    },
+    {
+      "id": "A202511-006",
+      "date": "2026/08/07",
+      "src": "会議",
+      "cat": "AI",
+      "name": "決定事項スレッド・台帳運用テスト",
+      "owner": "Moses DenishiHikaru",
+      "checker": "未確認",
+      "due": "未設定",
+      "prio": "中",
+      "state": "",
+      "judge": "",
+      "evidence": "",
+      "related": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "未判定",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "sourceLink": "",
+      "note": ""
+    }
+  ],
   "threads": [
     {
       "id": "T-202611-001",
@@ -261,6 +456,11 @@ const DATA={
       "decision": "",
       "did": "",
       "check": "期限目安未設定",
+      "priorityClass": "通常",
+      "deferReason": "",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
       "url": "https://teams.microsoft.com/l/message/19:3c0190e547a2449095d0a19bdbae0973@thread.tacv2/1785997454291?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1785997454291&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=03_%E9%81%8B%E5%96%B6%E5%AE%9F%E5%8B%99&createdTime=1785997454291",
       "owner": "Moses DenishiHikaru",
       "note": ""
@@ -271,10 +471,15 @@ const DATA={
       "subject": "新来会社者受付フォーム",
       "issue": "新来会社受付フォームの作成・システム",
       "channel": "21世紀型推進",
-      "due": "",
+      "due": "2026/08/14",
       "decision": "",
       "did": "",
-      "check": "期限目安未設定",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
       "url": "https://teams.microsoft.com/l/message/19:5d6752ce1c204bd6966e00213a4b8be0@thread.tacv2/1786032291427?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1786032291427&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=02_21%E4%B8%96%E7%B4%80%E5%9E%8B%E6%8E%A8%E9%80%B2&createdTime=1786032291427",
       "owner": "Moses DenishiHikaru",
       "note": ""
@@ -335,6 +540,72 @@ const DATA={
       "state": "有効",
       "sourceLink": "",
       "oldId": ""
+    },
+    {
+      "id": "M-202611-004",
+      "date": "2026/08/07",
+      "cat": "発信",
+      "title": "公式情報発信ルール",
+      "body": "公式情報を発信する際は責任主体と問い合わせ先を明記する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-005",
+      "date": "2026/08/07",
+      "cat": "体制",
+      "title": "権限委譲運用",
+      "body": "各部署への権限委譲は現場運用に合わせて柔軟に行い必要に応じて委員会確認を実施する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-006",
+      "date": "2026/08/07",
+      "cat": "発信",
+      "title": "広報区分整理",
+      "body": "内部広報・外部広報・情報共有の役割を区分して運用する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-007",
+      "date": "2026/08/07",
+      "cat": "AI",
+      "title": "命名規則統一",
+      "body": "ファイル名ルールとフォルダー構成を組織全体で統一する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/folder-guide_ja.docx?d=wc70f2cd986304df8902ee8e550340acb&csf=1&web=1&e=foQTee\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/naming-rule.docx?d=w92559d03a0554322ab52ca40a6d35246&csf=1&web=1&e=trv1GL",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-008",
+      "date": "2026/08/07",
+      "cat": "AI",
+      "title": "議事録管理運用",
+      "body": "議事録・タスク・台帳・ダッシュボードを連携して管理する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-009",
+      "date": "2026/08/07",
+      "cat": "理念",
+      "title": "理念基準承認",
+      "body": "理念・ビジョン・フェイスの三基準を正式な運用基準として承認する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807_tokyo_antioch_faith_statement_unified_v3.docx?d=wa7cf996fcf104de9a3765c535ff53ff4&csf=1&web=1&e=eWiQ0y\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807tokyo_antioch_church_philosophy_unified_v3.docx?d=w30b035521bcb4fce883716eac8e02c51&csf=1&web=1&e=kpfomO\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/folder-guide_ja.docx?d=wc70f2cd986304df8902ee8e550340acb&csf=1&web=1&e=70hKy0",
+      "oldId": ""
     }
   ]
 };
@@ -350,32 +621,52 @@ function stateClass(s){return s==='完了'||s==='決定'||s==='有効'?'green':s
 function navHTML(mobile=false){return navs.slice(0,mobile?5:7).map(n=>`<button data-nav="${n[0]}" class="${n[0]===current?'active':''}"><span class="icon">${n[1]}</span>${n[2]}</button>`).join('')}
 function setSection(id){current=id;document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));$('pageTitle').textContent=navs.find(n=>n[0]===id)?.[2]||'概要'; if(id==='search') renderSearch(); window.scrollTo(0,0)}
 function bootNav(){ $('desktopNav').innerHTML=navHTML(false); $('mobileNav').innerHTML=navHTML(true); document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setSection(b.dataset.nav))); }
+const CLOSED_STATES=new Set(['完了','取り下げ','決定']);
+const DEFERRED_CLASSES=new Set(['後回し','見送り候補']);
+function isClosed(item){return CLOSED_STATES.has(item.state)}
+function isDeferred(item){return DEFERRED_CLASSES.has(item.priorityClass)}
+function dateNumber(value){const match=(value||'').toString().trim().match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);return match?Number(match[1])*10000+Number(match[2])*100+Number(match[3]):0}
+function todayNumber(){const now=new Date();return now.getFullYear()*10000+(now.getMonth()+1)*100+now.getDate()}
+function isReviewDue(item){const review=dateNumber(item.reviewDate);return !!review&&review<=todayNumber()&&!isClosed(item)}
+function metaPill(label,value,cls='gray'){if(!value)return '';const text=`${label}: ${value}`;return `<span class="pill meta-pill ${cls}" title="${escAttr(text)}">${esc(text)}</span>`}
+function deferMeta(item){return `${metaPill('処理',item.priorityClass,isDeferred(item)?'defer':'gray')}${metaPill('理由',item.deferReason)}${metaPill('再確認',item.reviewDate,isReviewDue(item)?'review':'gray')}${metaPill('再開条件',item.reopenCondition)}`}
+function taskRowClass(t){return t.check.includes('期限超過')?'row-red':isReviewDue(t)?'row-review':t.state==='確認待ち'?'row-amber':t.state==='完了'?'row-green':t.state==='取り下げ'?'row-gray':isDeferred(t)?'row-deferred':t.state==='保留'?'row-gray':''}
+function threadRowClass(t){return isReviewDue(t)?'row-review':t.state==='決定'?'row-green':t.state==='取り下げ'?'row-gray':isDeferred(t)?'row-deferred':t.check.includes('未転記')||t.state==='会議送り'?'row-amber':''}
 function countTasks(pred){return DATA.tasks.filter(pred).length}
 function kpis(){
+ const actionItems=[...DATA.tasks,...DATA.threads];
  const unreleased=DATA.threads.filter(t=>t.state==='決定'&&!t.did).length;
  const overdue=DATA.tasks.filter(t=>t.state!=='完了'&&t.state!=='取り下げ'&&t.check.includes('期限超過')).length;
  const waiting=countTasks(t=>t.state==='確認待ち');
  const open=countTasks(t=>t.state!=='完了'&&t.state!=='取り下げ');
  const done=countTasks(t=>t.state==='完了');
  const missing=countTasks(t=>t.check.includes('未設定')||t.check.includes('未記入'));
+ const deferred=actionItems.filter(item=>isDeferred(item)&&!isClosed(item)).length;
+ const reviewDue=actionItems.filter(isReviewDue).length;
  return [
   {num:open,label:'未完了タスク',sub:'完了・取り下げ以外',cls:'red'},
   {num:overdue,label:'期限超過',sub:'会議冒頭で確認',cls:'red'},
   {num:waiting,label:'確認待ち',sub:'完了報告あり',cls:'amber'},
   {num:unreleased,label:'決定台帳へ未転記',sub:'スレッド由来',cls:'amber'},
+  {num:deferred,label:'後回し件数',sub:'後回し・見送り候補',cls:'purple'},
+  {num:reviewDue,label:'再確認日到来',sub:'今日以前の未完了',cls:'amber'},
   {num:done,label:'完了',sub:'確認済み',cls:'green'},
   {num:missing,label:'記入漏れ',sub:'担当・期限・根拠など',cls:'blue'}
  ];
 }
 function renderKPIs(){ $('kpis').innerHTML=kpis().map(k=>`<div class="card kpi ${k.cls}"><div class="num">${k.num}</div><div class="label">${k.label}</div><div class="sub">${k.sub}</div></div>`).join('') }
 function flags(str){return (str||'').split('/').map(x=>x.trim()).filter(Boolean).map(x=>badge(x,/超過|未設定|未記入|未転記/.test(x)?'red':'amber')).join('')}
-function taskItem(t){return `<div class="item"><div class="score">${t.prio}</div><div><h4>${esc(t.name)}</h4><p>${esc(t.owner||'実行者未設定')} / 期限 ${esc(t.due||'未設定')}</p><div class="meta">${badge(t.state,stateClass(t.state))}${badge(t.judge,stateClass(t.judge))}${flags(t.check)}${t.related?badge(t.related,'blue'):''}</div></div><div class="right"><button class="btn ghost" onclick="setSection('tasks')">開く</button></div></div>`}
-function threadItem(t){const url=safeLink(t.url);return `<div class="item"><div class="score">T</div><div><h4>${threadTitle(t)}</h4><p>${esc(t.issue)} / ${esc(t.channel)}</p><div class="meta">${badge(t.state,stateClass(t.state))}${t.did?badge(t.did,'green'):''}${flags(t.check)}</div></div><div class="right">${url?`<a class="btn ghost external-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">Teamsへ ↗</a>`:`<button class="btn ghost" onclick="setSection('threads')">開く</button>`}</div></div>`}
+function taskItem(t){return `<div class="item ${isReviewDue(t)?'item-review':isDeferred(t)?'item-deferred':''}"><div class="score">${esc(t.prio||'T')}</div><div><h4>${esc(t.name)}</h4><p>${esc(t.owner||'実行者未設定')} / 期限 ${esc(t.due||'未設定')}</p><div class="meta">${badge(t.state,stateClass(t.state))}${badge(t.judge,stateClass(t.judge))}${flags(t.check)}${t.related?badge(t.related,'blue'):''}${deferMeta(t)}</div></div><div class="right"><button class="btn ghost" onclick="setSection('tasks')">開く</button></div></div>`}
+function threadItem(t){const url=safeLink(t.url);return `<div class="item ${isReviewDue(t)?'item-review':isDeferred(t)?'item-deferred':''}"><div class="score">T</div><div><h4>${threadTitle(t)}</h4><p>${esc(t.issue)} / ${esc(t.channel)}</p><div class="meta">${badge(t.state,stateClass(t.state))}${t.did?badge(t.did,'green'):''}${flags(t.check)}${deferMeta(t)}</div></div><div class="right">${url?`<a class="btn ghost external-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">Teamsへ ↗</a>`:`<button class="btn ghost" onclick="setSection('threads')">開く</button>`}</div></div>`}
 function renderToday(filter='all'){
  let list=[];
  if(['all','danger','task'].includes(filter)) list=list.concat(DATA.tasks.filter(t=>filter!=='danger'||t.check||t.state==='確認待ち').map(taskItem));
  if(['all','danger','thread'].includes(filter)) list=list.concat(DATA.threads.filter(t=>filter!=='danger'||t.check||t.state==='会議送り').map(threadItem));
  $('todayList').innerHTML=list.join('')||'<div class="empty">該当なし</div>';
+}
+function renderDeferred(){
+ const items=[...DATA.tasks.map(item=>({kind:'task',item})),...DATA.threads.map(item=>({kind:'thread',item}))].filter(entry=>isDeferred(entry.item)&&isReviewDue(entry.item));
+ $('deferredList').innerHTML=items.map(entry=>entry.kind==='task'?taskItem(entry.item):threadItem(entry.item)).join('')||'<div class="empty">再確認日が到来した後回し項目はありません。</div>';
 }
 function minuteSectionClass(title){return title.includes('決定')?'decision':title.includes('継続')?'pending':/(アクション|タスク)/.test(title)?'taskh':/(不確実|注意)/.test(title)?'warning':''}
 function minuteBodyHTML(body){
@@ -421,12 +712,12 @@ function renderMinutes(){
  $('minuteDoc').innerHTML=`<h3>${esc(m.title)}</h3><div class="caption">${esc(m.date||'日付未設定')} / ${esc(m.file)}</div>${sections}`;
 }
 function renderTaskRows(filter='open'){
- let rows=DATA.tasks.filter(t=>filter==='all'||(filter==='waiting'?t.state==='確認待ち':filter==='danger'?!!t.check:t.state!=='完了'&&t.state!=='取り下げ'));
- $('taskRows').innerHTML=rows.map(t=>`<tr class="${t.check.includes('期限超過')?'row-red':t.state==='確認待ち'?'row-amber':t.state==='完了'?'row-green':t.state==='取り下げ'||t.state==='保留'?'row-gray':''}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${esc(t.name)}</b><div class="meta">${badge(t.id,'blue')}${badge(t.src)}${badge(t.cat)}</div></td><td>${esc(t.owner||'未設定')}</td><td>${esc(t.checker||'未設定')}</td><td>${esc(t.due||'未設定')}</td><td>${badge(t.judge,stateClass(t.judge))}</td><td>${flags(t.check)||'<span class="pill green">OK</span>'}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">該当なし</td></tr>';
+ let rows=DATA.tasks.filter(t=>filter==='all'||(filter==='waiting'?t.state==='確認待ち':filter==='danger'?!!t.check:filter==='deferred'?isDeferred(t):t.state!=='完了'&&t.state!=='取り下げ'));
+ $('taskRows').innerHTML=rows.map(t=>`<tr class="${taskRowClass(t)}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${esc(t.name)}</b><div class="meta">${badge(t.id,'blue')}${badge(t.src)}${badge(t.cat)}${deferMeta(t)}</div></td><td>${esc(t.owner||'未設定')}</td><td>${esc(t.checker||'未設定')}</td><td>${esc(t.due||'未設定')}</td><td>${badge(t.judge,stateClass(t.judge))}</td><td>${flags(t.check)||'<span class="pill green">OK</span>'}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">該当なし</td></tr>';
 }
 function renderThreadRows(filter='open'){
- let rows=DATA.threads.filter(t=>filter==='all'||(filter==='transfer'?t.state==='決定'&&!t.did:['審議中','会議送り','保留'].includes(t.state)));
- $('threadRows').innerHTML=rows.map(t=>`<tr class="${t.check.includes('未転記')?'row-amber':t.state==='会議送り'?'row-amber':t.state==='決定'?'row-green':''}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${threadTitle(t)}</b><p style="margin:3px 0 0;color:var(--muted)">${esc(t.issue)}</p><div class="meta">${badge(t.id,'purple')}</div></td><td>${esc(t.channel)}</td><td>${esc(t.due||'未設定')}</td><td>${t.did?badge(t.did,'green'):badge('未記入','amber')}</td><td>${flags(t.check)||badge('OK','green')}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">該当なし</td></tr>';
+ let rows=DATA.threads.filter(t=>filter==='all'||(filter==='transfer'?t.state==='決定'&&!t.did:filter==='deferred'?isDeferred(t):['審議中','会議送り','保留'].includes(t.state)));
+ $('threadRows').innerHTML=rows.map(t=>`<tr class="${threadRowClass(t)}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${threadTitle(t)}</b><p style="margin:3px 0 0;color:var(--muted)">${esc(t.issue)}</p><div class="meta">${badge(t.id,'purple')}${deferMeta(t)}</div></td><td>${esc(t.channel)}</td><td>${esc(t.due||'未設定')}</td><td>${t.did?badge(t.did,'green'):badge('未記入','amber')}</td><td>${flags(t.check)||badge('OK','green')}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">該当なし</td></tr>';
 }
 function renderDecisionRows(){
  $('decisionRows').innerHTML=DATA.decisions.map(d=>`<tr><td>${esc(d.id)}</td><td>${esc(d.date)}</td><td>${esc(d.cat)}</td><td><b>${esc(d.title)}</b></td><td>${esc(d.body)}</td><td>${badge(d.src,d.src==='スレッド'?'purple':'blue')}</td><td>${badge(d.state,'green')}</td></tr>`).join('');
@@ -435,8 +726,9 @@ function renderSearch(){
  const q=$('globalSearch').value.trim(); const scope=$('searchScope').value;
  const pool=[];
  if(scope==='all'||scope==='minutes') DATA.minutes.forEach(m=>m.sections.forEach(s=>pool.push({kind:'議事録',title:m.title,text:[m.date,m.file,...s].join(' ')})));
- if(scope==='all'||scope==='tasks') DATA.tasks.forEach(t=>pool.push({kind:'タスク',title:t.name,text:Object.values(t).join(' ')}));
- if(scope==='all'||scope==='threads') DATA.threads.forEach(t=>pool.push({kind:'スレッド',title:t.subject,text:Object.values(t).join(' ')}));
+ const actionSearchText=item=>[...Object.values(item),item.priorityClass,item.deferReason,item.reviewDate,item.reopenCondition,item.reviewAction].filter(Boolean).join(' ');
+ if(scope==='all'||scope==='tasks') DATA.tasks.forEach(t=>pool.push({kind:'タスク',title:t.name,text:actionSearchText(t)}));
+ if(scope==='all'||scope==='threads') DATA.threads.forEach(t=>pool.push({kind:'スレッド',title:t.subject,text:actionSearchText(t)}));
  if(scope==='all'||scope==='decisions') DATA.decisions.forEach(d=>pool.push({kind:'決定',title:d.title,text:Object.values(d).join(' ')}));
  const hits=pool.filter(x=>!q||x.text.includes(q)); const mark=s=>q?esc(s).replaceAll(q,`<span class="highlight">${esc(q)}</span>`):esc(s);
  $('searchResults').innerHTML=hits.map(h=>`<div class="item"><div class="score">${esc(h.kind[0])}</div><div><h4>${mark(h.title)}</h4><p>${mark(h.text).slice(0,220)}${h.text.length>220?'…':''}</p><div class="meta">${badge(h.kind)}</div></div></div>`).join('')||'<div class="empty">該当なし</div>';
@@ -444,7 +736,7 @@ function renderSearch(){
 document.addEventListener('click',e=>{const b=e.target.closest('.toolbar button'); if(!b)return; b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); if(b.dataset.today)renderToday(b.dataset.today); if(b.dataset.task)renderTaskRows(b.dataset.task); if(b.dataset.thread)renderThreadRows(b.dataset.thread);});
 $('globalSearch').addEventListener('input',()=>{if(current!=='search')setSection('search'); else renderSearch()});
 $('searchScope').addEventListener('change',renderSearch);
-bootNav(); renderKPIs(); renderToday(); renderMinutes(); renderTaskRows(); renderThreadRows(); renderDecisionRows();
+bootNav(); renderKPIs(); renderToday(); renderDeferred(); renderMinutes(); renderTaskRows(); renderThreadRows(); renderDecisionRows();
 </script>
 </body>
 </html>
