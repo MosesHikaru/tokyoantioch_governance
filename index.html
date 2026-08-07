@@ -1,974 +1,446 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ハラスメント対応規程案の概要</title>
-  <style>
-    :root {
-      --key: #4790f6;
-      --key-dark: #1d66cf;
-      --ink: #172033;
-      --muted: #637083;
-      --line: #dbe4f1;
-      --soft: #f4f8fe;
-      --white: #ffffff;
-      --green: #2f9e6d;
-      --amber: #c77900;
-      --red: #d64545;
-      --violet: #7156d9;
-      --shadow: 0 18px 50px rgba(30, 64, 112, .13);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Segoe UI", sans-serif;
-      line-height: 1.75;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(71, 144, 246, .18), transparent 34%),
-        linear-gradient(180deg, #f7fbff 0%, #ffffff 42%, #f6f9fd 100%);
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      min-height: 92vh;
-      display: grid;
-      align-items: center;
-      padding: 52px 0 26px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
-      gap: 28px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--key-dark);
-      font-weight: 700;
-      letter-spacing: .04em;
-      font-size: .9rem;
-      margin: 0 0 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 3px;
-      border-radius: 999px;
-      background: var(--key);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.15rem, 5vw, 4.8rem);
-      line-height: 1.08;
-      letter-spacing: 0;
-      color: #10213a;
-    }
-
-    .lead {
-      margin: 24px 0 0;
-      font-size: clamp(1rem, 1.7vw, 1.18rem);
-      color: #3d4c61;
-      max-width: 760px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .button {
-      border: 0;
-      border-radius: 8px;
-      padding: 12px 18px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-
-    .button.primary {
-      background: var(--key);
-      color: white;
-      box-shadow: 0 12px 28px rgba(71, 144, 246, .28);
-    }
-
-    .button.secondary {
-      background: white;
-      color: var(--key-dark);
-      border: 1px solid #c9defc;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .summary-panel {
-      background: rgba(255, 255, 255, .86);
-      border: 1px solid rgba(199, 218, 243, .9);
-      border-radius: 8px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel-title {
-      margin: 0 0 12px;
-      font-size: 1.1rem;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: #f7fbff;
-      border: 1px solid #dbe9fb;
-      border-radius: 8px;
-      padding: 14px;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--key-dark);
-      font-size: 1.45rem;
-      line-height: 1.1;
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: .88rem;
-      margin-top: 4px;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, .88);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 10px 0;
-    }
-
-    .nav-inner a {
-      flex: 0 0 auto;
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: #3d4c61;
-      text-decoration: none;
-      font-size: .92rem;
-      font-weight: 700;
-    }
-
-    .nav-inner a:hover {
-      background: var(--soft);
-      color: var(--key-dark);
-    }
-
-    section {
-      padding: 68px 0;
-      scroll-margin-top: 74px;
-    }
-
-    .section-head {
-      display: flex;
-      gap: 22px;
-      align-items: end;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(1.55rem, 3vw, 2.35rem);
-      line-height: 1.25;
-    }
-
-    .section-head p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      max-width: 680px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: #e7f1ff;
-      color: var(--key-dark);
-      font-size: .86rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
-      box-shadow: 0 10px 26px rgba(26, 54, 93, .07);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-      line-height: 1.4;
-    }
-
-    .card p {
-      margin: 0;
-      color: #4c5b70;
-      font-size: .96rem;
-    }
-
-    .number {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      display: inline-grid;
-      place-items: center;
-      background: var(--key);
-      color: white;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .tabs {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .tab-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--line);
-      background: #f6f9fe;
-    }
-
-    .tab-button {
-      border: 0;
-      padding: 16px 12px;
-      background: transparent;
-      font: inherit;
-      font-weight: 800;
-      color: #516073;
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-    }
-
-    .tab-button[aria-selected="true"] {
-      color: var(--key-dark);
-      background: white;
-      border-bottom-color: var(--key);
-    }
-
-    .tab-panel {
-      display: none;
-      padding: 26px;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    .check-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .check-list li {
-      position: relative;
-      padding-left: 30px;
-      color: #3e4e63;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--key-dark);
-      font-weight: 900;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
-
-    th, td {
-      padding: 15px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid var(--line);
-    }
-
-    th {
-      background: #edf5ff;
-      color: #19365c;
-      font-size: .92rem;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .level-pill {
-      display: inline-flex;
-      min-width: 50px;
-      justify-content: center;
-      padding: 5px 9px;
-      border-radius: 999px;
-      color: white;
-      font-weight: 900;
-      font-size: .86rem;
-    }
-
-    .l1 { background: var(--green); }
-    .l2 { background: var(--key); }
-    .l3 { background: var(--amber); }
-    .l4 { background: var(--red); }
-
-    .risk-tool {
-      background: #10213a;
-      color: white;
-      border-radius: 8px;
-      padding: 24px;
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: 24px;
-      align-items: center;
-    }
-
-    .risk-tool h3 {
-      margin: 0 0 8px;
-      font-size: 1.28rem;
-    }
-
-    .risk-tool p {
-      margin: 0;
-      color: #cfddf3;
-    }
-
-    .slider-wrap {
-      background: rgba(255, 255, 255, .09);
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 8px;
-      padding: 18px;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--key);
-    }
-
-    .risk-output {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      margin-top: 14px;
-    }
-
-    .risk-output strong {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .flow-step {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-      min-height: 150px;
-      position: relative;
-    }
-
-    .flow-step::after {
-      content: "";
-      position: absolute;
-      right: -9px;
-      top: 36px;
-      width: 14px;
-      height: 14px;
-      border-top: 2px solid var(--key);
-      border-right: 2px solid var(--key);
-      transform: rotate(45deg);
-      background: transparent;
-    }
-
-    .flow-step:last-child::after {
-      display: none;
-    }
-
-    .flow-step b {
-      display: block;
-      color: var(--key-dark);
-      margin-bottom: 8px;
-    }
-
-    .flow-step span {
-      display: block;
-      color: #526177;
-      font-size: .9rem;
-      line-height: 1.6;
-    }
-
-    .quote {
-      background: #fff;
-      border-left: 6px solid var(--key);
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 10px 26px rgba(26, 54, 93, .08);
-      font-size: 1.07rem;
-    }
-
-    .quote p {
-      margin: 0 0 14px;
-    }
-
-    .quote p:last-child {
-      margin-bottom: 0;
-    }
-
-    .policy-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .policy-list li {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 15px 16px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      flex: 0 0 auto;
-      margin-top: 10px;
-      border-radius: 50%;
-      background: var(--key);
-    }
-
-    footer {
-      padding: 44px 0 58px;
-      color: var(--muted);
-      text-align: center;
-      font-size: .92rem;
-    }
-
-    @media (max-width: 920px) {
-      .hero-grid,
-      .split,
-      .risk-tool {
-        grid-template-columns: 1fr;
-      }
-
-      .card-grid,
-      .policy-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .flow {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .flow-step::after {
-        display: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page,
-      .nav-inner {
-        width: min(100% - 22px, 1120px);
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 38px;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .badge {
-        margin-top: 12px;
-      }
-
-      .card-grid,
-      .policy-list,
-      .stat-grid,
-      .flow {
-        grid-template-columns: 1fr;
-      }
-
-      .tab-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      th, td {
-        padding: 12px;
-        font-size: .9rem;
-      }
-    }
-
-    @media print {
-      nav,
-      .hero-actions,
-      .risk-tool {
-        display: none;
-      }
-
-      body {
-        background: white;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      section {
-        padding: 28px 0;
-      }
-
-      .card,
-      .summary-panel,
-      .tabs,
-      .quote {
-        box-shadow: none;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>四人委員会 統合管理ハブ</title>
+<style>
+:root{
+  --bg:#f4f7fb;
+  --panel:#ffffff;
+  --panel2:#f9fbfd;
+  --ink:#17202a;
+  --muted:#667085;
+  --line:#dce3ec;
+  --navy:#1f4e70;
+  --blue:#2f6f9f;
+  --green:#2f855a;
+  --red:#c0392b;
+  --amber:#b7791f;
+  --purple:#6b5b95;
+  --gray:#718096;
+  --shadow:0 10px 26px rgba(20,45,70,.10);
+  --radius:18px;
+  --bottom-safe:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.7}
+button,input,select{font-family:inherit}
+a{color:inherit}
+.app{min-height:100vh;display:grid;grid-template-columns:278px 1fr}
+.sidebar{height:100vh;position:sticky;top:0;background:#143852;color:#eaf4ff;padding:18px 15px;display:flex;flex-direction:column;gap:14px}
+.brand{display:flex;gap:10px;align-items:center;padding:6px 5px 16px;border-bottom:1px solid rgba(255,255,255,.14)}
+.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#89c7e8,#fff);display:grid;place-items:center;color:#123850;font-weight:800;letter-spacing:.02em}
+.brand h1{font-size:16px;margin:0;line-height:1.25}.brand small{display:block;font-size:11px;color:#b9d0e2;font-weight:400;margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:6px}.nav button{border:0;background:transparent;color:#cfe3f3;text-align:left;padding:12px 12px;border-radius:13px;cursor:pointer;font-size:14px;display:flex;align-items:center;gap:10px}.nav button.active{background:rgba(255,255,255,.14);color:#fff;font-weight:700}.nav span.icon{width:24px;text-align:center}
+.sidebar-footer{margin-top:auto;font-size:11px;color:#b9d0e2;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+.main{min-width:0;padding:22px 24px 82px}.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}.title h2{font-size:22px;margin:0}.title p{margin:4px 0 0;color:var(--muted);font-size:12px}.search{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 13px;display:flex;align-items:center;gap:8px;min-width:330px;box-shadow:0 3px 10px rgba(30,60,90,.05)}.search input{border:0;outline:0;background:transparent;width:100%;font-size:14px}
+.section{display:none}.section.active{display:block}.grid{display:grid;gap:14px}.kpi-grid{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card.pad{padding:16px}.card h3{font-size:15px;margin:0 0 12px}.kpi{padding:15px;min-height:96px}.kpi .num{font-size:27px;font-weight:800;line-height:1}.kpi .label{font-size:12px;color:var(--muted);margin-top:7px}.kpi .sub{font-size:11px;color:#98a2b3;margin-top:7px}.kpi.red .num{color:var(--red)}.kpi.amber .num{color:var(--amber)}.kpi.green .num{color:var(--green)}.kpi.blue .num{color:var(--blue)}
+.layout{grid-template-columns:1.35fr .78fr}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.toolbar button,.toolbar select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.toolbar button.active{background:#eaf3fb;color:#1f5b84;border-color:#a9cde5;font-weight:700}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:11px;background:#eef2f7;color:#344054;white-space:nowrap}.pill.red{background:#fff0ee;color:var(--red)}.pill.amber{background:#fff7e6;color:var(--amber)}.pill.green{background:#eaf8f0;color:var(--green)}.pill.blue{background:#eaf3fb;color:var(--blue)}.pill.purple{background:#f1eff8;color:var(--purple)}.pill.gray{background:#f2f4f7;color:#667085}
+.list{display:flex;flex-direction:column;gap:9px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px}.score{width:40px;height:40px;border-radius:14px;background:#eef5fb;color:#24587d;display:grid;place-items:center;font-weight:800}.item h4{font-size:14px;margin:0}.item p{margin:3px 0 0;color:var(--muted);font-size:12px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.right{text-align:right}.btn{border:0;background:#24587d;color:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.btn.ghost{background:#eef2f7;color:#344054}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f6fa;color:#475467;font-size:12px;position:sticky;top:0;z-index:1}td{font-size:13px}.row-red td{background:#fff4f2}.row-amber td{background:#fff9e8}.row-green td{background:#f1fbf5}.row-gray td{color:#8a9099;background:#f8f9fb}
+.reader{display:grid;grid-template-columns:minmax(210px,260px) minmax(0,860px);gap:20px;align-items:start;justify-content:center}.timeline{position:sticky;top:22px;max-height:calc(100vh - 44px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}.timecard{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:12px;cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.timecard:hover{border-color:#a9cde5;transform:translateY(-1px)}.timecard.active{border-color:#5ea6d2;background:#eaf5fc;box-shadow:inset 4px 0 #2f6f9f}.timecard b{font-size:13px}.timecard small{display:block;color:var(--muted);font-size:11px;margin-top:3px;overflow-wrap:anywhere}.doc{width:100%;max-width:860px;padding:clamp(22px,3vw,38px);overflow:visible}.doc h3{font-size:22px;line-height:1.4;margin:0}.doc .caption{font-size:12px;color:var(--muted);margin:6px 0 22px;padding-bottom:15px;border-bottom:1px solid var(--line)}.minute-section{margin:0 0 18px;border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden}.minute-section h4{margin:0;padding:12px 16px;border-left:5px solid var(--blue);background:#f4f8fc;font-size:15px;line-height:1.45}.minute-section.decision h4{border-left-color:var(--green);background:#f0f9f4}.minute-section.pending h4{border-left-color:var(--amber);background:#fff8ea}.minute-section.taskh h4{border-left-color:var(--blue);background:#eef6fc}.minute-section.warning h4{border-left-color:var(--red);background:#fff3f1}.minute-body{padding:16px 18px 18px;color:#25313d}.minute-body p{margin:0 0 .85em;line-height:1.95}.minute-body p:last-child{margin-bottom:0}.minute-subhead{margin:18px 0 9px;padding:8px 11px;border-left:3px solid #8fb9d5;background:#f7fafc;border-radius:0 9px 9px 0;font-weight:700;color:#244e6c}.minute-subhead:first-child{margin-top:0}.minute-list-row{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;margin:7px 0;line-height:1.8}.minute-marker{width:22px;height:22px;border-radius:7px;background:#eaf3fb;color:#24587d;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}.minute-note{margin:10px 0;padding:10px 12px;border-radius:10px;background:#fff9e8;color:#76571d}.minute-rule{border:0;border-top:1px dashed var(--line);margin:16px 0}.minute-tablewrap{overflow:auto;margin:13px 0;border:1px solid var(--line);border-radius:11px}.minute-table{min-width:620px}.minute-table th,.minute-table td{padding:8px 10px;font-size:12px;line-height:1.55}.minute-table th{position:static;background:#edf3f8}.minute-empty{padding:34px 18px;text-align:center;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}
+.mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.mobilebar button{border:0;background:transparent;border-radius:12px;padding:8px 4px;font-size:11px;color:#667085}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.fab{display:none;position:fixed;right:18px;bottom:84px;border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);z-index:90}
+@media(max-width:1180px){.app{grid-template-columns:236px 1fr}.kpi-grid{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.reader{grid-template-columns:220px 1fr}.search{min-width:260px}}
+@media(max-width:760px){body{font-size:13px}.app{display:block}.sidebar{display:none}.main{padding:14px 12px 90px}.topbar{display:block}.title h2{font-size:18px}.search{min-width:0;width:100%;border-radius:14px;margin-top:10px}.kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}.kpi{padding:13px;min-height:84px}.kpi .num{font-size:23px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);grid-template-columns:none;overflow:auto;margin-bottom:12px;padding:0 0 5px}.timecard{min-width:150px}.doc{padding:18px 14px}.doc h3{font-size:19px}.minute-body{padding:14px}.minute-section h4{padding:11px 13px}.minute-table{min-width:560px}.item{grid-template-columns:1fr;gap:8px}.score{width:auto;height:auto;display:inline-flex;padding:4px 9px;border-radius:999px}.right{text-align:left}.toolbar{flex-wrap:nowrap;overflow:auto}.toolbar button,.toolbar select{white-space:nowrap}.flow{grid-template-columns:1fr}.tablewrap table{min-width:720px}th,td{padding:9px}.mobilebar,.fab{display:block}.card{border-radius:16px}}
+@media(max-width:420px){.kpi-grid{grid-template-columns:1fr 1fr}.pill{font-size:10px}.item h4{font-size:13px}.minute-list-row{grid-template-columns:22px minmax(0,1fr)}.minute-body p{line-height:1.85}}
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="page hero-grid">
-      <div>
-        <p class="eyebrow">東京アンテオケ教会 提案資料</p>
-        <h1>ハラスメント対応規程案の概要</h1>
-        <p class="lead">
-          教会に関わるすべての人が、安心して礼拝・奉仕・学び・交わりに関われる環境を整えるための規程案です。
-          相談者を保護し、被申告者の名誉と手続上の権利にも配慮しながら、公正で記録に基づく対応を行うことを目的とします。
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#points">主なポイントを見る</a>
-          <a class="button secondary" href="#short">短い説明文へ</a>
-        </div>
-      </div>
-
-      <aside class="summary-panel" aria-label="概要サマリー">
-        <h2 class="panel-title">規程案が目指すこと</h2>
-        <p>
-          問題が起きた時だけの対応ではなく、未然防止、相談しやすい体制、公正な調査、
-          情報保護、再発防止までを一体として整えます。
-        </p>
-        <div class="stat-grid">
-          <div class="stat"><strong>3</strong><span>明確化するハラスメント類型</span></div>
-          <div class="stat"><strong>4</strong><span>相談内容の重大性レベル</span></div>
-          <div class="stat"><strong>10</strong><span>提案時の主要ポイント</span></div>
-          <div class="stat"><strong>1</strong><span>教会全体の安全文化</span></div>
-        </div>
-      </aside>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">4PC</div><div><h1>統合管理ハブ<small>議事録・タスク・スレッド・決定</small></h1></div></div>
+    <nav class="nav" id="desktopNav"></nav>
+    <div class="sidebar-footer">四人委員会限定・部外秘<br>Word / Excel が原本。HTMLは閲覧専用。</div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div class="title"><h2 id="pageTitle">ダッシュボード</h2><p>Word議事録・各Excel台帳から生成した閲覧専用画面です。</p></div>
+      <label class="search"><span>🔎</span><input id="globalSearch" placeholder="横断検索：例）確認待ち / Gifts / Word原本"></label>
     </div>
-  </header>
 
-  <nav aria-label="ページ内ナビゲーション">
-    <div class="nav-inner">
-      <a href="#overview">概要</a>
-      <a href="#definitions">定義</a>
-      <a href="#points">主なポイント</a>
-      <a href="#levels">重大性レベル</a>
-      <a href="#flow">対応の流れ</a>
-      <a href="#purpose">提案の趣旨</a>
-      <a href="#short">短い説明</a>
-    </div>
-  </nav>
-
-  <main>
-    <section id="overview">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>概要説明</h2>
-            <p>この規程案は、教会の関係者が安全と信頼の中で関わるための手続を明確にするものです。</p>
-          </div>
-          <span class="badge">未然防止と公正対応</span>
+    <section id="dashboard" class="section active">
+      <div class="grid kpi-grid" id="kpis"></div>
+      <div class="grid layout">
+        <div class="card pad">
+          <h3>今日見るべきもの</h3>
+          <div class="toolbar"><button class="active" data-today="all">すべて</button><button data-today="danger">要対応</button><button data-today="task">タスク</button><button data-today="thread">スレッド</button></div>
+          <div class="list" id="todayList"></div>
         </div>
-        <div class="quote">
-          <p>
-            今回の規程案は、牧師・伝道師・スタッフ・奉仕者・セミナリー生をはじめ、教会に関わるすべての人が、
-            安心して礼拝・奉仕・学び・交わりに関わることができる環境を整えるためのものです。
-          </p>
-          <p>
-            単に「問題が起きた時に対応するための規程」ではなく、ハラスメントを未然に防ぎ、相談しやすい体制をつくり、
-            相談があった場合には、相談者を保護しつつ、被申告者の名誉や手続上の権利にも配慮しながら、公正に対応します。
-          </p>
+        <div class="card pad">
+          <h3>運用の役割分担</h3>
+          <div class="flow">
+            <div><b>Teams</b><span>議論・合意形成。1議題1スレッド。</span></div>
+            <div><b>Word</b><span>議事録・決定要約の原本。</span></div>
+            <div><b>Excel</b><span>決定・スレッド・タスクの台帳。</span></div>
+            <div><b>HTML</b><span>閲覧・検索・チェック専用。</span></div>
+          </div>
+          <div class="note" style="margin-top:14px">完了報告は「完了」ではなく「確認待ち」。確認者が完了根拠リンクを確認して、はじめて完了です。</div>
         </div>
       </div>
     </section>
 
-    <section id="definitions">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>教会における定義の整理</h2>
-            <p>一般的な職場上の課題に加え、牧会・奉仕・霊的指導に関わる領域も明確化します。</p>
-          </div>
-          <span class="badge">線引きを明記</span>
-        </div>
-
-        <div class="tabs">
-          <div class="tab-list" role="tablist" aria-label="ハラスメント類型">
-            <button class="tab-button" role="tab" aria-selected="true" aria-controls="tab-power" id="btn-power">パワー</button>
-            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-sexual" id="btn-sexual">セクシャル</button>
-            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-spiritual" id="btn-spiritual">霊的</button>
-            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-guidance" id="btn-guidance">正当な指導</button>
-          </div>
-
-          <article class="tab-panel active" role="tabpanel" id="tab-power" aria-labelledby="btn-power">
-            <div class="split">
-              <div>
-                <h3>パワーハラスメント</h3>
-                <p>立場や権限を背景に、相手の人格や尊厳を傷つけ、奉仕・学び・交わりへの参加を困難にする言動を想定します。</p>
-              </div>
-              <ul class="check-list">
-                <li>権威を背景にした過度な叱責や圧力</li>
-                <li>奉仕配置や関係性を利用した不利益取扱い</li>
-                <li>人格否定、孤立化、継続的な威圧</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="tab-panel" role="tabpanel" id="tab-sexual" aria-labelledby="btn-sexual">
-            <div class="split">
-              <div>
-                <h3>セクシャルハラスメント</h3>
-                <p>性的な言動、身体接触、性的被害、未成年者が関係する案件などは、慎重かつ迅速な対応が必要です。</p>
-              </div>
-              <ul class="check-list">
-                <li>望まない性的言動や接触</li>
-                <li>性的被害に関する相談や報告</li>
-                <li>未成年者が関係する可能性のある事案</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="tab-panel" role="tabpanel" id="tab-spiritual" aria-labelledby="btn-spiritual">
-            <div class="split">
-              <div>
-                <h3>霊的ハラスメント</h3>
-                <p>牧会、奉仕、霊的指導、預言、示し、信仰上の助言などが、不適切な支配や圧力として用いられる場合を明確に扱います。</p>
-              </div>
-              <ul class="check-list">
-                <li>「赦すべき」「信仰が足りない」等による沈黙の強要</li>
-                <li>霊的権威を用いた威圧や服従要求</li>
-                <li>相談者への霊的非難や二次加害</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="tab-panel" role="tabpanel" id="tab-guidance" aria-labelledby="btn-guidance">
-            <div class="split">
-              <div>
-                <h3>正当な牧会指導との区別</h3>
-                <p>正当な牧会指導、聖書的教え、奉仕上必要な注意や助言までが、安易にハラスメントと扱われないようにします。</p>
-              </div>
-              <ul class="check-list">
-                <li>目的、必要性、相当性を確認する</li>
-                <li>人格否定や支配ではなく、成長と安全に資するかを見る</li>
-                <li>不適切な圧力や孤立化との線引きを明記する</li>
-              </ul>
-            </div>
-          </article>
-        </div>
+    <section id="minutes" class="section">
+      <div class="reader">
+        <div class="timeline" id="minuteNav"></div>
+        <article class="card doc" id="minuteDoc"></article>
       </div>
     </section>
 
-    <section id="points">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>この規程案の主なポイント</h2>
-            <p>相談受付から再発防止まで、属人的な判断に頼らない仕組みを整えます。</p>
-          </div>
-          <span class="badge">10の柱</span>
-        </div>
-
-        <div class="card-grid">
-          <article class="card"><span class="number">1</span><h3>相談しやすい受付体制</h3><p>指定窓口担当牧師夫妻を正式窓口とし、牧師・伝道師が相談を受けた場合も所定手順で正式対応へ移送します。</p></article>
-          <article class="card"><span class="number">2</span><h3>相談者・報告者を守る</h3><p>相談、報告、調査協力を理由とする報復、威圧、霊的非難、奉仕上の不利益、二次加害を禁止します。</p></article>
-          <article class="card"><span class="number">3</span><h3>被申告者の名誉と手続</h3><p>調査前の一方的な断罪を避け、必要に応じて事実確認や弁明の機会を設けます。</p></article>
-          <article class="card"><span class="number">4</span><h3>重大案件への対応</h3><p>未成年者、性的被害、身体的危害、自傷他害リスク、犯罪や法的紛争の可能性に応じて外部連携を検討します。</p></article>
-          <article class="card"><span class="number">5</span><h3>調査中の安全確保</h3><p>接触禁止、奉仕配置の一時変更、面談や指導からの一時離脱などの暫定措置を可能にします。</p></article>
-          <article class="card"><span class="number">6</span><h3>中立性の確保</h3><p>対応者に近接関係や利害関係がある場合は案件から離脱し、必要に応じて特別対応体制を設けます。</p></article>
-          <article class="card"><span class="number">7</span><h3>記録管理と漏えい防止</h3><p>専用SharePointライブラリ等で管理し、整理番号、台帳分離、閲覧権限、アクセスログで情報を守ります。</p></article>
-          <article class="card"><span class="number">8</span><h3>証跡と控えを分離</h3><p>報告者には提出証跡を発行し、機微情報は載せません。相談者控えは希望時のみ安全確認の上で交付します。</p></article>
-          <article class="card"><span class="number">9</span><h3>責任役員会への報告範囲</h3><p>通常案件は件数や運用状況を中心に報告し、重大案件のみ必要最小限で個別報告します。</p></article>
-          <article class="card"><span class="number">10</span><h3>再発防止と研修</h3><p>研修、霊的ハラスメント教育、未成年者対応、面談や連絡ルール、奉仕配置の見直しを進めます。</p></article>
-        </div>
+    <section id="tasks" class="section">
+      <div class="card pad">
+        <h3>タスク管理</h3>
+        <div class="toolbar"><button class="active" data-task="open">未完了</button><button data-task="waiting">確認待ち</button><button data-task="danger">要是正</button><button data-task="all">すべて</button></div>
+        <div class="tablewrap"><table><thead><tr><th>状態</th><th>タスク</th><th>実行者</th><th>確認者</th><th>期限</th><th>完了判定</th><th>チェック</th></tr></thead><tbody id="taskRows"></tbody></table></div>
       </div>
     </section>
 
-    <section id="levels">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>重大性レベルの整理</h2>
-            <p>相談内容をL1からL4までに分類し、内容に応じた慎重さと迅速さで対応します。</p>
-          </div>
-          <span class="badge">L1-L4</span>
-        </div>
-
-        <table>
-          <thead>
-            <tr>
-              <th>レベル</th>
-              <th>想定される内容</th>
-              <th>対応の方向性</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="level-pill l1">L1</span></td>
-              <td>軽微な違和感、単発の行き違い、初期相談</td>
-              <td>助言、整理、注意喚起、記録化を中心に対応します。</td>
-            </tr>
-            <tr>
-              <td><span class="level-pill l2">L2</span></td>
-              <td>継続的な言動、奉仕や関係性への影響が見られるもの</td>
-              <td>事実確認、関係調整、必要な是正、再発防止を検討します。</td>
-            </tr>
-            <tr>
-              <td><span class="level-pill l3">L3</span></td>
-              <td>権威を背景とした圧力、性的言動、身体接触、重大な二次加害</td>
-              <td>暫定措置、慎重な調査、専門家相談を含めて対応します。</td>
-            </tr>
-            <tr>
-              <td><span class="level-pill l4">L4</span></td>
-              <td>未成年者、性的被害、身体的危害、自傷他害、犯罪・法的紛争の可能性</td>
-              <td>内部だけで抱え込まず、弁護士、専門機関、警察、児童相談所等への接続を検討します。</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="risk-tool" style="margin-top: 18px;">
-          <div>
-            <h3>説明用レベル確認スライダー</h3>
-            <p>会議で説明する際に、重大性に応じて対応が変わることを視覚的に示せます。</p>
-          </div>
-          <div class="slider-wrap">
-            <label for="levelRange">重大性レベル</label>
-            <input id="levelRange" type="range" min="1" max="4" value="2">
-            <div class="risk-output">
-              <strong id="levelLabel">L2</strong>
-              <span id="levelText">事実確認と是正を検討する段階です。</span>
-            </div>
-          </div>
-        </div>
+    <section id="threads" class="section">
+      <div class="card pad">
+        <h3>スレッド管理</h3>
+        <div class="toolbar"><button class="active" data-thread="open">進行中</button><button data-thread="transfer">未転記</button><button data-thread="all">すべて</button></div>
+        <div class="tablewrap"><table><thead><tr><th>状態</th><th>件名・論点</th><th>チャネル</th><th>期限目安</th><th>決定ID</th><th>チェック</th></tr></thead><tbody id="threadRows"></tbody></table></div>
       </div>
     </section>
 
-    <section id="flow">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>対応の流れ</h2>
-            <p>相談、記録、調査、判断、是正、報告を明確にし、個人的判断だけに依存しない体制にします。</p>
-          </div>
-          <span class="badge">記録に基づく対応</span>
-        </div>
-
-        <div class="flow" aria-label="対応フロー">
-          <div class="flow-step"><b>1. 相談受付</b><span>正式窓口または牧師・伝道師が相談を受け、手順に従って移送します。</span></div>
-          <div class="flow-step"><b>2. 記録化</b><span>必要最小限の情報を整理し、専用領域で安全に管理します。</span></div>
-          <div class="flow-step"><b>3. 初期評価</b><span>L1からL4に分類し、緊急性と外部連携の要否を確認します。</span></div>
-          <div class="flow-step"><b>4. 暫定措置</b><span>接触禁止や奉仕配置の一時変更など、安全確保を行います。</span></div>
-          <div class="flow-step"><b>5. 調査・判断</b><span>相談者保護と被申告者の手続上の権利を両立させます。</span></div>
-          <div class="flow-step"><b>6. 是正・報告</b><span>必要な是正、再発防止、責任役員会への適切な報告を行います。</span></div>
-        </div>
+    <section id="decisions" class="section">
+      <div class="card pad">
+        <h3>決定台帳</h3>
+        <div class="tablewrap"><table><thead><tr><th>決定ID</th><th>日付</th><th>区分</th><th>件名</th><th>決定内容</th><th>発生源</th><th>状態</th></tr></thead><tbody id="decisionRows"></tbody></table></div>
       </div>
     </section>
 
-    <section id="purpose">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>提案の趣旨</h2>
-            <p>この規程案は、誰かを疑うためではなく、教会が神の前に健全であるための制度です。</p>
-          </div>
-          <span class="badge">安全と信頼を守る</span>
-        </div>
-
-        <div class="split">
-          <div class="quote">
-            <p>
-              ハラスメント対応は、感情や人間関係だけで処理すると、相談者を傷つけ、被申告者の名誉を損ない、
-              教会全体の信頼を失う可能性があります。
-            </p>
-            <p>
-              そのため、相談者を守り、被申告者の手続上の権利にも配慮し、記録に基づいて中立的に対応することを基本方針とします。
-            </p>
-          </div>
-
-          <ul class="policy-list">
-            <li><span class="dot"></span><span>相談者を守ること</span></li>
-            <li><span class="dot"></span><span>被申告者の手続上の権利にも配慮すること</span></li>
-            <li><span class="dot"></span><span>記録に基づいて対応すること</span></li>
-            <li><span class="dot"></span><span>中立性を確保すること</span></li>
-            <li><span class="dot"></span><span>重大案件を内部だけで抱え込まないこと</span></li>
-            <li><span class="dot"></span><span>霊的言葉による二次加害を防ぐこと</span></li>
-            <li><span class="dot"></span><span>教会全体として再発防止に取り組むこと</span></li>
-          </ul>
-        </div>
+    <section id="search" class="section">
+      <div class="card pad">
+        <h3>横断検索</h3>
+        <div class="toolbar"><select id="searchScope"><option value="all">全体</option><option value="minutes">議事録</option><option value="tasks">タスク</option><option value="threads">スレッド</option><option value="decisions">決定台帳</option></select></div>
+        <div id="searchResults"></div>
       </div>
     </section>
 
-    <section id="short">
-      <div class="page">
-        <div class="section-head">
-          <div>
-            <h2>提案時の短い説明文</h2>
-            <p>会議などで口頭説明する場合に、そのまま読み上げられる要約です。</p>
-          </div>
-          <span class="badge">口頭説明用</span>
-        </div>
-
-        <div class="quote">
-          <p>
-            今回のハラスメント対応規程案は、教会に関わる方々が安心して礼拝・奉仕・学び・交わりに関われる環境を整えるためのものです。
-          </p>
-          <p>
-            特に、相談窓口、記録管理、調査、判断、是正、報告の流れを明確にし、相談者を守りつつ、被申告者の名誉や手続にも配慮する設計としています。
-          </p>
-          <p>
-            また、教会特有の課題として、霊的権威や信仰上の言葉が不適切に用いられる「霊的ハラスメント」についても定義し、正当な牧会指導との線引きを設けています。
-          </p>
-          <p>
-            重大案件、未成年者、性的被害、身体的危害などについては、内部だけで抱え込まず、必要に応じて外部専門家や関係機関と連携できる仕組みにしています。
-          </p>
-          <p>
-            この規程は、誰かを裁くためではなく、教会が健全に牧会と奉仕を行い、相談者・報告者・被申告者のいずれも不当に扱われないようにするための、教会全体の安全と信頼を守る制度です。
-          </p>
+    <section id="spec" class="section">
+      <div class="card pad">
+        <h3>運用上の前提</h3>
+        <ul>
+          <li>1つのHTMLで、議事録・タスク・スレッド・決定を閲覧します。</li>
+          <li>HTMLは表示専用で、原本はWordとExcelです。</li>
+          <li>人事・牧会案件は本HTMLに表示しません。</li>
+          <li>モバイルでは下部ナビを使い、まず「今日見るべきもの」だけに絞ります。</li>
+        </ul>
+        <h3>本番化するときの入力元</h3>
+        <div class="flow">
+          <div><b>議事録</b><span>Wordフォルダから本文・決定・タスクを抽出。</span></div>
+          <div><b>タスク</b><span>タスク管理台帳Excelを正とする。</span></div>
+          <div><b>スレッド</b><span>スレッド管理台帳Excelを正とする。</span></div>
+          <div><b>決定</b><span>決定事項台帳Excelを正とする。</span></div>
         </div>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="page">ハラスメント対応規程案 概要説明資料</div>
-  </footer>
-
-  <script>
-    const tabButtons = Array.from(document.querySelectorAll(".tab-button"));
-    const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        tabButtons.forEach((item) => item.setAttribute("aria-selected", "false"));
-        tabPanels.forEach((panel) => panel.classList.remove("active"));
-        button.setAttribute("aria-selected", "true");
-        document.getElementById(button.getAttribute("aria-controls")).classList.add("active");
-      });
-    });
-
-    const range = document.getElementById("levelRange");
-    const label = document.getElementById("levelLabel");
-    const text = document.getElementById("levelText");
-    const levelMessages = {
-      1: "助言、整理、注意喚起、記録化を中心に対応します。",
-      2: "事実確認と是正を検討する段階です。",
-      3: "暫定措置や専門家相談を含めて慎重に対応します。",
-      4: "外部専門家や関係機関との連携を検討します。"
-    };
-
-    range.addEventListener("input", () => {
-      label.textContent = `L${range.value}`;
-      text.textContent = levelMessages[range.value];
-    });
-  </script>
+</div>
+<div class="mobilebar"><div class="row" id="mobileNav"></div></div>
+<button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const DATA={
+  "minutes": [
+    {
+      "date": "2026/07/31",
+      "file": "260731_4PC_mtg.docx",
+      "title": "四人委員会 定例会議",
+      "sections": [
+        [
+          "会議概要",
+          "会議名 | 四人委員会（4PC）定例会議\n開催日時 | 2026年7月31日（金）\n開催形式 | Microsoft Teams\n参加者 | M.D.H.、A.、S.1、S.2\n欠席者 | 未確認\n作成日 | 2026年8月7日"
+        ],
+        [
+          "会議の目的",
+          "会計・運営体制の改善、新規参加者の受け取り体制強化、組織文化の見直し、情報共有体制の整備について協議する。"
+        ],
+        [
+          "主要論点",
+          "会計業務の属人化解消とAI活用\n新規参加者の受け取り体制構築\nオンライン・オフライン双方のコミュニティ形成\n組織文化の見直しと世代交代\n情報共有の一元化と週次更新体制"
+        ],
+        [
+          "決定事項",
+          "No | 区分 | 件名 | 決定内容\n1 | 体制 | 4人委員会判断体制 | 重要情報や課題は4人委員会で判断し、全体へ展開する。\n2 | 体制 | 週次情報更新 | 情報更新は週次で確認し、必要事項を各部署へ伝達する。\n3 | AI | 受け取り体制整備方針 | 受け取り体制の構築を進め、オンライン会員も含め検討する。"
+        ],
+        [
+          "継続検討事項",
+          "No | 件名 | 現状 | 次に必要なこと\n1 | 会計システム刷新 | 属人化が課題 | AI・システム導入案の具体化\n2 | 人材配置 | 役割分担を検討中 | 適任者配置案の整理\n3 | 申請承認フロー | 既存システムに限界 | 運用設計の検討\n4 | 各界接続運用 | 交流促進案を協議 | 実施方法の整理"
+        ],
+        [
+          "要確認事項",
+          "参加者・欠席者の正式記録\nAI利用料管理方法の詳細\n受け取り体制の最終運用案"
+        ],
+        [
+          "次回会議までの確認事項",
+          "受け取り体制の整理状況確認\nオンライン会員向け施策案確認\n情報共有運用の定着確認"
+        ],
+        [
+          "次回議題候補",
+          "会計システム改善計画\n受け取り体制実装\n組織文化改革と世代交代"
+        ],
+        [
+          "アクションアイテム",
+          "担当者 | 内容 | 期限 | 状態\nM.D.H.・S.1 | 受け取り体制の形を作成し共有 | 2026年11月 | 未着手\nS.1 | 毎週金曜の情報更新確認と共有 | 毎週 | 継続\nM.D.H. | オンライン会員向け受け取り体制提案 | 未設定 | 未着手\nM.D.H. | 各界接続準備と調整事項整理 | 未設定 | 未着手\nM.D.H. | 壁打ち結果をスレッド投稿 | 未設定 | 未着手"
+        ],
+        [
+          "AI判定で不確実な箇所",
+          "参加者氏名の正式表記は未確認\n決定事項と継続検討事項の境界に解釈を含む項目がある"
+        ]
+      ]
+    },
+    {
+      "date": "2026/07/10",
+      "file": "260710_4PC_mtg.docx",
+      "title": "四人委員会 定例会議",
+      "sections": [
+        [
+          "決定事項",
+          "1. 議事録は基本的にWord（ワード）形式で作成・保存する。後の編集・展開のしやすさを優先し、公式文書はExcelでは作成しない。\n2. ファイルは個人の端末に保存せず、協会の共有フォルダ（SharePoint）に保存する。ダウンロード禁止等の権限設定を検討する。\n3. 来週（7月17日週）は白馬讃美大会のため4PCミーティングは休会。次回は7月24日（金）16:50から。\n4. 議事録・タスク作成にAI（Copilot）を活用する。個人情報が学習に使われないよう設定を確認する。"
+        ],
+        [
+          "継続検討事項",
+          "1. イベント（讃美大会予選）登録の方法（3点チャート登録／グループ名か個人名か）を確認・整理する。\n2. AIツール利用に関する確定申告（青色申告）について、税理士等へ相談する。\n3. 理念文書の整備：主任牧師をイエス・キリストとする文言、サムエル記15章22節の聖句追加を検討する（木原牧師案をベースに継続検討）。\n4. フォルダ・ファイルの命名規則、保存先、閲覧・編集権限のルールを整える。\n5. 白馬讃美大会後の組織体制（白馬キャンプ組織と協会組織の整合・部門ごとのチャンネル）の整理。"
+        ],
+        [
+          "確認事項",
+          "・Peter Majikina（マジキナ牧師）の出席状況は要確認（録音上、発言未確認）。\n・SharePointへのアクセス可否：ChatGPTからは不可、Copilot（ブラウザ経由）からは可との認識。要確認。\n・イベント登録を個人名／グループ名のどちらで行うか、担当部門に要確認。\n・ヨセフ氏・ベリアミン氏のご結婚に対するお祝い（住所を確認のうえ送付予定）。"
+        ],
+        [
+          "タスク一覧",
+          "No. | 区分 | タスク内容 | 担当者 | 期限 | 状態\n1 | システム | 議事録・タスク一覧をWord/Excelで作成し、共有フォルダ（SharePoint）に保存。権限設定を検討 | Moses | 未設定 | 対応中\n2 | 会計 | AIツール利用に関する青色申告・確定申告を税理士等へ相談 | 未確認 | 年度内 | 未着手\n3 | ビジョン | 理念文書（主任牧師の文言・サムエル記15:22の追加）の整備 | 全員（木原牧師案ベース） | 未設定 | 対応中\n4 | 事務 | イベント（讃美大会予選）登録方法の確認（3点チャート／グループ名か個人名か） | Akimoto（要確認） | 未設定 | 未着手\n5 | 事務 | ヨセフ氏・ベリアミン氏へのご結婚祝いの送付（住所確認） | 全員 | 未設定 | 未着手\n6 | システム | フォルダ・ファイル命名規則と保存先・権限ルールの整理 | 全員 | 未設定 | 対応中\n7 | 牧会 | 白馬讃美大会後の組織体制（白馬キャンプ組織と協会組織の整合）の検討 | 全員 | 未設定 | 未着手"
+        ],
+        [
+          "次回までの確認ポイント",
+          "1. 議事録・タスク一覧のファイル作成フロー（Word保存・SharePoint保存）の運用確認\n2. 理念文書の文言案の共有・確定\n3. イベント登録方法の確認結果の共有\n4. 各タスクの進捗確認\n5. 次回開催：2026年7月24日（金）16:50〜"
+        ]
+      ]
+    },
+    {
+      "date": "2026/07/03",
+      "file": "260703_4PC_mtg.docx",
+      "title": "四人委員会 定例会議",
+      "sections": [
+        [
+          "決定事項",
+          "ファイルは原則としてネットワークストレージ（SharePoint 等）上に保存し、ローカル保存に依存しない運用を基本方針とする。\n権限付与はグループ単位を基本とし、個人単位（属人的）の管理を避ける設計とする。\nファイル／フォルダの所有者は、原則として作成者本人とする。\n最終的な報告・共有資料は PDF を基本とする方向で進める。\n情報共有は基本的にチャンネルを軸とし、継続性・複数人共有・ファイル保存が必要なものはチャンネル、一時的・速さ優先のものはチャットで対応する方向で認識を共有した（詳細ルールは継続検討）。\n※ 上記は本会議で共有・合意された方向性であり、細部の運用ルールは『継続検討事項』に含みます。"
+        ],
+        [
+          "継続検討事項",
+          "チャットとチャンネルの使い分けの詳細ルールの策定。\nファイル・フォルダの命名規則および構成（イベント別・年号別、番号付け、マークダウン形式等）。\nデータ・ファイルの削除ルール（保管年数・削除タイミング）。\n各部門ごとのフォルダ階層・運用ルールの設計（部門長間で決定）。\nAIツールの選定（Copilot／GPT／Gemini 等）および多言語発信・動画制作への活用可否。\n運用開始スケジュールの確定（11月運用開始を軸とするが、9月・8月等の案もあり要調整）。\n整理・管理を実際に実行する担当体制の決定。"
+        ],
+        [
+          "確認事項",
+          "満月祈祷会の自動投稿の可否・実施タイミング（前日／当日）。※要確認\nファイルが存在しない場合の各部門の対応方針。\n決済基準の詳細内容の確定と、決済完了後の検証。\n役割定義・権限委譲表の適用範囲。"
+        ],
+        [
+          "タスク一覧",
+          "会議中に明確に依頼・確認された事項を中心に整理しています。担当者・期限が明示されていないものは、未確認・未設定と記載しています。\nNo. | 区分 | タスク内容 | 担当者 | 期限 | 優先度 | 状況\n1 | 広報 | 理念・ビジョンの全体周知を実施 | 岩根星（要確認） | 2026-07-03（本日夜） | 高 | 対応中\n2 | システム | フォルダ管理・ファイル運用のマニュアル（やり方まとめ）を作成 | 未確認 | 未設定 | 中 | 未着手\n3 | 事務 | 各イベント・各部門のフォルダを責任者・スタッフ側で事前に用意 | 各部門責任者（要確認） | 未設定 | 中 | 未着手\n4 | 事務 | 役割定義書・権限委譲表・決済基準の整理（決済基準は決済完了後に検証） | 未確認 | 未設定 | 高 | 対応中\n5 | システム | チャットとチャンネルの使い分けルールを策定 | 未確認 | 未設定 | 中 | 未着手\n6 | 確認事項 | ファイルがない場合の対応方針を各部門で検討 | 各部門（要確認） | 未設定 | 中 | 未着手\n7 | 事務 | ファイル整理・管理を実際に実行する担当者を決定 | 未確認 | 未設定 | 高 | 未着手\n8 | 確認事項 | 満月祈祷会の自動投稿の可否・タイミング（前日／当日）を確認 | 未確認 | 未設定 | 中 | 未着手\n備考：確認候補（タスク化は保留）\nAIによる多言語発信・動画制作の活用（映像・音声の各国語翻訳・発信）。\nクラウドコード／API連携によるファイルの自動処理。\nAIツール（Copilot／GPT／Gemini）の選定。\n進学校（提案済み）での編集メンバー育成・アプリ作成。"
+        ],
+        [
+          "次回までの確認ポイント",
+          "運用開始スケジュール（11月／9月）の確定。\nファイル整理・管理の実行担当者の決定。\nチャット／チャンネルの使い分けルールの素案づくり。\n決済基準の内容確定。\n満月祈祷会の自動投稿タイミングの確認。\n各部門ごとのフォルダ構成・命名規則の素案。"
+        ]
+      ]
+    }
+  ],
+  "tasks": [],
+  "threads": [
+    {
+      "id": "T-202611-001",
+      "state": "審議中",
+      "subject": "Gifts・Presence登録問題",
+      "issue": "ifts・Presenceの位置付けや登録内容を確認するために複数回面談を依頼しましたが、応答なし。",
+      "channel": "運営実務",
+      "due": "",
+      "decision": "",
+      "did": "",
+      "check": "期限目安未設定",
+      "url": "https://teams.microsoft.com/l/message/19:3c0190e547a2449095d0a19bdbae0973@thread.tacv2/1785997454291?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1785997454291&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=03_%E9%81%8B%E5%96%B6%E5%AE%9F%E5%8B%99&createdTime=1785997454291",
+      "owner": "Moses DenishiHikaru",
+      "note": ""
+    },
+    {
+      "id": "T-202611-002",
+      "state": "審議中",
+      "subject": "新来会社者受付フォーム",
+      "issue": "新来会社受付フォームの作成・システム",
+      "channel": "21世紀型推進",
+      "due": "",
+      "decision": "",
+      "did": "",
+      "check": "期限目安未設定",
+      "url": "https://teams.microsoft.com/l/message/19:3c0190e547a2449095d0a19bdbae0973@thread.tacv2/1785997454291?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1785997454291&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=03_%E9%81%8B%E5%96%B6%E5%AE%9F%E5%8B%99&createdTime=1785997454291",
+      "owner": "Moses DenishiHikaru",
+      "note": ""
+    }
+  ],
+  "decisions": [
+    {
+      "id": "M-202611-001",
+      "date": "2026/11/07",
+      "cat": "AI",
+      "title": "議事録HTML化の仕様確定",
+      "body": "議事録はWordを原本とし、HTMLは閲覧専用として教会サーバーで展開する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "T-202611-001",
+      "date": "2026/11/10",
+      "cat": "体制",
+      "title": "定例会議の議題共有時期",
+      "body": "定例会議の議題および事前タスクは、木曜夜までに会議URLスレッドへ投稿する。",
+      "src": "スレッド",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-001",
+      "date": "2026/07/31",
+      "cat": "体制",
+      "title": "4人委員会判断体制",
+      "body": "重要情報や課題は4人委員会で判断し、全体へ展開する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-002",
+      "date": "2026/07/31",
+      "cat": "体制",
+      "title": "週次情報更新",
+      "body": "情報更新は週次で確認し、必要事項を各部署へ伝達する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    },
+    {
+      "id": "M-202611-003",
+      "date": "2026/07/31",
+      "cat": "AI",
+      "title": "受け取り体制整備方針",
+      "body": "受け取り体制の構築を進め、オンライン会員も含めて検討する。",
+      "src": "会議",
+      "state": "有効",
+      "sourceLink": "",
+      "oldId": ""
+    }
+  ]
+};
+const navs=[['dashboard','🏠','概要'],['minutes','📄','議事録'],['tasks','✅','タスク'],['threads','💬','スレッド'],['decisions','📌','決定'],['search','🔎','検索'],['spec','⚙️','仕様']];
+let current='dashboard', minuteIndex=0;
+const $=id=>document.getElementById(id);
+const esc=s=>(s??'').toString().replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function badge(text,cls=''){return `<span class="pill ${cls}">${esc(text)}</span>`}
+function stateClass(s){return s==='完了'||s==='決定'||s==='有効'?'green':s==='確認待ち'||s==='保留'?'amber':s==='会議送り'?'purple':s==='取り下げ'?'gray':s==='未着手'?'red':'blue'}
+function navHTML(mobile=false){return navs.slice(0,mobile?5:7).map(n=>`<button data-nav="${n[0]}" class="${n[0]===current?'active':''}"><span class="icon">${n[1]}</span>${n[2]}</button>`).join('')}
+function setSection(id){current=id;document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));$('pageTitle').textContent=navs.find(n=>n[0]===id)?.[2]||'概要'; if(id==='search') renderSearch(); window.scrollTo(0,0)}
+function bootNav(){ $('desktopNav').innerHTML=navHTML(false); $('mobileNav').innerHTML=navHTML(true); document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setSection(b.dataset.nav))); }
+function countTasks(pred){return DATA.tasks.filter(pred).length}
+function kpis(){
+ const unreleased=DATA.threads.filter(t=>t.state==='決定'&&!t.did).length;
+ const overdue=DATA.tasks.filter(t=>t.state!=='完了'&&t.state!=='取り下げ'&&t.check.includes('期限超過')).length;
+ const waiting=countTasks(t=>t.state==='確認待ち');
+ const open=countTasks(t=>t.state!=='完了'&&t.state!=='取り下げ');
+ const done=countTasks(t=>t.state==='完了');
+ const missing=countTasks(t=>t.check.includes('未設定')||t.check.includes('未記入'));
+ return [
+  {num:open,label:'未完了タスク',sub:'完了・取り下げ以外',cls:'red'},
+  {num:overdue,label:'期限超過',sub:'会議冒頭で確認',cls:'red'},
+  {num:waiting,label:'確認待ち',sub:'完了報告あり',cls:'amber'},
+  {num:unreleased,label:'決定台帳へ未転記',sub:'スレッド由来',cls:'amber'},
+  {num:done,label:'完了',sub:'確認済み',cls:'green'},
+  {num:missing,label:'記入漏れ',sub:'担当・期限・根拠など',cls:'blue'}
+ ];
+}
+function renderKPIs(){ $('kpis').innerHTML=kpis().map(k=>`<div class="card kpi ${k.cls}"><div class="num">${k.num}</div><div class="label">${k.label}</div><div class="sub">${k.sub}</div></div>`).join('') }
+function flags(str){return (str||'').split('/').map(x=>x.trim()).filter(Boolean).map(x=>badge(x,/超過|未設定|未記入|未転記/.test(x)?'red':'amber')).join('')}
+function taskItem(t){return `<div class="item"><div class="score">${t.prio}</div><div><h4>${esc(t.name)}</h4><p>${esc(t.owner||'実行者未設定')} / 期限 ${esc(t.due||'未設定')}</p><div class="meta">${badge(t.state,stateClass(t.state))}${badge(t.judge,stateClass(t.judge))}${flags(t.check)}${t.related?badge(t.related,'blue'):''}</div></div><div class="right"><button class="btn ghost" onclick="setSection('tasks')">開く</button></div></div>`}
+function threadItem(t){return `<div class="item"><div class="score">T</div><div><h4>${esc(t.subject)}</h4><p>${esc(t.issue)} / ${esc(t.channel)}</p><div class="meta">${badge(t.state,stateClass(t.state))}${t.did?badge(t.did,'green'):''}${flags(t.check)}</div></div><div class="right"><button class="btn ghost" onclick="setSection('threads')">開く</button></div></div>`}
+function renderToday(filter='all'){
+ let list=[];
+ if(['all','danger','task'].includes(filter)) list=list.concat(DATA.tasks.filter(t=>filter!=='danger'||t.check||t.state==='確認待ち').map(taskItem));
+ if(['all','danger','thread'].includes(filter)) list=list.concat(DATA.threads.filter(t=>filter!=='danger'||t.check||t.state==='会議送り').map(threadItem));
+ $('todayList').innerHTML=list.join('')||'<div class="empty">該当なし</div>';
+}
+function minuteSectionClass(title){return title.includes('決定')?'decision':title.includes('継続')?'pending':/(アクション|タスク)/.test(title)?'taskh':/(不確実|注意)/.test(title)?'warning':''}
+function minuteBodyHTML(body){
+ const lines=(body||'').split(/\r?\n/).map(line=>line.trim()).filter(Boolean),html=[];
+ let i=0;
+ while(i<lines.length){
+  const line=lines[i];
+  if(line.includes('|')){
+   const rows=[];
+   while(i<lines.length&&lines[i].includes('|')){const cells=lines[i].split(/\s*\|\s*/).map(cell=>cell.trim());if(rows.length&&cells.length!==rows[0].length)break;rows.push(cells);i++}
+   const head=rows.shift()||[];
+   html.push(`<div class="minute-tablewrap"><table class="minute-table"><thead><tr>${head.map(cell=>`<th>${esc(cell)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+   continue;
+  }
+  const dotted=line.match(/^(\d+(?:\.\d+)+)[.．]?\s*(.+)$/);
+  const numbered=line.match(/^(\d+)[.．)]\s*(.+)$/);
+  if(dotted||(numbered&&numbered[2].length<=30&&/(事項|一覧|ポイント|発信|共有|窓口|資料|概要|議題)/.test(numbered[2]))){
+   const match=dotted||numbered;
+   html.push(`<div class="minute-subhead"><span>${esc(match[1])}</span> ${esc(match[2])}</div>`);
+  }else if(numbered){
+   html.push(`<div class="minute-list-row"><span class="minute-marker">${esc(numbered[1])}</span><span>${esc(numbered[2])}</span></div>`);
+  }else if(/^[・●▪•]/.test(line)){
+   html.push(`<div class="minute-list-row"><span class="minute-marker">•</span><span>${esc(line.replace(/^[・●▪•]\s*/,''))}</span></div>`);
+  }else if(line.startsWith('■')){
+   html.push(`<div class="minute-subhead">${esc(line.replace(/^■\s*/,''))}</div>`);
+  }else if(line.startsWith('※')){
+   html.push(`<div class="minute-note">${esc(line)}</div>`);
+  }else if(/^以　?上$/.test(line)){
+   html.push('<hr class="minute-rule">');
+  }else{
+   html.push(`<p>${esc(line)}</p>`);
+  }
+  i++;
+ }
+ return html.join('');
+}
+function renderMinutes(){
+ if(!DATA.minutes.length){$('minuteNav').innerHTML='';$('minuteDoc').innerHTML='<div class="minute-empty">表示できる議事録はありません。</div>';return}
+ if(minuteIndex>=DATA.minutes.length)minuteIndex=0;
+ $('minuteNav').innerHTML=DATA.minutes.map((m,i)=>`<div class="timecard ${i===minuteIndex?'active':''}" onclick="minuteIndex=${i};renderMinutes()"><b>${esc(m.date||'日付未設定')}</b><small>${esc(m.file)}</small></div>`).join('');
+ const m=DATA.minutes[minuteIndex];
+ const sections=m.sections.map(([h,b])=>`<section class="minute-section ${minuteSectionClass(h)}"><h4>${esc(h)}</h4><div class="minute-body">${minuteBodyHTML(b)}</div></section>`).join('');
+ $('minuteDoc').innerHTML=`<h3>${esc(m.title)}</h3><div class="caption">${esc(m.date||'日付未設定')} / ${esc(m.file)}</div>${sections}`;
+}
+function renderTaskRows(filter='open'){
+ let rows=DATA.tasks.filter(t=>filter==='all'||(filter==='waiting'?t.state==='確認待ち':filter==='danger'?!!t.check:t.state!=='完了'&&t.state!=='取り下げ'));
+ $('taskRows').innerHTML=rows.map(t=>`<tr class="${t.check.includes('期限超過')?'row-red':t.state==='確認待ち'?'row-amber':t.state==='完了'?'row-green':t.state==='取り下げ'||t.state==='保留'?'row-gray':''}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${esc(t.name)}</b><div class="meta">${badge(t.id,'blue')}${badge(t.src)}${badge(t.cat)}</div></td><td>${esc(t.owner||'未設定')}</td><td>${esc(t.checker||'未設定')}</td><td>${esc(t.due||'未設定')}</td><td>${badge(t.judge,stateClass(t.judge))}</td><td>${flags(t.check)||'<span class="pill green">OK</span>'}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">該当なし</td></tr>';
+}
+function renderThreadRows(filter='open'){
+ let rows=DATA.threads.filter(t=>filter==='all'||(filter==='transfer'?t.state==='決定'&&!t.did:['審議中','会議送り','保留'].includes(t.state)));
+ $('threadRows').innerHTML=rows.map(t=>`<tr class="${t.check.includes('未転記')?'row-amber':t.state==='会議送り'?'row-amber':t.state==='決定'?'row-green':''}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${esc(t.subject)}</b><p style="margin:3px 0 0;color:var(--muted)">${esc(t.issue)}</p><div class="meta">${badge(t.id,'purple')}</div></td><td>${esc(t.channel)}</td><td>${esc(t.due||'未設定')}</td><td>${t.did?badge(t.did,'green'):badge('未記入','amber')}</td><td>${flags(t.check)||badge('OK','green')}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">該当なし</td></tr>';
+}
+function renderDecisionRows(){
+ $('decisionRows').innerHTML=DATA.decisions.map(d=>`<tr><td>${esc(d.id)}</td><td>${esc(d.date)}</td><td>${esc(d.cat)}</td><td><b>${esc(d.title)}</b></td><td>${esc(d.body)}</td><td>${badge(d.src,d.src==='スレッド'?'purple':'blue')}</td><td>${badge(d.state,'green')}</td></tr>`).join('');
+}
+function renderSearch(){
+ const q=$('globalSearch').value.trim(); const scope=$('searchScope').value;
+ const pool=[];
+ if(scope==='all'||scope==='minutes') DATA.minutes.forEach(m=>m.sections.forEach(s=>pool.push({kind:'議事録',title:m.title,text:[m.date,m.file,...s].join(' ')})));
+ if(scope==='all'||scope==='tasks') DATA.tasks.forEach(t=>pool.push({kind:'タスク',title:t.name,text:Object.values(t).join(' ')}));
+ if(scope==='all'||scope==='threads') DATA.threads.forEach(t=>pool.push({kind:'スレッド',title:t.subject,text:Object.values(t).join(' ')}));
+ if(scope==='all'||scope==='decisions') DATA.decisions.forEach(d=>pool.push({kind:'決定',title:d.title,text:Object.values(d).join(' ')}));
+ const hits=pool.filter(x=>!q||x.text.includes(q)); const mark=s=>q?esc(s).replaceAll(q,`<span class="highlight">${esc(q)}</span>`):esc(s);
+ $('searchResults').innerHTML=hits.map(h=>`<div class="item"><div class="score">${esc(h.kind[0])}</div><div><h4>${mark(h.title)}</h4><p>${mark(h.text).slice(0,220)}${h.text.length>220?'…':''}</p><div class="meta">${badge(h.kind)}</div></div></div>`).join('')||'<div class="empty">該当なし</div>';
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.toolbar button'); if(!b)return; b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); if(b.dataset.today)renderToday(b.dataset.today); if(b.dataset.task)renderTaskRows(b.dataset.task); if(b.dataset.thread)renderThreadRows(b.dataset.thread);});
+$('globalSearch').addEventListener('input',()=>{if(current!=='search')setSection('search'); else renderSearch()});
+$('searchScope').addEventListener('change',renderSearch);
+bootNav(); renderKPIs(); renderToday(); renderMinutes(); renderTaskRows(); renderThreadRows(); renderDecisionRows();
+</script>
 </body>
 </html>
