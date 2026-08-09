@@ -42,13 +42,14 @@ a{color:inherit}
 .list{display:flex;flex-direction:column;gap:9px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px}.item.item-deferred{background:#f8f6fc;border-color:#e2ddee}.item.item-review{background:#fffaf0;border-color:#eedda9}.score{width:40px;height:40px;border-radius:14px;background:#eef5fb;color:#24587d;display:grid;place-items:center;font-weight:800}.item h4{font-size:14px;margin:0}.item p{margin:3px 0 0;color:var(--muted);font-size:12px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.right{text-align:right}.btn{border:0;background:#24587d;color:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.btn.ghost{background:#eef2f7;color:#344054}
 .thread-link{display:inline-flex;align-items:center;gap:6px;color:#1f5b84;text-decoration:none;font-weight:700}.thread-link:hover{text-decoration:underline}.thread-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:3px;border-radius:4px}.external-mark{font-size:12px;color:#5f86a1}.btn.external-link{display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap}
 .tablewrap{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f6fa;color:#475467;font-size:12px;position:sticky;top:0;z-index:1}td{font-size:13px}.row-red td{background:#fff4f2}.row-amber td,.row-review td{background:#fff9e8}.row-green td{background:#f1fbf5}.row-gray td{color:#8a9099;background:#f8f9fb}.row-deferred td{background:#f7f5fb}
+.decision-table{min-width:980px;table-layout:fixed}.decision-body{overflow-wrap:anywhere}.decision-source-cell{width:220px}.source-links{display:flex;flex-wrap:wrap;gap:6px;min-width:0}.source-link{display:inline-flex;align-items:center;min-width:0;max-width:180px;padding:3px 8px;border-radius:999px;background:#eaf3fb;color:#24587d;font-size:11px;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.source-link:hover{text-decoration:underline}.source-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:2px}.source-link.empty{background:#f2f4f7;color:#667085}.source-link.empty:hover{text-decoration:none}
 .reader{display:grid;grid-template-columns:minmax(210px,260px) minmax(0,860px);gap:20px;align-items:start;justify-content:center}.timeline{position:sticky;top:22px;max-height:calc(100vh - 44px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}.timecard{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:12px;cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.timecard:hover{border-color:#a9cde5;transform:translateY(-1px)}.timecard.active{border-color:#5ea6d2;background:#eaf5fc;box-shadow:inset 4px 0 #2f6f9f}.timecard b{font-size:13px}.timecard small{display:block;color:var(--muted);font-size:11px;margin-top:3px;overflow-wrap:anywhere}.doc{width:100%;max-width:860px;padding:clamp(22px,3vw,38px);overflow:visible}.doc h3{font-size:22px;line-height:1.4;margin:0}.doc .caption{font-size:12px;color:var(--muted);margin:6px 0 22px;padding-bottom:15px;border-bottom:1px solid var(--line)}.minute-section{margin:0 0 18px;border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden}.minute-section h4{margin:0;padding:12px 16px;border-left:5px solid var(--blue);background:#f4f8fc;font-size:15px;line-height:1.45}.minute-section.decision h4{border-left-color:var(--green);background:#f0f9f4}.minute-section.pending h4{border-left-color:var(--amber);background:#fff8ea}.minute-section.taskh h4{border-left-color:var(--blue);background:#eef6fc}.minute-section.warning h4{border-left-color:var(--red);background:#fff3f1}.minute-body{padding:16px 18px 18px;color:#25313d}.minute-body p{margin:0 0 .85em;line-height:1.95}.minute-body p:last-child{margin-bottom:0}.minute-subhead{margin:18px 0 9px;padding:8px 11px;border-left:3px solid #8fb9d5;background:#f7fafc;border-radius:0 9px 9px 0;font-weight:700;color:#244e6c}.minute-subhead:first-child{margin-top:0}.minute-list-row{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;margin:7px 0;line-height:1.8}.minute-marker{width:22px;height:22px;border-radius:7px;background:#eaf3fb;color:#24587d;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}.minute-note{margin:10px 0;padding:10px 12px;border-radius:10px;background:#fff9e8;color:#76571d}.minute-rule{border:0;border-top:1px dashed var(--line);margin:16px 0}.minute-tablewrap{overflow:auto;margin:13px 0;border:1px solid var(--line);border-radius:11px}.minute-table{min-width:620px}.minute-table th,.minute-table td{padding:8px 10px;font-size:12px;line-height:1.55}.minute-table th{position:static;background:#edf3f8}.minute-empty{padding:34px 18px;text-align:center;color:var(--muted)}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}.deferred-panel{margin-top:14px;border-color:#ded8ec}.deferred-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.deferred-panel-head p{margin:2px 0 12px;color:var(--muted);font-size:12px}.deferred-panel .item{background:#fbfafe}
 .mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.mobilebar button{min-height:48px;border:0;background:transparent;border-radius:12px;padding:8px 4px;font-size:11px;color:#667085}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.fab{display:none;position:fixed;right:18px;bottom:calc(82px + var(--bottom-safe));border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);z-index:90}
 @media(max-width:1180px){.app{grid-template-columns:220px minmax(0,1fr)}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:1fr}.reader{grid-template-columns:200px minmax(0,1fr)}.search{min-width:260px}}
-@media(max-width:1024px){body{font-size:14px}.app{display:block;min-height:100svh}.sidebar{display:none}.main{width:100%;padding:20px 20px calc(104px + var(--bottom-safe))}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);grid-template-columns:none;overflow:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;padding:0 0 6px}.timecard{min-width:170px;min-height:72px}.doc{max-width:none;padding:24px 22px}.toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}.toolbar button,.toolbar select{min-height:44px;white-space:nowrap;flex:0 0 auto}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.mobilebar,.fab{display:block}.card.pad{padding:18px}.tablewrap table{min-width:820px}}
+@media(max-width:1024px){body{font-size:14px}.app{display:block;min-height:100svh}.sidebar{display:none}.main{width:100%;padding:20px 20px calc(104px + var(--bottom-safe))}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);grid-template-columns:none;overflow:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;padding:0 0 6px}.timecard{min-width:170px;min-height:72px}.doc{max-width:none;padding:24px 22px}.toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}.toolbar button,.toolbar select{min-height:44px;white-space:nowrap;flex:0 0 auto}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.mobilebar,.fab{display:block}.card.pad{padding:18px}.tablewrap table{min-width:820px}.tablewrap table.decision-table{min-width:900px}.decision-source-cell{width:200px}}
 @media(max-width:900px){.main{padding:18px 16px calc(104px + var(--bottom-safe))}.topbar{gap:12px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search{min-width:250px}.doc{padding:22px 18px}.pill.meta-pill{max-width:220px}}
-@media(max-width:640px){body{font-size:13px}.main{padding:14px 12px calc(98px + var(--bottom-safe))}.topbar{display:block}.title h2{font-size:19px}.search{min-width:0;width:100%;border-radius:14px;margin-top:10px}.kpi-grid{gap:10px}.kpi{padding:13px;min-height:88px}.kpi .num{font-size:23px}.timeline{grid-auto-columns:minmax(150px,78vw)}.timecard{min-width:150px}.doc{padding:18px 14px}.doc h3{font-size:19px}.minute-body{padding:14px}.minute-section h4{padding:11px 13px}.minute-table{min-width:560px}.item{grid-template-columns:1fr;gap:8px}.score{width:auto;height:auto;display:inline-flex;padding:4px 9px;border-radius:999px}.right{text-align:left}.flow{grid-template-columns:1fr}.tablewrap table{min-width:720px}th,td{padding:9px}.card{border-radius:16px}.card.pad{padding:14px}.deferred-panel-head{display:block}.pill.meta-pill{max-width:min(260px,72vw)}}
+@media(max-width:640px){body{font-size:13px}.main{padding:14px 12px calc(98px + var(--bottom-safe))}.topbar{display:block}.title h2{font-size:19px}.search{min-width:0;width:100%;border-radius:14px;margin-top:10px}.kpi-grid{gap:10px}.kpi{padding:13px;min-height:88px}.kpi .num{font-size:23px}.timeline{grid-auto-columns:minmax(150px,78vw)}.timecard{min-width:150px}.doc{padding:18px 14px}.doc h3{font-size:19px}.minute-body{padding:14px}.minute-section h4{padding:11px 13px}.minute-table{min-width:560px}.item{grid-template-columns:1fr;gap:8px}.score{width:auto;height:auto;display:inline-flex;padding:4px 9px;border-radius:999px}.right{text-align:left}.flow{grid-template-columns:1fr}.tablewrap table{min-width:720px}.tablewrap table.decision-table{min-width:840px}th,td{padding:9px}.card{border-radius:16px}.card.pad{padding:14px}.deferred-panel-head{display:block}.pill.meta-pill{max-width:min(260px,72vw)}.decision-source-cell{width:180px}}
 @media(max-width:420px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pill{font-size:10px}.item h4{font-size:13px}.minute-list-row{grid-template-columns:22px minmax(0,1fr)}.minute-body p{line-height:1.85}.mobilebar button{font-size:10px;padding-inline:2px}}
 </style>
 </head>
@@ -62,7 +63,7 @@ a{color:inherit}
   <main class="main">
     <div class="topbar">
       <div class="title"><h2 id="pageTitle">ダッシュボード</h2><p>Word議事録・各Excel台帳から生成した閲覧専用画面です。</p></div>
-      <label class="search"><span>🔎</span><input id="globalSearch" placeholder="横断検索：例）確認待ち / Gifts / Word原本"></label>
+      <label class="search"><span>🔎</span><input id="globalSearch" placeholder="横断検索：例）確認待ち / Word原本"></label>
     </div>
 
     <section id="dashboard" class="section active">
@@ -119,7 +120,7 @@ a{color:inherit}
     <section id="decisions" class="section">
       <div class="card pad">
         <h3>決定台帳</h3>
-        <div class="tablewrap"><table><thead><tr><th>決定ID</th><th>日付</th><th>区分</th><th>件名</th><th>決定内容</th><th>発生源</th><th>状態</th></tr></thead><tbody id="decisionRows"></tbody></table></div>
+        <div class="tablewrap"><table class="decision-table"><thead><tr><th>決定ID</th><th>日付</th><th>区分</th><th>件名</th><th>決定内容</th><th>発生源</th><th>原本リンク</th><th>状態</th></tr></thead><tbody id="decisionRows"></tbody></table></div>
       </div>
     </section>
 
@@ -313,7 +314,7 @@ const DATA={
       "cat": "発信",
       "name": "広報業務内容の具体化",
       "owner": "Samuel Kasahara Nobuo",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "高",
       "state": "",
@@ -336,11 +337,11 @@ const DATA={
       "cat": "AI",
       "name": "ファイル名・フォルダ命名ルール運用",
       "owner": "Moses DenishiHikaru",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "高",
       "state": "",
-      "judge": "",
+      "judge": "完了報告あり",
       "evidence": "",
       "related": "",
       "check": "",
@@ -359,11 +360,11 @@ const DATA={
       "cat": "AI",
       "name": "Gem運用環境の構築",
       "owner": "Moses DenishiHikaru",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
       "state": "",
-      "judge": "",
+      "judge": "完了報告あり",
       "evidence": "",
       "related": "",
       "check": "",
@@ -382,11 +383,11 @@ const DATA={
       "cat": "AI",
       "name": "決定事項フォルダの整理",
       "owner": "Moses DenishiHikaru",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
       "state": "",
-      "judge": "",
+      "judge": "完了報告あり",
       "evidence": "",
       "related": "",
       "check": "",
@@ -405,11 +406,11 @@ const DATA={
       "cat": "AI",
       "name": "スレッドタイトル・概要ルール整備",
       "owner": "Moses DenishiHikaru",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
       "state": "",
-      "judge": "",
+      "judge": "完了報告あり",
       "evidence": "",
       "related": "",
       "check": "",
@@ -428,7 +429,7 @@ const DATA={
       "cat": "AI",
       "name": "決定事項スレッド・台帳運用テスト",
       "owner": "Moses DenishiHikaru",
-      "checker": "未確認",
+      "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
       "state": "",
@@ -483,31 +484,28 @@ const DATA={
       "url": "https://teams.microsoft.com/l/message/19:5d6752ce1c204bd6966e00213a4b8be0@thread.tacv2/1786032291427?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1786032291427&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=02_21%E4%B8%96%E7%B4%80%E5%9E%8B%E6%8E%A8%E9%80%B2&createdTime=1786032291427",
       "owner": "Moses DenishiHikaru",
       "note": ""
+    },
+    {
+      "id": "T-202611-003",
+      "state": "審議中",
+      "subject": "4PC Dashboardのテスト運用について",
+      "issue": "dashboardの改善・修正",
+      "channel": "21世紀型推進",
+      "due": "2026/08/31",
+      "decision": "",
+      "did": "",
+      "check": "",
+      "priorityClass": "通常",
+      "deferReason": "",
+      "reviewDate": "",
+      "reopenCondition": "",
+      "reviewAction": "",
+      "url": "https://teams.microsoft.com/l/message/19:5d6752ce1c204bd6966e00213a4b8be0@thread.tacv2/1786235778276?tenantId=0718e844-f7df-455d-8ca7-651b5e3555f1&groupId=1e7e4644-9f87-4cad-8370-9a9cdba8845e&parentMessageId=1786235778276&teamName=%E5%9B%9B%E4%BA%BA%E5%A7%94%E5%93%A1%E4%BC%9A&channelName=02_21%E4%B8%96%E7%B4%80%E5%9E%8B%E6%8E%A8%E9%80%B2&createdTime=1786235778276",
+      "owner": "Moses DenishiHikaru",
+      "note": ""
     }
   ],
   "decisions": [
-    {
-      "id": "M-202611-001",
-      "date": "2026/11/07",
-      "cat": "AI",
-      "title": "議事録HTML化の仕様確定",
-      "body": "議事録はWordを原本とし、HTMLは閲覧専用として教会サーバーで展開する。",
-      "src": "会議",
-      "state": "有効",
-      "sourceLink": "",
-      "oldId": ""
-    },
-    {
-      "id": "T-202611-001",
-      "date": "2026/11/10",
-      "cat": "体制",
-      "title": "定例会議の議題共有時期",
-      "body": "定例会議の議題および事前タスクは、木曜夜までに会議URLスレッドへ投稿する。",
-      "src": "スレッド",
-      "state": "有効",
-      "sourceLink": "",
-      "oldId": ""
-    },
     {
       "id": "M-202611-001",
       "date": "2026/07/31",
@@ -517,6 +515,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -528,6 +527,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -539,6 +539,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -550,6 +551,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -561,6 +563,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -572,6 +575,7 @@ const DATA={
       "src": "会議",
       "state": "有効",
       "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     },
     {
@@ -582,7 +586,19 @@ const DATA={
       "body": "ファイル名ルールとフォルダー構成を組織全体で統一する。",
       "src": "会議",
       "state": "有効",
-      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/folder-guide_ja.docx?d=wc70f2cd986304df8902ee8e550340acb&csf=1&web=1&e=foQTee\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/naming-rule.docx?d=w92559d03a0554322ab52ca40a6d35246&csf=1&web=1&e=trv1GL",
+      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/naming-rule.docx?d=w92559d03a0554322ab52ca40a6d35246&csf=1&web=1&e=BYGKvb",
+      "sourceLinks": [
+        {
+          "label": "原本1",
+          "text": "ファイル命名",
+          "url": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/naming-rule.docx?d=w92559d03a0554322ab52ca40a6d35246&csf=1&web=1&e=BYGKvb"
+        },
+        {
+          "label": "原本2",
+          "text": "フォルダ保存",
+          "url": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/folder-guide_ja.docx?d=wc70f2cd986304df8902ee8e550340acb&csf=1&web=1&e=JqAmyR"
+        }
+      ],
       "oldId": ""
     },
     {
@@ -593,7 +609,24 @@ const DATA={
       "body": "議事録・タスク・台帳・ダッシュボードを連携して管理する。",
       "src": "会議",
       "state": "有効",
-      "sourceLink": "",
+      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807tokyo_antioch_church_philosophy_unified_v3.docx?d=w30b035521bcb4fce883716eac8e02c51&csf=1&web=1&e=1WJ8Vh",
+      "sourceLinks": [
+        {
+          "label": "原本1",
+          "text": "理念",
+          "url": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807tokyo_antioch_church_philosophy_unified_v3.docx?d=w30b035521bcb4fce883716eac8e02c51&csf=1&web=1&e=1WJ8Vh"
+        },
+        {
+          "label": "原本2",
+          "text": "信仰",
+          "url": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807_tokyo_antioch_faith_statement_unified_v3.docx?d=wa7cf996fcf104de9a3765c535ff53ff4&csf=1&web=1&e=MncLeL"
+        },
+        {
+          "label": "原本3",
+          "text": "ビジョン",
+          "url": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807tokyo_antioch_church_vision_unified_v3.docx?d=wcc9e02532a7e42c69da722ce424039ba&csf=1&web=1&e=PTdKck"
+        }
+      ],
       "oldId": ""
     },
     {
@@ -604,7 +637,8 @@ const DATA={
       "body": "理念・ビジョン・フェイスの三基準を正式な運用基準として承認する。",
       "src": "会議",
       "state": "有効",
-      "sourceLink": "https://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807_tokyo_antioch_faith_statement_unified_v3.docx?d=wa7cf996fcf104de9a3765c535ff53ff4&csf=1&web=1&e=eWiQ0y\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/260807tokyo_antioch_church_philosophy_unified_v3.docx?d=w30b035521bcb4fce883716eac8e02c51&csf=1&web=1&e=kpfomO\nhttps://tokyoantioch.sharepoint.com/:w:/r/sites/msteams_e85616/Shared%20Documents/01_%E6%B1%BA%E5%AE%9A%E4%BA%8B%E9%A0%85/01_official_%E5%85%AC%E5%BC%8F/folder-guide_ja.docx?d=wc70f2cd986304df8902ee8e550340acb&csf=1&web=1&e=70hKy0",
+      "sourceLink": "",
+      "sourceLinks": [],
       "oldId": ""
     }
   ]
@@ -719,8 +753,14 @@ function renderThreadRows(filter='open'){
  let rows=DATA.threads.filter(t=>filter==='all'||(filter==='transfer'?t.state==='決定'&&!t.did:filter==='deferred'?isDeferred(t):['審議中','会議送り','保留'].includes(t.state)));
  $('threadRows').innerHTML=rows.map(t=>`<tr class="${threadRowClass(t)}"><td>${badge(t.state,stateClass(t.state))}</td><td><b>${threadTitle(t)}</b><p style="margin:3px 0 0;color:var(--muted)">${esc(t.issue)}</p><div class="meta">${badge(t.id,'purple')}${deferMeta(t)}</div></td><td>${esc(t.channel)}</td><td>${esc(t.due||'未設定')}</td><td>${t.did?badge(t.did,'green'):badge('未記入','amber')}</td><td>${flags(t.check)||badge('OK','green')}</td></tr>`).join('')||'<tr><td colspan="6" class="empty">該当なし</td></tr>';
 }
+function decisionSourceLinks(d){
+ const links=Array.isArray(d.sourceLinks)?d.sourceLinks.slice(0,5):[];
+ if(!links.length&&d.sourceLink)links.push({label:'原本1',text:d.sourceLink,url:safeLink(d.sourceLink)?d.sourceLink:''});
+ if(!links.length)return '<span class="source-link empty">未登録</span>';
+ return `<div class="source-links">${links.map((link,index)=>{const text=(link.text||link.label||`原本${index+1}`).toString(),url=safeLink(link.url),title=[text,link.url].filter(Boolean).join(' / ');return url?`<a class="source-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="${escAttr(title)}">${esc(text)}</a>`:`<span class="source-link empty" title="${escAttr(title)}">${esc(text)}</span>`}).join('')}</div>`;
+}
 function renderDecisionRows(){
- $('decisionRows').innerHTML=DATA.decisions.map(d=>`<tr><td>${esc(d.id)}</td><td>${esc(d.date)}</td><td>${esc(d.cat)}</td><td><b>${esc(d.title)}</b></td><td>${esc(d.body)}</td><td>${badge(d.src,d.src==='スレッド'?'purple':'blue')}</td><td>${badge(d.state,'green')}</td></tr>`).join('');
+ $('decisionRows').innerHTML=DATA.decisions.map(d=>`<tr><td>${esc(d.id)}</td><td>${esc(d.date)}</td><td>${esc(d.cat)}</td><td><b>${esc(d.title)}</b></td><td class="decision-body">${esc(d.body)}</td><td>${badge(d.src,d.src==='スレッド'?'purple':'blue')}</td><td class="decision-source-cell">${decisionSourceLinks(d)}</td><td>${badge(d.state,'green')}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">該当なし</td></tr>';
 }
 function renderSearch(){
  const q=$('globalSearch').value.trim(); const scope=$('searchScope').value;
@@ -729,7 +769,7 @@ function renderSearch(){
  const actionSearchText=item=>[...Object.values(item),item.priorityClass,item.deferReason,item.reviewDate,item.reopenCondition,item.reviewAction].filter(Boolean).join(' ');
  if(scope==='all'||scope==='tasks') DATA.tasks.forEach(t=>pool.push({kind:'タスク',title:t.name,text:actionSearchText(t)}));
  if(scope==='all'||scope==='threads') DATA.threads.forEach(t=>pool.push({kind:'スレッド',title:t.subject,text:actionSearchText(t)}));
- if(scope==='all'||scope==='decisions') DATA.decisions.forEach(d=>pool.push({kind:'決定',title:d.title,text:Object.values(d).join(' ')}));
+ if(scope==='all'||scope==='decisions') DATA.decisions.forEach(d=>{const sourceLinks=Array.isArray(d.sourceLinks)?d.sourceLinks:[];const primitiveValues=Object.values(d).filter(value=>typeof value!=='object');const sourceText=sourceLinks.flatMap(link=>[link.text,link.url]).filter(Boolean);pool.push({kind:'決定',title:d.title,text:[...primitiveValues,d.sourceLink,...sourceText].filter(Boolean).join(' ')})});
  const hits=pool.filter(x=>!q||x.text.includes(q)); const mark=s=>q?esc(s).replaceAll(q,`<span class="highlight">${esc(q)}</span>`):esc(s);
  $('searchResults').innerHTML=hits.map(h=>`<div class="item"><div class="score">${esc(h.kind[0])}</div><div><h4>${mark(h.title)}</h4><p>${mark(h.text).slice(0,220)}${h.text.length>220?'…':''}</p><div class="meta">${badge(h.kind)}</div></div></div>`).join('')||'<div class="empty">該当なし</div>';
 }
