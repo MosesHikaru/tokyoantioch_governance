@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四人委員会 情報管理・意思決定管理 運用仕様 v11</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#1f2937;--muted:#667085;--line:#d8dee9;--navy:#17324d;--blue:#2f6f9f;--green:#2f855a;--amber:#b7791f;--red:#c0392b;--purple:#6b5b95;--gray:#64748b;--radius:16px;--shadow:0 10px 26px rgba(17,24,39,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;line-height:1.75;font-size:15px}a{color:#24587d}.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 70px}.hero{background:linear-gradient(135deg,#17324d,#24587d);color:#fff;border-radius:24px;padding:28px;box-shadow:var(--shadow);margin-bottom:18px}.hero h1{margin:0;font-size:28px;line-height:1.35}.hero p{margin:8px 0 0;color:#dbeafe}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;background:#eef2f7;color:#334155;font-size:12px;white-space:nowrap}.hero .badge{background:rgba(255,255,255,.14);color:#fff}.card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius);padding:20px;margin:16px 0}.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}.toc a{display:block;text-decoration:none;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:#1f2937}.toc a:hover{background:#eef6ff}h2{font-size:22px;margin:28px 0 10px;border-left:5px solid var(--blue);padding-left:10px}h3{font-size:18px;margin:22px 0 8px;color:#1f3f5b}h4{font-size:16px;margin:18px 0 6px;color:#334155}p{margin:7px 0}ul,ol{margin-top:6px}table{width:100%;border-collapse:collapse;margin:10px 0 16px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}th{background:#f1f5f9;color:#334155;font-weight:700}.note{background:#f7fbff;border:1px solid #d7e9f7;border-radius:14px;padding:12px;color:#334155}.warn{background:#fff8e8;border:1px solid #f5d28c;border-radius:14px;padding:12px}.danger{background:#fff4f2;border:1px solid #f4b8ae;border-radius:14px;padding:12px}.ok{background:#f0fbf5;border:1px solid #bce5cd;border-radius:14px;padding:12px}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:1px 5px}pre{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:14px;overflow:auto}.section{scroll-margin-top:20px}.small{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fbfdff}.icon-sample{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.svgicon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.cool-icons{color:#24587d}.footer{font-size:12px;color:var(--muted);margin-top:36px}@media(max-width:760px){.wrap{padding:16px 12px 60px}.hero{padding:20px;border-radius:18px}.hero h1{font-size:22px}h2{font-size:20px}table{display:block;overflow-x:auto;white-space:nowrap}th,td{white-space:normal;min-width:120px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <h1>四人委員会 情報管理・意思決定管理 運用仕様 v11</h1>
+    <p>Word原本・Excel台帳・HTML表示を分離し、進行中確認とアーカイブ検索を両立するための運用仕様。</p>
+    <div class="meta">
+      <span class="badge">改訂日：2026年8月9日</span>
+      <span class="badge">対象：四人委員会（執行部）</span>
+      <span class="badge">機密区分：四人委員会限定・部外秘</span>
+      <span class="badge">版：v11</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>目次</h2>
+    <nav class="toc">
+      <a href="#changes">v11での主な変更点</a>
+      <a href="#basic">0. 基本方針</a>
+      <a href="#layers">1. 四層構造</a>
+      <a href="#channels">2. チャンネル構成</a>
+      <a href="#originals">3. 原本管理</a>
+      <a href="#tags">4. 区分タグ</a>
+      <a href="#threads">5. スレッド管理台帳</a>
+      <a href="#tasks">6. タスク管理台帳</a>
+      <a href="#decisions">7. 決定事項台帳</a>
+      <a href="#htmlgen">8. HTML生成方式</a>
+      <a href="#archive">9. HTMLアーカイブ表示ルール</a>
+      <a href="#search">10. HTML検索機能の改善ルール</a>
+      <a href="#icons">11. アイコン・ビジュアルルール</a>
+      <a href="#ops">12. 日常運用フロー</a>
+      <a href="#codex">13. Codex改修時の注意</a>
+    </nav>
+  </section>
+
+  <section id="changes" class="section card">
+    <h2>v11での主な変更点</h2>
+    <ol>
+      <li>HTMLアーカイブ表示ルールを正式追加。</li>
+      <li>タスクは完了後14日、決定事項は決定日から30日経過でアーカイブ表示へ移す。</li>
+      <li>アーカイブは原本やExcel行の移動ではなく、HTML上の表示分類であることを明記。</li>
+      <li>タスク管理台帳・スレッド管理台帳に「後回し・再確認」管理項目を追加。</li>
+      <li>決定事項台帳の原本リンクを「原本リンク1〜5」として複数管理する方針を追加。</li>
+      <li>Dashboard検索を、半角・全角、大文字・小文字、空白差を吸収する方式に変更。</li>
+      <li>検索結果を選択したら、該当タブ・該当項目へ移動し、一時的に強調表示する仕様を追加。</li>
+      <li>HTML内の絵文字アイコンを、より業務用でクールなSVGアイコンへ置き換える方針を追加。</li>
+    </ol>
+  </section>
+
+  <section id="basic" class="section card">
+    <h2>0. 基本方針</h2>
+    <table><thead><tr><th>原則</th><th>内容</th></tr></thead><tbody>
+      <tr><td>議論はTeams</td><td>四人が顔を合わせる回数は限られるため、日常はTeamsスレッドで進める。</td></tr>
+      <tr><td>原本はWord</td><td>議事録・決定要約はWordを唯一の原本とする。</td></tr>
+      <tr><td>台帳はExcel</td><td>決定事項、スレッド、タスクの一覧・履歴はExcelで一元管理する。</td></tr>
+      <tr><td>閲覧はHTML</td><td>HTMLは表示・検索専用。独自データを持たず、原本から生成する。</td></tr>
+      <tr><td>機密案件は別管理</td><td>人事・牧会・個人が特定される案件は通常HTMLには表示しない。</td></tr>
+    </tbody></table>
+    <div class="note">Dashboard/index.html は生成物であり、直接編集しない。基準HTMLは <code>Automation/template_index.html</code> とする。</div>
+  </section>
+
+  <section id="layers" class="section card">
+    <h2>1. 四層構造</h2>
+    <table><thead><tr><th>層</th><th>実体</th><th>役割</th><th>編集権</th></tr></thead><tbody>
+      <tr><td>議論層</td><td>Teamsスレッド</td><td>検討・合意形成</td><td>全員</td></tr>
+      <tr><td>記録層</td><td>Word</td><td>議事録・決定要約の原本</td><td>モーセ牧師</td></tr>
+      <tr><td>台帳層</td><td>Excel</td><td>決定・スレッド・タスクの一覧と履歴</td><td>モーセ牧師</td></tr>
+      <tr><td>閲覧層</td><td>HTML</td><td>ダッシュボード・検索・チェック</td><td>自動生成のみ</td></tr>
+    </tbody></table>
+  </section>
+
+  <section id="channels" class="section card">
+    <h2>2. チャンネル構成</h2>
+    <table><thead><tr><th>チャンネル</th><th>用途</th><th>スレッドの扱い</th></tr></thead><tbody>
+      <tr><td>決定事項</td><td>決定した書類の保管庫。Word原本をファイルとして格納する。</td><td>スレッドは立てない。</td></tr>
+      <tr><td>21世紀型推進</td><td>DX、AI、組織改革、新規施策。</td><td>1議題＝1スレッド。</td></tr>
+      <tr><td>運営実務</td><td>日常の運営課題・調整案件。</td><td>1議題＝1スレッド。</td></tr>
+      <tr><td>定例会議</td><td>会議リンク、当日議題、資料リンク、議事録リンク。</td><td>日付ごと。</td></tr>
+      <tr><td>連絡</td><td>連絡のみ。議論は行わない。</td><td>随時。</td></tr>
+      <tr><td>パウロ秋元牧師確認</td><td>機密案件。人事・牧会・個人が特定される案件。</td><td>1議題＝1スレッド。</td></tr>
+    </tbody></table>
+  </section>
+
+  <section id="originals" class="section card">
+    <h2>3. 原本管理</h2>
+    <table><thead><tr><th>対象</th><th>原本</th></tr></thead><tbody>
+      <tr><td>会議議事録</td><td>Word</td></tr>
+      <tr><td>スレッド決定事項</td><td>決定要約Word</td></tr>
+      <tr><td>決定事項一覧</td><td>決定事項台帳Excel</td></tr>
+      <tr><td>スレッド進行状況</td><td>スレッド管理台帳Excel</td></tr>
+      <tr><td>タスク進捗</td><td>タスク管理台帳Excel</td></tr>
+      <tr><td>HTML</td><td>原本ではなく表示用</td></tr>
+    </tbody></table>
+  </section>
+
+  <section id="tags" class="section card">
+    <h2>4. 区分タグ</h2>
+    <p>決定事項の区分は以下の固定リストから選択する。自由記述は原則認めない。</p>
+    <table><thead><tr><th>区分</th><th>一言定義</th><th>含まれる内容</th><th>使用範囲</th></tr></thead><tbody>
+      <tr><td>理念</td><td>何を信じ、どこへ向かうのかを定める</td><td>理念・ビジョン・行動規範・信仰告白</td><td>通常</td></tr>
+      <tr><td>体制</td><td>誰が決め、誰が動くのかを定める</td><td>役割定義・決裁区分・指揮系統</td><td>通常</td></tr>
+      <tr><td>AI</td><td>道具と仕組みをどう使うのかを定める</td><td>AI・Copilot・Teams権限・文書管理・IT全般</td><td>通常</td></tr>
+      <tr><td>財務</td><td>お金の入りと出をどう管理するのかを定める</td><td>会計・献金・立替・予算・税務</td><td>通常</td></tr>
+      <tr><td>法務</td><td>契約と権利、責任の所在を定める</td><td>契約・著作権・出版・保険・責任範囲</td><td>通常</td></tr>
+      <tr><td>発信</td><td>外へ何をどう出すのかを定める</td><td>配信・撮影・公開区分・SNS・対外発信</td><td>通常</td></tr>
+      <tr><td>礼拝</td><td>日曜の現場をどう整えるのかを定める</td><td>礼拝運営・マナー・祈りの課題・安全対応</td><td>通常</td></tr>
+      <tr><td>行事</td><td>単発の催しをどう回すのかを定める</td><td>キャンプ・大会・セミナー・イベント主催</td><td>通常</td></tr>
+      <tr><td>施設</td><td>場所とモノをどう扱うのかを定める</td><td>会堂・テナント・設備・備品・機材貸出・保険</td><td>通常</td></tr>
+      <tr><td>対応</td><td>特定の相手や案件にどう対応するのかを定める</td><td>個別案件への措置・期限・条件・例外的扱い</td><td>通常＋機密</td></tr>
+      <tr><td>牧会</td><td>一人ひとりにどう向き合うのかを定める</td><td>面談・相談・奉仕復帰・個別判断</td><td>機密のみ</td></tr>
+    </tbody></table>
+    <h3>4-1. 【対応】区分の趣旨</h3>
+    <p>【対応】は、制度やルールそのものではなく、特定の相手や案件に対して個別に方針を決めるための区分である。</p>
+    <ul><li>申請の許可／不許可</li><li>登録が進まない団体への段階的措置</li><li>期限設定と条件提示</li><li>例外的な取り扱い</li><li>継続的な対応方針</li></ul>
+    <h3>4-2. 【体制】との違い</h3>
+    <table><thead><tr><th>区分</th><th>判断軸</th></tr></thead><tbody><tr><td>体制</td><td>ルールを作る</td></tr><tr><td>対応</td><td>この件をどう扱うかを決める</td></tr></tbody></table>
+  </section>
+
+  <section id="threads" class="section card">
+    <h2>5. スレッド管理台帳</h2>
+    <h3>5-1. 役割</h3><p>スレッド管理台帳は、Teamsスレッドでの議論途中経過を管理する台帳である。決定事項台帳とは異なり、状態が変化する。</p>
+    <h3>5-2. 主な列</h3><p>スレッドID、起票日、チャネル、区分、件名、論点、スレッドURL、起票者、状態、期限目安、処理優先区分、先送り理由、再確認日、再開条件、再確認時の扱い、決定日、決定内容、決定ID、備考。</p>
+    <h3>5-3. 状態</h3>
+    <table><thead><tr><th>状態</th><th>意味</th></tr></thead><tbody><tr><td>審議中</td><td>まだ決定していない</td></tr><tr><td>会議送り</td><td>スレッドでは決めず、定例会議へ持ち込む</td></tr><tr><td>保留</td><td>意図的に判断を先送りしている</td></tr><tr><td>決定</td><td>四人の合意が揃った</td></tr><tr><td>取り下げ</td><td>議題自体を終了した</td></tr></tbody></table>
+    <h3>5-4. 後回し・再確認</h3>
+    <table><thead><tr><th>列</th><th>内容</th></tr></thead><tbody><tr><td>処理優先区分</td><td>今すぐ／通常／後回し／見送り候補</td></tr><tr><td>先送り理由</td><td>なぜ今扱わないか</td></tr><tr><td>再確認日</td><td>いつ再び確認するか</td></tr><tr><td>再開条件</td><td>何が整ったら再開するか</td></tr><tr><td>再確認時の扱い</td><td>継続／会議送り／スレッド再開／取り下げ検討など</td></tr></tbody></table>
+    <div class="note">原則：状態＝保留、処理優先区分＝後回し。</div>
+  </section>
+
+  <section id="tasks" class="section card">
+    <h2>6. タスク管理台帳</h2>
+    <h3>6-1. 役割</h3><p>タスク管理台帳は、作業の現在状態と完了判定を管理する原本である。議事録は発生時点の記録であり、タスクの現在状態はタスク管理台帳で管理する。</p>
+    <h3>6-2. 主な列</h3><p>タスクID、発生日、発生源、原本リンク、区分、タスク名、実行者、確認者、期限、優先度、状態、完了判定、完了報告日、完了日、完了根拠リンク、関連決定ID、関連スレッドID、処理優先区分、先送り理由、再確認日、再開条件、再確認時の扱い、備考、チェック。</p>
+    <h3>6-3. 状態</h3>
+    <table><thead><tr><th>状態</th><th>意味</th></tr></thead><tbody><tr><td>未着手</td><td>まだ作業に入っていない</td></tr><tr><td>対応中</td><td>実行者が作業中</td></tr><tr><td>確認待ち</td><td>完了報告あり。確認者が未確認</td></tr><tr><td>完了</td><td>確認者が完了根拠を確認済み</td></tr><tr><td>保留</td><td>意図的に一時停止</td></tr><tr><td>取り下げ</td><td>タスク自体が不要になった</td></tr></tbody></table>
+    <h3>6-4. 完了判定</h3>
+    <p>完了報告は完了ではない。確認者が完了根拠リンクを確認して初めて完了とする。</p>
+    <table><thead><tr><th>完了判定</th><th>意味</th></tr></thead><tbody><tr><td>未判定</td><td>未確認</td></tr><tr><td>完了報告あり</td><td>実行者から報告あり</td></tr><tr><td>確認済み</td><td>確認者が根拠を確認済み</td></tr><tr><td>差戻し</td><td>不十分として差し戻し</td></tr><tr><td>対象外</td><td>完了判定不要</td></tr></tbody></table>
+  </section>
+
+  <section id="decisions" class="section card">
+    <h2>7. 決定事項台帳</h2>
+    <h3>7-1. 役割</h3><p>決定事項台帳は、確定した決定の一覧と履歴を管理する台帳である。担当者・期限・優先度はタスク管理台帳で管理し、決定事項台帳には持たせない。</p>
+    <h3>7-2. 主な列</h3><p>決定ID、決定日、区分、件名、決定内容、発生源、原本リンク1、原本リンク2、原本リンク3、原本リンク4、原本リンク5、状態、旧決定ID。</p>
+    <h3>7-3. 原本リンク</h3><p>決定事項に関連するWord原本や関連資料は、最大5件まで原本リンクとして持てる。HTMLでは、原本リンク1〜5のうち登録済みのものだけを表示する。</p>
+    <h3>7-4. 状態</h3><table><thead><tr><th>状態</th><th>意味</th></tr></thead><tbody><tr><td>有効</td><td>現在有効な決定</td></tr><tr><td>改訂済</td><td>後続決定により置き換えられた</td></tr><tr><td>廃止</td><td>決定自体が廃止された</td></tr></tbody></table>
+  </section>
+
+  <section id="htmlgen" class="section card">
+    <h2>8. HTML生成方式</h2>
+    <h3>8-1. 基準HTML</h3><p>基準HTMLは <code>Automation/template_index.html</code> とする。<code>Dashboard/index.html</code> は生成物であり、直接編集しない。</p>
+    <h3>8-2. DATA差し替え方式</h3><p><code>build_4pc_hub.py</code> は、template_index.html 内の <code>const DATA = ...;</code> のみを差し替える。PythonがHTML全体を再生成してはならない。</p>
+    <h3>8-3. 入力元</h3>
+    <table><thead><tr><th>データ</th><th>入力元</th></tr></thead><tbody><tr><td>議事録</td><td>Minutes配下のWord</td></tr><tr><td>タスク</td><td>タスク管理台帳Excel</td></tr><tr><td>スレッド</td><td>スレッド管理台帳Excel</td></tr><tr><td>決定事項</td><td>決定事項台帳Excel</td></tr><tr><td>HTML構造</td><td>Automation/template_index.html</td></tr></tbody></table>
+  </section>
+
+  <section id="archive" class="section card">
+    <h2>9. HTMLアーカイブ表示ルール</h2>
+    <h3>9-1. 基本方針</h3><p>HTMLにおけるアーカイブは、原本ファイルやExcel台帳の行を移動・削除することではなく、Dashboard上の表示分類を切り替えることを意味する。</p>
+    <ol><li>進行中・確認中の案件を日常表示で見やすくする。</li><li>完了済み・古い決定事項を通常表示から外し、検索ノイズを減らす。</li><li>必要な場合はアーカイブタブから過去情報を確認できるようにする。</li></ol>
+    <h3>9-2. タスクのアーカイブ条件</h3><table><thead><tr><th>条件</th><th>内容</th></tr></thead><tbody><tr><td>状態</td><td>完了</td></tr><tr><td>完了判定</td><td>確認済み</td></tr><tr><td>完了日</td><td>記入あり</td></tr><tr><td>経過期間</td><td>完了日から14日以上</td></tr></tbody></table>
+    <h3>9-3. タスクのアーカイブ対象外</h3><table><thead><tr><th>条件</th><th>扱い</th></tr></thead><tbody><tr><td>完了日が空欄</td><td>通常表示に残す</td></tr><tr><td>完了根拠リンクが空欄</td><td>通常表示に残す</td></tr><tr><td>確認待ち</td><td>通常表示に残す</td></tr><tr><td>未着手・対応中・保留</td><td>通常表示に残す</td></tr><tr><td>処理優先区分が後回し・見送り候補</td><td>後回し・再確認枠で扱う</td></tr><tr><td>完了判定が確認済み以外</td><td>通常表示に残す</td></tr></tbody></table>
+    <h3>9-4. 取り下げタスク</h3><p>状態が「取り下げ」のタスクは、通常の未完了タスクとは分け、アーカイブタブに表示してよい。ただし、完了タスクとは区別し、「取り下げ」ラベルを明示する。</p>
+    <h3>9-5. 決定事項のアーカイブ条件</h3><table><thead><tr><th>条件</th><th>内容</th></tr></thead><tbody><tr><td>状態</td><td>有効</td></tr><tr><td>決定日</td><td>記入あり</td></tr><tr><td>経過期間</td><td>決定日から30日以上</td></tr><tr><td>原本リンク</td><td>原本リンク1〜5のいずれかに登録あり</td></tr></tbody></table>
+    <h3>9-6. 決定事項のアーカイブ対象外</h3><table><thead><tr><th>条件</th><th>扱い</th></tr></thead><tbody><tr><td>決定日が空欄</td><td>通常表示に残す</td></tr><tr><td>原本リンク未登録</td><td>通常表示に残す</td></tr><tr><td>決定日から30日未満</td><td>通常表示に残す</td></tr></tbody></table>
+    <h3>9-7. 改訂済・廃止の決定事項</h3><p>状態が「改訂済」または「廃止」の決定事項は、アーカイブタブに表示してよい。ただし、有効決定の30日経過アーカイブとは区別してラベル表示する。</p>
+    <h3>9-8. アーカイブDATA</h3><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>archived</td><td>true / false</td></tr><tr><td>archiveType</td><td>アーカイブ種別</td></tr><tr><td>archiveReason</td><td>アーカイブ理由</td></tr><tr><td>archiveDate</td><td>アーカイブ表示へ移る基準日</td></tr></tbody></table>
+  </section>
+
+  <section id="search" class="section card">
+    <h2>10. HTML検索機能の改善ルール</h2>
+    <h3>10-1. 基本方針</h3><p>Dashboardの検索機能は、日常運用における確認・検索の負担を下げるため、完全一致だけに依存しない検索方式とする。検索対象は、通常表示中の項目だけでなく、アーカイブ表示に移動した項目も含める。</p>
+    <h3>10-2. 検索正規化</h3><table><thead><tr><th>対象</th><th>扱い</th></tr></thead><tbody><tr><td>半角・全角</td><td>同一視する</td></tr><tr><td>大文字・小文字</td><td>同一視する</td></tr><tr><td>全角スペース・半角スペース</td><td>同一視する</td></tr><tr><td>前後の空白</td><td>無視する</td></tr><tr><td>連続する空白</td><td>1つの空白として扱う</td></tr></tbody></table>
+    <p>実装上は、可能であればUnicode正規化のNFKCを用いる。</p>
+    <h3>10-3. 検索方式</h3><p>検索は完全一致ではなく、正規化後の部分一致とする。検索語に空白が含まれる場合は、空白で分割し、原則としてAND検索とする。</p>
+    <h3>10-4. 検索対象</h3><p>議事録、タスク、スレッド、決定事項、アーカイブ項目の主要フィールドを検索対象とする。原本リンク表示名、原本リンクURL、アーカイブ理由、アーカイブ日も対象に含める。</p>
+    <h3>10-5. 検索結果からの移動</h3><ol><li>該当項目が存在するタブへ移動する。</li><li>必要に応じて表示フィルターを切り替える。</li><li>該当項目まで自動スクロールする。</li><li>該当項目を一時的に強調表示する。</li><li>数秒後に強調表示を解除する。</li></ol>
+    <h3>10-6. 移動先の判定</h3><table><thead><tr><th>種別</th><th>通常項目の移動先</th><th>アーカイブ項目の移動先</th></tr></thead><tbody><tr><td>議事録</td><td>議事録タブ</td><td>議事録タブ</td></tr><tr><td>タスク</td><td>タスクタブ</td><td>アーカイブタブ</td></tr><tr><td>スレッド</td><td>スレッドタブ</td><td>アーカイブタブまたはスレッドタブ</td></tr><tr><td>決定事項</td><td>決定タブ</td><td>アーカイブタブ</td></tr></tbody></table>
+    <h3>10-7. 安定IDの付与</h3><table><thead><tr><th>対象</th><th>ID例</th></tr></thead><tbody><tr><td>タスク</td><td>task-A-202611-001</td></tr><tr><td>スレッド</td><td>thread-T-202611-001</td></tr><tr><td>決定事項</td><td>decision-M-202611-007</td></tr><tr><td>議事録</td><td>minute-260807-4PC-mtg-docx</td></tr><tr><td>アーカイブタスク</td><td>archive-task-A-202611-001</td></tr><tr><td>アーカイブ決定事項</td><td>archive-decision-M-202611-007</td></tr></tbody></table>
+    <h3>10-8. 検索結果UI</h3><p>検索結果には、種別、タイトル、抜粋、通常表示／アーカイブのラベルを表示する。検索結果はクリックまたはタップ可能なカードとして表示する。</p>
+    <h3>10-9. iPad表示への配慮</h3><p>768px、820px、1024px幅で、検索欄、検索スコープ、検索結果カード、下部ナビ、テーブル横スクロールが崩れないようにする。</p>
+  </section>
+
+  <section id="icons" class="section card">
+    <h2>11. アイコン・ビジュアルルール</h2>
+    <h3>11-1. 現在の絵文字アイコンの扱い</h3>
+    <p>Dashboard内の絵文字は、外部画像を読み込んでいるのではなく、HTML内に直接書かれたUnicode文字として扱う。表示される形は、閲覧するOS・ブラウザ・フォント環境に依存する。</p>
+    <p>そのため、同じ絵文字でもmacOS、iPadOS、Windows、Androidで見た目が変わる。業務用画面で統一感を出すには、絵文字ではなくSVGアイコンを使う方が望ましい。</p>
+    <h3>11-2. 推奨方針</h3>
+    <p>ナビゲーション、KPI、検索、アーカイブ、決定、タスク、スレッドなどのUIアイコンは、絵文字ではなくインラインSVGを使用する。</p>
+    <table><thead><tr><th>対象</th><th>推奨アイコン</th></tr></thead><tbody><tr><td>概要</td><td>home / dashboard</td></tr><tr><td>議事録</td><td>file-text</td></tr><tr><td>タスク</td><td>check-square</td></tr><tr><td>スレッド</td><td>message-square</td></tr><tr><td>決定</td><td>pin / badge-check</td></tr><tr><td>アーカイブ</td><td>archive / box</td></tr><tr><td>検索</td><td>search</td></tr><tr><td>仕様</td><td>settings</td></tr></tbody></table>
+    <h3>11-3. 実装ルール</h3>
+    <ul>
+      <li>外部CDNに依存しない。</li>
+      <li>可能な限りインラインSVGを使用する。</li>
+      <li>SVGは <code>stroke="currentColor"</code> または <code>fill="currentColor"</code> を使い、CSSで色を制御する。</li>
+      <li>装飾目的のSVGには <code>aria-hidden="true"</code> を付ける。</li>
+      <li>サイズはCSSで統一し、PC・iPad・スマホで崩れないようにする。</li>
+    </ul>
+    <h3>11-4. サンプル</h3>
+    <div class="icon-sample cool-icons">
+      <svg class="svgicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>概要</span>
+      <svg class="svgicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h6"/></svg><span>議事録</span>
+      <svg class="svgicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>タスク</span>
+      <svg class="svgicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg><span>スレッド</span>
+      <svg class="svgicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg><span>アーカイブ</span>
+    </div>
+  </section>
+
+  <section id="ops" class="section card">
+    <h2>12. 日常運用フロー</h2>
+    <ol>
+      <li>Teamsで議論する。</li>
+      <li>会議・決定・タスクをWordまたはExcel原本に反映する。</li>
+      <li>スレッド管理台帳、タスク管理台帳、決定事項台帳を更新する。</li>
+      <li><code>build_4pc_hub.py</code> を実行し、Dashboard/index.htmlを生成する。</li>
+      <li>Dashboardで、今日見るべきもの、後回し・再確認、アーカイブ、検索結果を確認する。</li>
+    </ol>
+  </section>
+
+  <section id="codex" class="section card">
+    <h2>13. Codex改修時の注意</h2>
+    <ul>
+      <li>Dashboard/index.html は編集しない。編集するのは Automation/template_index.html と build_4pc_hub.py。</li>
+      <li>HTML全体をPythonで再生成しない。DATA差し替え方式を維持する。</li>
+      <li>既存のDATAキーは削除・改名しない。</li>
+      <li>アーカイブ判定は build_4pc_hub.py 側で行う。</li>
+      <li>検索処理はHTML側JavaScriptで行う。</li>
+      <li>絵文字はインラインSVGへ置換する。ただし外部CDN依存は避ける。</li>
+      <li>iPad幅 768px、820px、1024px で表示確認する。</li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <p>四人委員会 情報管理・意思決定管理 運用仕様 v11 / HTML版</p>
+  </footer>
+</main>
+</body>
+</html>
