@@ -28,24 +28,25 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.7}
 button,input,select{font-family:inherit}
 a{color:inherit}
+.svg-icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}.icon-muted{color:#667085}.icon-danger{color:#c0392b}.icon-warning{color:#b7791f}.icon-success{color:#2f855a}.icon-info{color:#2f6f9f}
 .app{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:278px minmax(0,1fr)}
 .sidebar{min-height:100vh;min-height:100svh;position:sticky;top:0;align-self:start;background:#143852;color:#eaf4ff;padding:18px 15px;display:flex;flex-direction:column;gap:14px}
 .brand{display:flex;gap:10px;align-items:center;padding:6px 5px 16px;border-bottom:1px solid rgba(255,255,255,.14)}
 .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#89c7e8,#fff);display:grid;place-items:center;color:#123850;font-weight:800;letter-spacing:.02em}
 .brand h1{font-size:16px;margin:0;line-height:1.25}.brand small{display:block;font-size:11px;color:#b9d0e2;font-weight:400;margin-top:2px}
-.nav{display:flex;flex-direction:column;gap:6px}.nav button{border:0;background:transparent;color:#cfe3f3;text-align:left;padding:12px 12px;border-radius:13px;cursor:pointer;font-size:14px;display:flex;align-items:center;gap:10px}.nav button.active{background:rgba(255,255,255,.14);color:#fff;font-weight:700}.nav span.icon{width:24px;text-align:center}
+.nav{display:flex;flex-direction:column;gap:6px}.nav button{border:0;background:transparent;color:#cfe3f3;text-align:left;padding:12px 12px;border-radius:13px;cursor:pointer;font-size:14px;display:flex;align-items:center;gap:10px}.nav button:hover{background:rgba(255,255,255,.08);color:#fff}.nav button.active{background:rgba(255,255,255,.14);color:#fff;font-weight:700}.nav .svg-icon{width:18px;height:18px}
 .sidebar-footer{margin-top:auto;font-size:11px;color:#b9d0e2;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
-.main{min-width:0;padding:22px 24px 82px}.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}.title h2{font-size:22px;margin:0}.title p{margin:4px 0 0;color:var(--muted);font-size:12px}.search{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 13px;display:flex;align-items:center;gap:8px;min-width:330px;box-shadow:0 3px 10px rgba(30,60,90,.05)}.search input{border:0;outline:0;background:transparent;width:100%;font-size:14px}
-.section{display:none;min-width:0}.section.active{display:block}.grid{display:grid;gap:14px;min-width:0}.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card.pad{padding:16px}.card h3{font-size:15px;margin:0 0 12px}.kpi{padding:15px;min-height:96px}.kpi .num{font-size:27px;font-weight:800;line-height:1}.kpi .label{font-size:12px;color:var(--muted);margin-top:7px}.kpi .sub{font-size:11px;color:#98a2b3;margin-top:7px}.kpi.red .num{color:var(--red)}.kpi.amber .num{color:var(--amber)}.kpi.green .num{color:var(--green)}.kpi.blue .num{color:var(--blue)}.kpi.purple .num{color:var(--purple)}
+.main{min-width:0;padding:22px 24px 82px}.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}.title h2{font-size:22px;margin:0}.title p{margin:4px 0 0;color:var(--muted);font-size:12px}.search{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 13px;display:flex;align-items:center;gap:8px;min-width:330px;box-shadow:0 3px 10px rgba(30,60,90,.05)}.search-icon{display:flex;align-items:center;justify-content:center}.search .svg-icon{width:17px;height:17px;color:#667085}.search input{border:0;outline:0;background:transparent;width:100%;font-size:14px}
+.section{display:none;min-width:0}.section.active{display:block}.grid{display:grid;gap:14px;min-width:0}.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card.pad{padding:16px}.card h3{font-size:15px;margin:0 0 12px}.kpi{padding:15px;min-height:96px}.kpi-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.kpi-head .svg-icon{width:17px;height:17px;color:currentColor;opacity:.85}.kpi .num{font-size:27px;font-weight:800;line-height:1}.kpi .label{font-size:12px;color:var(--muted);margin-top:7px}.kpi .sub{font-size:11px;color:#98a2b3;margin-top:7px}.kpi.red .num,.kpi.red .kpi-head{color:var(--red)}.kpi.amber .num,.kpi.amber .kpi-head{color:var(--amber)}.kpi.green .num,.kpi.green .kpi-head{color:var(--green)}.kpi.blue .num,.kpi.blue .kpi-head{color:var(--blue)}.kpi.purple .num,.kpi.purple .kpi-head{color:var(--purple)}
 .layout{grid-template-columns:1.35fr .78fr}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;min-width:0}.toolbar button,.toolbar select{min-height:38px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.toolbar button.active{background:#eaf3fb;color:#1f5b84;border-color:#a9cde5;font-weight:700}
 .pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:11px;background:#eef2f7;color:#344054;white-space:nowrap}.pill.red{background:#fff0ee;color:var(--red)}.pill.amber{background:#fff7e6;color:var(--amber)}.pill.green{background:#eaf8f0;color:var(--green)}.pill.blue{background:#eaf3fb;color:var(--blue)}.pill.purple,.pill.defer{background:#f1eff8;color:var(--purple)}.pill.review{background:#fff5d6;color:#8a6116}.pill.gray{background:#f2f4f7;color:#667085}.pill.archive{background:#ece9f5;color:#5f527f}.pill.withdrawn{background:#eef0f3;color:#59616d}.pill.revised{background:#eeeafb;color:#65538f}.pill.discontinued{background:#e6e9ee;color:#4f5865}.pill.meta-pill{max-width:260px;overflow:hidden;text-overflow:ellipsis}
 .list{display:flex;flex-direction:column;gap:9px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px}.item.item-deferred{background:#f8f6fc;border-color:#e2ddee}.item.item-review{background:#fffaf0;border-color:#eedda9}.score{width:40px;height:40px;border-radius:14px;background:#eef5fb;color:#24587d;display:grid;place-items:center;font-weight:800}.item h4{font-size:14px;margin:0}.item p{margin:3px 0 0;color:var(--muted);font-size:12px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.right{text-align:right}.btn{border:0;background:#24587d;color:#fff;border-radius:11px;padding:8px 11px;font-size:12px;cursor:pointer}.btn.ghost{background:#eef2f7;color:#344054}
-.thread-link{display:inline-flex;align-items:center;gap:6px;color:#1f5b84;text-decoration:none;font-weight:700}.thread-link:hover{text-decoration:underline}.thread-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:3px;border-radius:4px}.external-mark{font-size:12px;color:#5f86a1}.btn.external-link{display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap}
+.thread-link{display:inline-flex;align-items:center;gap:6px;color:#1f5b84;text-decoration:none;font-weight:700}.thread-link:hover{text-decoration:underline}.thread-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:3px;border-radius:4px}.external-mark{display:inline-flex;color:#5f86a1}.external-mark .svg-icon,.btn.external-link .svg-icon{width:14px;height:14px}.btn.external-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap}
 .tablewrap{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;border:1px solid var(--line);border-radius:15px;background:#fff}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f6fa;color:#475467;font-size:12px;position:sticky;top:0;z-index:1}td{font-size:13px}.row-red td{background:#fff4f2}.row-amber td,.row-review td{background:#fff9e8}.row-green td{background:#f1fbf5}.row-gray td{color:#8a9099;background:#f8f9fb}.row-deferred td{background:#f7f5fb}.row-archive td{background:#f7f6fb;color:#525866}
-.decision-table{min-width:980px;table-layout:fixed}.decision-body{overflow-wrap:anywhere}.decision-source-cell{width:220px}.source-links{display:flex;flex-wrap:wrap;gap:6px;min-width:0}.source-link{display:inline-flex;align-items:center;min-width:0;max-width:180px;padding:3px 8px;border-radius:999px;background:#eaf3fb;color:#24587d;font-size:11px;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.source-link:hover{text-decoration:underline}.source-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:2px}.source-link.empty{background:#f2f4f7;color:#667085}.source-link.empty:hover{text-decoration:none}
+.decision-table{min-width:980px;table-layout:fixed}.decision-body{overflow-wrap:anywhere}.decision-source-cell{width:220px}.source-links{display:flex;flex-wrap:wrap;gap:6px;min-width:0}.source-link{display:inline-flex;align-items:center;gap:4px;min-width:0;max-width:180px;padding:3px 8px;border-radius:999px;background:#eaf3fb;color:#24587d;font-size:11px;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden}.source-link .svg-icon{width:12px;height:12px}.source-link .link-label{min-width:0;overflow:hidden;text-overflow:ellipsis}.source-link:hover{text-decoration:underline}.source-link:focus-visible{outline:2px solid #5ea6d2;outline-offset:2px}.source-link.empty{background:#f2f4f7;color:#667085}.source-link.empty:hover{text-decoration:none}
 .reader{display:grid;grid-template-columns:minmax(210px,260px) minmax(0,860px);gap:20px;align-items:start;justify-content:center}.timeline{position:sticky;top:22px;max-height:calc(100vh - 44px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}.timecard{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:12px;cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.timecard:hover{border-color:#a9cde5;transform:translateY(-1px)}.timecard.active{border-color:#5ea6d2;background:#eaf5fc;box-shadow:inset 4px 0 #2f6f9f}.timecard b{font-size:13px}.timecard small{display:block;color:var(--muted);font-size:11px;margin-top:3px;overflow-wrap:anywhere}.doc{width:100%;max-width:860px;padding:clamp(22px,3vw,38px);overflow:visible}.doc h3{font-size:22px;line-height:1.4;margin:0}.doc .caption{font-size:12px;color:var(--muted);margin:6px 0 22px;padding-bottom:15px;border-bottom:1px solid var(--line)}.minute-section{margin:0 0 18px;border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden}.minute-section h4{margin:0;padding:12px 16px;border-left:5px solid var(--blue);background:#f4f8fc;font-size:15px;line-height:1.45}.minute-section.decision h4{border-left-color:var(--green);background:#f0f9f4}.minute-section.pending h4{border-left-color:var(--amber);background:#fff8ea}.minute-section.taskh h4{border-left-color:var(--blue);background:#eef6fc}.minute-section.warning h4{border-left-color:var(--red);background:#fff3f1}.minute-body{padding:16px 18px 18px;color:#25313d}.minute-body p{margin:0 0 .85em;line-height:1.95}.minute-body p:last-child{margin-bottom:0}.minute-subhead{margin:18px 0 9px;padding:8px 11px;border-left:3px solid #8fb9d5;background:#f7fafc;border-radius:0 9px 9px 0;font-weight:700;color:#244e6c}.minute-subhead:first-child{margin-top:0}.minute-list-row{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;margin:7px 0;line-height:1.8}.minute-marker{width:22px;height:22px;border-radius:7px;background:#eaf3fb;color:#24587d;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}.minute-note{margin:10px 0;padding:10px 12px;border-radius:10px;background:#fff9e8;color:#76571d}.minute-rule{border:0;border-top:1px dashed var(--line);margin:16px 0}.minute-tablewrap{overflow:auto;margin:13px 0;border:1px solid var(--line);border-radius:11px}.minute-table{min-width:620px}.minute-table th,.minute-table td{padding:8px 10px;font-size:12px;line-height:1.55}.minute-table th{position:static;background:#edf3f8}.minute-empty{padding:34px 18px;text-align:center;color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}.deferred-panel{margin-top:14px;border-color:#ded8ec}.deferred-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.deferred-panel-head p{margin:2px 0 12px;color:var(--muted);font-size:12px}.deferred-panel .item{background:#fbfafe}.archive-grid{display:grid;grid-template-columns:1fr;gap:16px}.archive-card{border-color:#ddd9e9}.archive-card h3{display:flex;align-items:center;justify-content:space-between;gap:10px}.archive-task-table{min-width:940px}.archive-decision-table{min-width:1040px;table-layout:fixed}.search-results{display:flex;flex-direction:column;gap:9px;min-width:0}.search-result{width:100%;min-width:0;cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}.search-result:hover{border-color:#a9cde5;transform:translateY(-1px)}.search-result:focus-visible{outline:3px solid rgba(47,111,159,.45);outline-offset:2px}.search-result p{overflow-wrap:anywhere}.search-query{margin:0 0 10px;color:var(--muted);font-size:12px}.search-focus{outline:3px solid rgba(47,111,159,.55);box-shadow:0 0 0 6px rgba(47,111,159,.14);border-radius:12px;transition:box-shadow .2s ease,outline .2s ease}tr.search-focus td{background:#eaf5fc!important}
-.mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}.mobilebar button{min-width:0;min-height:48px;border:0;background:transparent;border-radius:12px;padding:8px 2px;font-size:10px;color:#667085}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.fab{display:none;position:fixed;right:18px;bottom:calc(82px + var(--bottom-safe));border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);z-index:90}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:13px}.flow b{display:block;margin-bottom:4px}.flow span{font-size:12px;color:var(--muted)}.note{padding:12px;border-radius:14px;background:#f7fbff;border:1px solid #dcebf7;font-size:13px;color:#415466}.empty{color:var(--muted);text-align:center;padding:24px}.highlight{background:#fff1a6;border-radius:3px;padding:0 2px}.deferred-panel{margin-top:14px;border-color:#ded8ec}.deferred-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.deferred-panel-head p{margin:2px 0 12px;color:var(--muted);font-size:12px}.deferred-panel .item{background:#fbfafe}.archive-grid{display:grid;grid-template-columns:1fr;gap:16px}.archive-card{border-color:#ddd9e9}.archive-card h3{display:flex;align-items:center;justify-content:space-between;gap:10px}.archive-task-table{min-width:940px}.archive-decision-table{min-width:1040px;table-layout:fixed}.search-results{display:flex;flex-direction:column;gap:9px;min-width:0}.search-result{width:100%;min-width:0;cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}.search-result:hover{border-color:#a9cde5;transform:translateY(-1px)}.search-result:focus-visible{outline:3px solid rgba(47,111,159,.45);outline-offset:2px}.search-result p{overflow-wrap:anywhere}.search-query{margin:0 0 10px;color:var(--muted);font-size:12px}.move-pill .svg-icon{width:12px;height:12px}.search-focus{outline:3px solid rgba(47,111,159,.55);box-shadow:0 0 0 6px rgba(47,111,159,.14);border-radius:12px;transition:box-shadow .2s ease,outline .2s ease}tr.search-focus td{background:#eaf5fc!important}
+.mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:80;padding:8px 9px calc(8px + var(--bottom-safe))}.mobilebar .row{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}.mobilebar button{min-width:0;min-height:52px;border:0;background:transparent;border-radius:12px;padding:6px 2px;font-size:10px;color:#667085;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;line-height:1.15}.mobilebar button:hover{color:#24587d}.mobilebar button.active{background:#eaf3fb;color:#24587d;font-weight:700}.mobilebar .svg-icon{width:16px;height:16px}.fab{display:none;position:fixed;right:18px;bottom:calc(82px + var(--bottom-safe));border:0;background:#24587d;color:#fff;border-radius:999px;padding:12px;box-shadow:var(--shadow);z-index:90}.fab .svg-icon{display:block;width:18px;height:18px}
 @media(max-width:1180px){.app{grid-template-columns:220px minmax(0,1fr)}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:1fr}.reader{grid-template-columns:200px minmax(0,1fr)}.search{min-width:260px}}
 @media(max-width:1024px){body{font-size:14px}.app{display:block;min-height:100svh}.sidebar{display:none}.main{width:100%;padding:20px 20px calc(112px + var(--bottom-safe))}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.layout{grid-template-columns:1fr}.reader{display:block}.timeline{position:static;max-height:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);grid-template-columns:none;overflow:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;padding:0 0 6px}.timecard{min-width:170px;min-height:72px}.doc{max-width:none;padding:24px 22px}.toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}.toolbar button,.toolbar select{min-height:44px;white-space:nowrap;flex:0 0 auto}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.mobilebar,.fab{display:block}.card.pad{padding:18px}.tablewrap table{min-width:820px}.tablewrap table.decision-table{min-width:900px}.tablewrap table.archive-task-table{min-width:880px}.tablewrap table.archive-decision-table{min-width:940px}.decision-source-cell{width:200px}.search-result{min-height:66px}}
 @media(max-width:900px){.main{padding:18px 16px calc(112px + var(--bottom-safe))}.topbar{gap:12px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search{min-width:0;width:min(320px,44vw)}.doc{padding:22px 18px}.pill.meta-pill{max-width:220px}}
@@ -63,7 +64,7 @@ a{color:inherit}
   <main class="main">
     <div class="topbar">
       <div class="title"><h2 id="pageTitle">ダッシュボード</h2><p>Word議事録・各Excel台帳から生成した閲覧専用画面です。</p></div>
-      <label class="search"><span>🔎</span><input id="globalSearch" placeholder="横断検索：例）確認待ち / Word原本"></label>
+      <label class="search"><span class="search-icon" id="searchIcon"></span><input id="globalSearch" placeholder="横断検索：例）確認待ち / Word原本"></label>
     </div>
 
     <section id="dashboard" class="section active">
@@ -167,7 +168,7 @@ a{color:inherit}
   </main>
 </div>
 <div class="mobilebar"><div class="row" id="mobileNav"></div></div>
-<button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="fab" id="scrollTopButton" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})"></button>
 <script>
 const DATA={
   "minutes": [
@@ -343,7 +344,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "今すぐ",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -359,11 +360,11 @@ const DATA={
       "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "高",
-      "state": "完了",
+      "state": "確認待ち",
       "judge": "完了報告あり",
       "evidence": "",
       "related": "",
-      "check": "完了判定未確認",
+      "check": "完了根拠リンク未記入",
       "priorityClass": "通常",
       "deferReason": "未判定",
       "reviewDate": "",
@@ -371,7 +372,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "今すぐ",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -387,11 +388,11 @@ const DATA={
       "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
-      "state": "完了",
+      "state": "確認待ち",
       "judge": "完了報告あり",
       "evidence": "",
       "related": "",
-      "check": "完了判定未確認",
+      "check": "完了根拠リンク未記入",
       "priorityClass": "通常",
       "deferReason": "未判定",
       "reviewDate": "",
@@ -399,7 +400,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "通常",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -415,11 +416,11 @@ const DATA={
       "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
-      "state": "完了",
+      "state": "確認待ち",
       "judge": "完了報告あり",
       "evidence": "",
       "related": "",
-      "check": "完了判定未確認",
+      "check": "完了根拠リンク未記入",
       "priorityClass": "通常",
       "deferReason": "未判定",
       "reviewDate": "",
@@ -427,7 +428,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "通常",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -443,11 +444,11 @@ const DATA={
       "checker": "Esther Sugisawa Ayumi",
       "due": "未設定",
       "prio": "中",
-      "state": "完了",
+      "state": "確認待ち",
       "judge": "完了報告あり",
       "evidence": "",
       "related": "",
-      "check": "完了判定未確認",
+      "check": "完了根拠リンク未記入",
       "priorityClass": "通常",
       "deferReason": "未判定",
       "reviewDate": "",
@@ -455,7 +456,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "通常",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -469,9 +470,9 @@ const DATA={
       "name": "決定事項スレッド・台帳運用テスト",
       "owner": "Moses DenishiHikaru",
       "checker": "Esther Sugisawa Ayumi",
-      "due": "未設定",
+      "due": "2026/08/31",
       "prio": "中",
-      "state": "未着手",
+      "state": "対応中",
       "judge": "",
       "evidence": "",
       "related": "",
@@ -483,7 +484,7 @@ const DATA={
       "reviewAction": "",
       "sourceLink": "",
       "note": "",
-      "completedDate": "通常",
+      "completedDate": "",
       "archived": false,
       "archiveType": "",
       "archiveReason": "",
@@ -723,21 +724,39 @@ const DATA={
     }
   ]
 };
-const navs=[['dashboard','🏠','概要'],['minutes','📄','議事録'],['tasks','✅','タスク'],['threads','💬','スレッド'],['decisions','📌','決定'],['archive','🗃️','アーカイブ'],['search','🔎','検索'],['spec','⚙️','仕様']];
+const navs=[['dashboard','home','概要'],['minutes','file-text','議事録'],['tasks','check-square','タスク'],['threads','message-square','スレッド'],['decisions','pin','決定'],['archive','archive','アーカイブ'],['search','search','検索'],['spec','settings','仕様']];
 const mobileNavIds=new Set(['dashboard','minutes','tasks','threads','decisions','archive']);
 let current='dashboard', minuteIndex=0, searchHits=[];
 const $=id=>document.getElementById(id);
 const esc=s=>(s??'').toString().replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const escAttr=s=>esc(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const ICONS={
+ home:'<path d="M3 10.5 12 3l9 7.5"></path><path d="M5 10v10h14V10"></path><path d="M9 20v-6h6v6"></path>',
+ 'file-text':'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h8M8 9h2"></path>',
+ 'check-square':'<rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="m7.5 12 3 3 6-7"></path>',
+ 'message-square':'<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8M8 13h5"></path>',
+ pin:'<path d="M6 3h12l-2 8 3 3H5l3-3z"></path><path d="M12 14v8"></path>',
+ archive:'<rect x="3" y="4" width="18" height="5" rx="1"></rect><path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M9 13h6"></path>',
+ search:'<circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>',
+ settings:'<circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path>',
+ 'arrow-up':'<path d="m6 10 6-6 6 6"></path><path d="M12 4v16"></path>',
+ 'arrow-right':'<path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path>',
+ link:'<path d="M10 13a5 5 0 0 0 7.07.07l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15"></path><path d="M14 11a5 5 0 0 0-7.07-.07l-2 2A5 5 0 0 0 12 20l1.15-1.15"></path>',
+ 'alert-circle':'<circle cx="12" cy="12" r="10"></circle><path d="M12 8v4M12 16h.01"></path>',
+ clock:'<circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path>',
+ 'check-circle':'<circle cx="12" cy="12" r="10"></circle><path d="m7.5 12 3 3 6-7"></path>',
+ 'pause-circle':'<circle cx="12" cy="12" r="10"></circle><path d="M9 9v6M15 9v6"></path>'
+};
+function icon(name,extraClass=''){const body=ICONS[name];if(!body)return '';const classes=['svg-icon',extraClass].filter(Boolean).join(' ');return `<svg class="${escAttr(classes)}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`}
 function safeLink(value){try{const url=new URL((value||'').trim());return ['https:','http:'].includes(url.protocol)?url.href:''}catch{return ''}}
 function safeId(value){return (value??'').toString().normalize('NFKC').replace(/[^a-zA-Z0-9_-]/g,'-')}
 function normalizeSearchText(value){return (value??'').toString().normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim()}
-function threadTitle(t){const url=safeLink(t.url);return url?`<a class="thread-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Teamsのスレッドを開く"><span>${esc(t.subject)}</span><span class="external-mark" aria-hidden="true">↗</span></a>`:esc(t.subject)}
+function threadTitle(t){const url=safeLink(t.url);return url?`<a class="thread-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Teamsのスレッドを開く"><span>${esc(t.subject)}</span><span class="external-mark">${icon('link')}</span></a>`:esc(t.subject)}
 function badge(text,cls=''){return `<span class="pill ${cls}">${esc(text)}</span>`}
 function stateClass(s){return s==='完了'||s==='決定'||s==='有効'?'green':s==='確認待ち'||s==='保留'?'amber':s==='会議送り'?'purple':s==='取り下げ'||s==='廃止'?'gray':s==='改訂済'?'purple':s==='未着手'?'red':'blue'}
-function navHTML(mobile=false){return navs.filter(n=>!mobile||mobileNavIds.has(n[0])).map(n=>`<button data-nav="${n[0]}" class="${n[0]===current?'active':''}"><span class="icon">${n[1]}</span>${n[2]}</button>`).join('')}
+function navHTML(mobile=false){return navs.filter(n=>!mobile||mobileNavIds.has(n[0])).map(n=>`<button data-nav="${n[0]}" class="${n[0]===current?'active':''}">${icon(n[1])}<span>${n[2]}</span></button>`).join('')}
 function setSection(id){current=id;document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));$('pageTitle').textContent=navs.find(n=>n[0]===id)?.[2]||'概要'; if(id==='search') renderSearch(); window.scrollTo(0,0)}
-function bootNav(){ $('desktopNav').innerHTML=navHTML(false); $('mobileNav').innerHTML=navHTML(true); document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setSection(b.dataset.nav))); }
+function bootNav(){ $('desktopNav').innerHTML=navHTML(false); $('mobileNav').innerHTML=navHTML(true); $('searchIcon').innerHTML=icon('search','icon-muted'); $('scrollTopButton').innerHTML=icon('arrow-up'); document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setSection(b.dataset.nav))); }
 const CLOSED_STATES=new Set(['完了','取り下げ','決定']);
 const DEFERRED_CLASSES=new Set(['後回し','見送り候補']);
 function isClosed(item){return CLOSED_STATES.has(item.state)}
@@ -760,18 +779,18 @@ function kpis(){
  const archivedTasks=DATA.tasks.filter(t=>t.archived).length;
  const archivedDecisions=DATA.decisions.filter(d=>d.archived).length;
  return [
-  {num:open,label:'未完了タスク',sub:'通常表示の進行中',cls:'blue'},
-  {num:waiting,label:'確認待ち',sub:'完了報告あり',cls:'amber'},
-  {num:deferredReview,label:'後回し・再確認',sub:'要再確認の未完了',cls:'purple'},
-  {num:recentDecisions,label:'最近の決定',sub:'通常表示中',cls:'green'},
-  {num:archivedTasks,label:'アーカイブタスク',sub:'完了後14日・取り下げ',cls:'purple'},
-  {num:archivedDecisions,label:'アーカイブ決定',sub:'30日経過・改訂・廃止',cls:'purple'}
+  {num:open,label:'未完了タスク',sub:'通常表示の進行中',cls:'blue',icon:'alert-circle'},
+  {num:waiting,label:'確認待ち',sub:'完了報告あり',cls:'amber',icon:'clock'},
+  {num:deferredReview,label:'後回し・再確認',sub:'要再確認の未完了',cls:'purple',icon:'pause-circle'},
+  {num:recentDecisions,label:'最近の決定',sub:'通常表示中',cls:'green',icon:'pin'},
+  {num:archivedTasks,label:'アーカイブタスク',sub:'完了後14日・取り下げ',cls:'purple',icon:'check-circle'},
+  {num:archivedDecisions,label:'アーカイブ決定',sub:'30日経過・改訂・廃止',cls:'purple',icon:'archive'}
  ];
 }
-function renderKPIs(){ $('kpis').innerHTML=kpis().map(k=>`<div class="card kpi ${k.cls}"><div class="num">${k.num}</div><div class="label">${k.label}</div><div class="sub">${k.sub}</div></div>`).join('') }
+function renderKPIs(){ $('kpis').innerHTML=kpis().map(k=>`<div class="card kpi ${k.cls}"><div class="kpi-head"><div class="num">${k.num}</div>${icon(k.icon)}</div><div class="label">${k.label}</div><div class="sub">${k.sub}</div></div>`).join('') }
 function flags(str){return (str||'').split('/').map(x=>x.trim()).filter(Boolean).map(x=>badge(x,/超過|未設定|未記入|未転記/.test(x)?'red':'amber')).join('')}
 function taskItem(t){return `<div class="item ${isReviewDue(t)?'item-review':isDeferred(t)?'item-deferred':''}"><div class="score">${esc(t.prio||'T')}</div><div><h4>${esc(t.name)}</h4><p>${esc(t.owner||'実行者未設定')} / 期限 ${esc(t.due||'未設定')}</p><div class="meta">${badge(t.state,stateClass(t.state))}${badge(t.judge,stateClass(t.judge))}${flags(t.check)}${t.related?badge(t.related,'blue'):''}${deferMeta(t)}</div></div><div class="right"><button class="btn ghost" onclick="setSection('tasks')">開く</button></div></div>`}
-function threadItem(t){const url=safeLink(t.url);return `<div class="item ${isReviewDue(t)?'item-review':isDeferred(t)?'item-deferred':''}"><div class="score">T</div><div><h4>${threadTitle(t)}</h4><p>${esc(t.issue)} / ${esc(t.channel)}</p><div class="meta">${badge(t.state,stateClass(t.state))}${t.did?badge(t.did,'green'):''}${flags(t.check)}${deferMeta(t)}</div></div><div class="right">${url?`<a class="btn ghost external-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">Teamsへ ↗</a>`:`<button class="btn ghost" onclick="setSection('threads')">開く</button>`}</div></div>`}
+function threadItem(t){const url=safeLink(t.url);return `<div class="item ${isReviewDue(t)?'item-review':isDeferred(t)?'item-deferred':''}"><div class="score">T</div><div><h4>${threadTitle(t)}</h4><p>${esc(t.issue)} / ${esc(t.channel)}</p><div class="meta">${badge(t.state,stateClass(t.state))}${t.did?badge(t.did,'green'):''}${flags(t.check)}${deferMeta(t)}</div></div><div class="right">${url?`<a class="btn ghost external-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">${icon('link')}<span>Teamsへ</span></a>`:`<button class="btn ghost" onclick="setSection('threads')">開く</button>`}</div></div>`}
 function renderToday(filter='all'){
  let list=[];
  if(['all','danger','task'].includes(filter)) list=list.concat(DATA.tasks.filter(t=>!t.archived&&(filter!=='danger'||t.check||t.state==='確認待ち')).map(taskItem));
@@ -837,8 +856,8 @@ function renderThreadRows(filter='open'){
 function decisionSourceLinks(d){
  const links=Array.isArray(d.sourceLinks)?d.sourceLinks.slice(0,5):[];
  if(!links.length&&d.sourceLink)links.push({label:'原本1',text:d.sourceLink,url:safeLink(d.sourceLink)?d.sourceLink:''});
- if(!links.length)return '<span class="source-link empty">未登録</span>';
- return `<div class="source-links">${links.map((link,index)=>{const text=(link.text||link.label||`原本${index+1}`).toString(),url=safeLink(link.url),title=[text,link.url].filter(Boolean).join(' / ');return url?`<a class="source-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="${escAttr(title)}">${esc(text)}</a>`:`<span class="source-link empty" title="${escAttr(title)}">${esc(text)}</span>`}).join('')}</div>`;
+ if(!links.length)return `<span class="source-link empty">${icon('link')}<span class="link-label">未登録</span></span>`;
+ return `<div class="source-links">${links.map((link,index)=>{const text=(link.text||link.label||`原本${index+1}`).toString(),url=safeLink(link.url),title=[text,link.url].filter(Boolean).join(' / '),content=`${icon('link')}<span class="link-label">${esc(text)}</span>`;return url?`<a class="source-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="${escAttr(title)}">${content}</a>`:`<span class="source-link empty" title="${escAttr(title)}">${content}</span>`}).join('')}</div>`;
 }
 function renderDecisionRows(filter='current'){
  const rows=DATA.decisions.filter(d=>filter==='all'||!d.archived);
@@ -865,7 +884,7 @@ function renderSearch(){
  if(scope==='all'||scope==='decisions'||scope==='archive') DATA.decisions.filter(d=>scope!=='archive'||d.archived).forEach(d=>{const sourceLinks=Array.isArray(d.sourceLinks)?d.sourceLinks:[];const sourceText=sourceLinks.flatMap(link=>[link.text,link.url]).filter(Boolean);pool.push({kind:'決定',title:d.title,text:[fieldText(d,decisionFields),...sourceText].filter(Boolean).join(' '),targetSection:d.archived?'archive':'decisions',targetId:`${d.archived?'archive-decision':'decision'}-${safeId(d.id)}`,archived:!!d.archived})});
  searchHits=pool.filter(item=>{const target=normalizeSearchText(item.text);return terms.every(term=>target.includes(term))});
  const queryLabel=terms.length?`<div class="search-query">検索語: ${esc(q.trim())}</div>`:'';
- const cards=searchHits.map((h,index)=>{const excerpt=h.text.slice(0,240);return `<div class="item search-result" role="button" tabindex="0" data-result-index="${index}" aria-label="${escAttr(h.title)}を開く"><div class="score">${esc(h.kind[0])}</div><div><h4>${esc(h.title)}</h4><p>${esc(excerpt)}${h.text.length>240?'…':''}</p><div class="meta">${badge(h.kind)}${badge(h.archived?'アーカイブ':'通常表示',h.archived?'archive':'blue')}</div></div><div class="right"><span class="pill gray">移動 →</span></div></div>`}).join('');
+ const cards=searchHits.map((h,index)=>{const excerpt=h.text.slice(0,240);return `<div class="item search-result" role="button" tabindex="0" data-result-index="${index}" aria-label="${escAttr(h.title)}を開く"><div class="score">${esc(h.kind[0])}</div><div><h4>${esc(h.title)}</h4><p>${esc(excerpt)}${h.text.length>240?'…':''}</p><div class="meta">${badge(h.kind)}${badge(h.archived?'アーカイブ':'通常表示',h.archived?'archive':'blue')}</div></div><div class="right"><span class="pill gray move-pill"><span>移動</span>${icon('arrow-right')}</span></div></div>`}).join('');
  $('searchResults').innerHTML=queryLabel+(cards||'<div class="empty">該当なし</div>');
 }
 function setFilterActive(attribute,value){document.querySelectorAll(`[${attribute}]`).forEach(button=>button.classList.toggle('active',button.getAttribute(attribute)===value))}
