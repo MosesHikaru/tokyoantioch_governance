@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#143852">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="四人委員会">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./app-icon.png">
 <title>四人委員会 統合管理ハブ</title>
 <style>
 :root{
@@ -24,8 +30,8 @@
   --bottom-safe:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.7}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden;overscroll-behavior-x:none}
+body{margin:0;max-width:100%;overflow-x:hidden;overscroll-behavior-x:none;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.7}
 button,input,select{font-family:inherit}
 a{color:inherit}
 .svg-icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}.icon-muted{color:#667085}.icon-danger{color:#c0392b}.icon-warning{color:#b7791f}.icon-success{color:#2f855a}.icon-info{color:#2f6f9f}
