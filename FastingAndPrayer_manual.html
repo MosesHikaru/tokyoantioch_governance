@@ -1,0 +1,236 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>連鎖断食祈祷 準備マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: 1カラム・カード型の手順書。余白で区切り、Antioch Blueは番号・リンク・要点にだけ使う */
+:root{
+  --ta-antioch-blue:#0072C6;
+  --ta-antioch-blue-hover:#0082DE;
+  --ta-white:#FFFFFF;
+  --ta-apple-gray:#F5F5F7;
+  --ta-text-black:#1D1D1F;
+  --ta-soft-gray-text:#6E6E73;
+  --ta-line:#D2D2D7;
+
+  --bg:var(--ta-white);
+  --surface:var(--ta-apple-gray);
+  --card:var(--ta-white);
+  --fg:var(--ta-text-black);
+  --sub:var(--ta-soft-gray-text);
+  --accent:var(--ta-antioch-blue);
+  --accent-soft:#E6F1FA;
+  --line:var(--ta-line);
+
+  --ta-space-xs:8px;--ta-space-sm:12px;--ta-space-md:20px;--ta-space-lg:32px;--ta-space-xl:48px;
+  --ta-radius-card:22px;--ta-radius-button:999px;
+
+  --font-body:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121214;--surface:#1D1D1F;--card:#1D1D1F;--fg:#F5F5F7;--sub:#A1A1A6;
+  --accent:#3B9BE6;--accent-soft:#0F2A40;--line:#38383C;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121214;--surface:#1D1D1F;--card:#1D1D1F;--fg:#F5F5F7;--sub:#A1A1A6;
+  --accent:#3B9BE6;--accent-soft:#0F2A40;--line:#38383C;color-scheme:dark}
+
+body{background:var(--surface);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.8;padding-inline:16px;padding-block:var(--ta-space-xl)}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:var(--ta-space-lg)}
+h1,h2,h3{text-wrap:balance;font-weight:700;line-height:1.4;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+
+header{display:flex;flex-direction:column;gap:var(--ta-space-sm);padding-block:var(--ta-space-md)}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:500}
+h1{font-size:clamp(26px,5vw,34px);font-weight:500}
+.lead{color:var(--sub);max-width:60ch}
+
+.card{background:var(--card);border-radius:var(--ta-radius-card);padding:var(--ta-space-lg);display:flex;flex-direction:column;gap:var(--ta-space-md);min-width:0}
+@media (max-width:480px){.card{padding:var(--ta-space-md)}}
+h2{font-size:20px}
+
+.flow{display:flex;flex-wrap:wrap;gap:var(--ta-space-xs);list-style:none;margin:0;padding:0}
+.flow li{font-size:13px;padding:4px 12px;border-radius:var(--ta-radius-button);background:var(--surface);color:var(--fg)}
+.flow li.after{color:var(--sub)}
+
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+th,td{text-align:left;padding:var(--ta-space-sm) var(--ta-space-xs);border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--sub);font-weight:500;letter-spacing:.04em}
+.name{font-family:var(--font-mono);font-size:13px}
+
+.step-head{display:flex;align-items:center;gap:var(--ta-space-sm)}
+.num{flex:none;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-variant-numeric:tabular-nums}
+.num.muted{background:var(--surface);color:var(--sub)}
+ol.do,ul.do{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:var(--ta-space-xs)}
+ol.do ul{margin-top:4px;padding-left:1.2em;color:var(--fg)}
+.path{display:inline-block;font-size:13px;background:var(--surface);padding:2px 10px;border-radius:8px;color:var(--fg)}
+strong{font-weight:700}
+
+.note{background:var(--surface);border-radius:14px;padding:var(--ta-space-md);display:flex;flex-direction:column;gap:var(--ta-space-xs)}
+.note h3{font-size:14px}
+.note p,.note li{font-size:14px}
+.note.key{background:var(--accent-soft)}
+.note.key h3{color:var(--accent)}
+
+.check{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--ta-space-xs)}
+.check li{display:flex;gap:var(--ta-space-sm);align-items:flex-start}
+.check li::before{content:"";flex:none;width:18px;height:18px;margin-top:5px;border:1.5px solid var(--line);border-radius:5px}
+
+footer{font-size:12px;color:var(--sub);text-align:center}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">OverSea Mission ／ 運用マニュアル</span>
+    <h1>連鎖断食祈祷 準備マニュアル</h1>
+    <p class="lead">海外派遣チームの連鎖断食祈祷の受付を始めるまでの手順です。祈祷表を派遣日程に合わせ、フォームの回答が自動で表に反映されることを確認してから、Teamsで案内します。</p>
+  </header>
+
+  <section class="card" aria-labelledby="overview">
+    <h2 id="overview">作業前に確認するもの</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>対象</th><th>名前</th><th>場所</th></tr></thead>
+        <tbody>
+          <tr><td>祈祷表（Excel）</td><td class="name">FastingAndPrayerChainSchedule</td><td>TokyoAntiochMember ＞ 共有済み ＞ OverSea_Mission ＞ prayer</td></tr>
+          <tr><td>自動反映フロー</td><td class="name">MissionRensaDanjiki</td><td>Power Automate ＞ マイフロー</td></tr>
+          <tr><td>回答フォーム</td><td>（当該フォーム）</td><td>Microsoft Forms</td></tr>
+          <tr><td>祈りの課題（PDF）</td><td>派遣ごとに作成</td><td>TokyoAntiochMember ＞ 共有済み ＞ OverSea_Mission ＞ Prayer_Request</td></tr>
+          <tr><td>案内の投稿先</td><td>Tokyo Antioch Member ＞ 一般</td><td>Teams</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="flow" aria-label="作業の流れ">
+      <li>1 Excel準備</li><li>2 フォーム編集</li><li>3 フローをオン</li><li>4 テスト</li><li>5 テストデータ削除</li><li>6 PDFアップ</li><li>7 PDFリンク</li><li>8 投稿文の編集</li><li>9 投稿</li><li class="after">終了後 片付け</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="s1">
+    <div class="step-head"><span class="num">1</span><h2 id="s1">Excelを派遣日程に合わせる</h2></div>
+    <ol class="do">
+      <li>祈祷表を開きます。<br><span class="path">TokyoAntiochMember ＞ 共有済み ＞ OverSea_Mission ＞ prayer</span></li>
+      <li>前回の名前を削除します。
+        <ul><li>削除するのは<strong>4行目以下の名前だけ</strong>です。</li><li><strong>1〜3行目（タイトル・日付・時間帯）は消さないでください。</strong></li></ul></li>
+      <li>A1のチーム名を今回の派遣チーム名に変更します。</li>
+      <li>A2に派遣初日の日付を入力します（例：2026/10/14）。1日は朝・昼・夜の3列に分かれており、残りの日付は数式で自動的に変わります。</li>
+      <li>派遣期間外の日程の列を非表示にします（列を選択 → 右クリック →「非表示」）。</li>
+    </ol>
+    <div class="note key">
+      <h3>触ってはいけない箇所</h3>
+      <ul class="do">
+        <li><strong>A2以外の日付（2行目）</strong>：数式が入っています。上書きすると日付がずれます。</li>
+        <li><strong>3行目の時間帯ラベル</strong>：回答との照合に使っています。記号1つ（「;」など）の違いでも名前が反映されなくなります。</li>
+        <li><strong>セル結合</strong>：日付・時間帯のセルは結合しないでください。日付が読み取れなくなります。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="s2">
+    <div class="step-head"><span class="num">2</span><h2 id="s2">フォームを編集し、リンクを取得する</h2></div>
+    <ol class="do">
+      <li>Microsoft 365にログインし、Formsを開きます。</li>
+      <li>当該フォームを開き、次を編集します。
+        <ul><li><strong>タイトル</strong>：今回の派遣チーム名に変更</li><li><strong>説明文</strong>：派遣期間（開始日〜最終日）を必ず明記</li></ul></li>
+      <li>「設定」で終了日を<strong>派遣最終日の23:45</strong>にします。</li>
+      <li>「設定」で回答後に表示されるメッセージを編集します。</li>
+      <li>フォームの管理画面で「回答の収集」を開き、フォームのリンクをコピーして控えます（手順8で使用）。</li>
+    </ol>
+    <div class="note">
+      <h3>日付は期間外も選べてしまいます</h3>
+      <p>日付欄は日付ピッカーのため、派遣期間外の日付も選べます。期間外を選んだ回答は反映されないか、非表示の列に書き込まれて気づかれません。説明文に派遣期間を明記するのはこのためです。</p>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="s3">
+    <div class="step-head"><span class="num">3</span><h2 id="s3">Power Automateのフローをオンにする</h2></div>
+    <ol class="do">
+      <li>Power Automateを開き、「マイフロー」を選びます。</li>
+      <li>フロー<strong class="name">MissionRensaDanjiki</strong>を選び、「オンにする」を押します。</li>
+      <li>状態が「オン」になっていることを確認します。</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="s4">
+    <div class="step-head"><span class="num">4</span><h2 id="s4">テストする</h2></div>
+    <ol class="do">
+      <li>フォームに、名前を<strong>「TEST」</strong>として回答します。</li>
+      <li>希望日時は<strong>初日の朝・中日の夜・最終日の夜</strong>の3つを選びます（端の列で照合できるかを確かめるため）。</li>
+      <li>数分待ってExcelを開き、3つの枠すべてに「TEST」が入っていることを確認します。</li>
+    </ol>
+    <div class="note">
+      <h3>反映されない場合</h3>
+      <ul class="do">
+        <li>Power Automateで実行履歴を開き、「スクリプトの実行」の出力 <span class="name">written</span> に該当の日時があるか確認します。</li>
+        <li>ない場合は、Excel 3行目の時間帯ラベルとフォームの選択肢の表記が一致しているか確認します（前回は末尾の「;」が原因でした）。</li>
+        <li>解決しない場合は、案内を投稿せず管理者に連絡してください。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="s5">
+    <div class="step-head"><span class="num">5</span><h2 id="s5">テストデータを削除する</h2></div>
+    <ol class="do">
+      <li>Excelから「TEST」をすべて削除します（3か所）。</li>
+      <li>非表示の列も含めて、削除漏れがないか確認します。</li>
+    </ol>
+    <p style="color:var(--sub);font-size:14px">TESTが残ったまま投稿すると、祈祷表に載った状態で公開されます。</p>
+  </section>
+
+  <section class="card" aria-labelledby="s6">
+    <div class="step-head"><span class="num">6</span><h2 id="s6">祈りの課題のPDFをアップする</h2></div>
+    <ol class="do">
+      <li>保存先を開きます。<br><span class="path">TokyoAntiochMember ＞ 共有済み ＞ OverSea_Mission ＞ Prayer_Request</span></li>
+      <li>今回の祈りの課題PDFをアップロードします。</li>
+      <li>ファイル名に派遣年月とチーム名を入れると前回分と区別できます（例：202610_西ヨーロッパ_祈りの課題.pdf）。</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="s7">
+    <div class="step-head"><span class="num">7</span><h2 id="s7">PDFのリンクをコピーする</h2></div>
+    <ol class="do">
+      <li>アップしたPDFの「…」→「リンクをコピー」を選びます。</li>
+      <li>共有範囲を<strong>「組織内のユーザー」（閲覧のみ）</strong>に設定します。</li>
+      <li>リンクをコピーし、フォームのリンクと一緒に控えます。</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="s8">
+    <div class="step-head"><span class="num">8</span><h2 id="s8">Teamsに投稿する文章を編集する</h2></div>
+    <p>前回の投稿文をもとに、次の5か所を書き換えます。</p>
+    <ul class="check">
+      <li>派遣チーム名</li>
+      <li>派遣期間（開始日〜最終日）</li>
+      <li>回答締切：最終日の23:45</li>
+      <li>フォームのリンク（手順2）</li>
+      <li>祈りの課題PDFのリンク（手順7）</li>
+    </ul>
+    <p style="color:var(--sub);font-size:14px">2つのリンクを両方クリックし、正しく開くことを確認してから投稿します。</p>
+  </section>
+
+  <section class="card" aria-labelledby="s9">
+    <div class="step-head"><span class="num">9</span><h2 id="s9">投稿する</h2></div>
+    <ol class="do">
+      <li>Teamsの<strong>「Tokyo Antioch Member」</strong>チーム ＞<strong>「一般」</strong>チャネルを開きます。</li>
+      <li>手順8の文章を貼り付けて投稿します。</li>
+      <li>投稿後、リンクが正しく表示されているか確認します。</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="s10">
+    <div class="step-head"><span class="num muted">後</span><h2 id="s10">派遣終了後の片付け</h2></div>
+    <p>派遣が終わったら、フローをオフにします。オンのままだと、次回の準備中に誤って届いた回答が表に書き込まれます。</p>
+    <ol class="do">
+      <li>非表示の列を一時的に再表示し、期間外の日付に名前が入っていないか確認します。入っていた場合は本人に連絡するか、記録として残します。</li>
+      <li>Power Automateで<strong class="name">MissionRensaDanjiki</strong>を開き、「オフにする」を押します。</li>
+      <li>状態が「オフ」になっていることを確認します。</li>
+    </ol>
+    <p style="color:var(--sub);font-size:14px">Excelのデータは、次回の手順1で削除するまで残しておいて構いません。</p>
+  </section>
+
+  <footer>東京アンテオケ教会　OverSea Mission</footer>
+</div>
+
+</body></html>
