@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ASTONE Architectureで開発中の神学校授業配信自動化プロダクトを、神学校事務局向けにやさしく説明する共有資料">
+  <title>ASTONE Architecture｜神学校事務局向け プロダクト共有資料</title>
+  <style>
+    :root {
+      --blue: #0072c6;
+      --blue-dark: #075985;
+      --blue-soft: #eaf5fc;
+      --navy: #0f172a;
+      --ink: #1d1d1f;
+      --muted: #5f6773;
+      --line: #d8dee8;
+      --bg: #f5f7fa;
+      --white: #ffffff;
+      --green: #0f766e;
+      --green-soft: #ecfdf5;
+      --amber: #a16207;
+      --amber-soft: #fffbeb;
+      --red: #b91c1c;
+      --red-soft: #fef2f2;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15,23,42,.09);
+    }
+    .topbar-inner {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { font-weight: 800; letter-spacing: .01em; color: var(--navy); }
+    .brand span { color: var(--blue); }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a {
+      color: #334155;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+    .nav a:hover { background: var(--blue-soft); color: var(--blue); }
+
+    .hero {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 20%, rgba(56,189,248,.34), transparent 26%),
+        linear-gradient(135deg, #075985 0%, #0072c6 56%, #0284c7 100%);
+      padding: 72px 0 64px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.2;
+      margin: 20px 0 16px;
+      letter-spacing: -.035em;
+    }
+    .hero-lead { max-width: 800px; margin: 0; font-size: clamp(17px, 2.2vw, 22px); color: rgba(255,255,255,.94); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .hero-meta span { padding: 8px 12px; background: rgba(15,23,42,.22); border-radius: 10px; font-size: 13px; }
+
+    main { padding: 46px 0 80px; }
+    section { scroll-margin-top: 84px; margin-bottom: 52px; }
+    .section-head { margin-bottom: 22px; }
+    .section-kicker { color: var(--blue); font-size: 13px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { color: var(--navy); font-size: clamp(25px, 3vw, 36px); line-height: 1.3; margin: 6px 0 8px; letter-spacing: -.025em; }
+    h3 { color: var(--navy); font-size: 19px; line-height: 1.45; margin: 0 0 8px; }
+    p { margin: 0 0 12px; }
+    .sublead { max-width: 830px; color: var(--muted); font-size: 16px; }
+
+    .notice {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      border: 1px solid #bae6fd;
+      background: #f0f9ff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .notice.warning { border-color: #fde68a; background: var(--amber-soft); }
+    .notice.important { border-color: #fecaca; background: var(--red-soft); }
+    .notice-icon { font-size: 22px; line-height: 1; padding-top: 3px; }
+    .notice strong { display: block; margin-bottom: 3px; color: var(--navy); }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 4px 14px rgba(15,23,42,.035);
+    }
+    .card-number {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+    .flow-step {
+      position: relative;
+      min-height: 160px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: var(--bg);
+      font-weight: 900;
+    }
+    .flow-step .who { color: var(--blue); font-size: 12px; font-weight: 900; }
+    .flow-step h3 { font-size: 16px; margin-top: 6px; }
+    .flow-step p { color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    .status-line {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .status-chip { border-radius: 14px; padding: 14px; border: 1px solid var(--line); background: var(--white); }
+    .status-chip b { display: block; color: var(--navy); }
+    .status-chip span { font-size: 12px; color: var(--muted); }
+    .status-chip.ok { border-color: #a7f3d0; background: var(--green-soft); }
+    .status-chip.wait { border-color: #fde68a; background: var(--amber-soft); }
+    .status-chip.err { border-color: #fecaca; background: var(--red-soft); }
+
+    .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--white); }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td { text-align: left; vertical-align: top; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+    th { color: var(--navy); background: #f8fafc; font-size: 13px; }
+    td { font-size: 14px; }
+    tr:last-child td { border-bottom: none; }
+    .role-office { color: var(--blue-dark); font-weight: 800; }
+    .role-astone { color: #7c3aed; font-weight: 800; }
+    .role-system { color: var(--green); font-weight: 800; }
+
+    .screens { display: grid; gap: 24px; }
+    .screen-figure { margin: 0; }
+    .screen-caption { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 10px; }
+    .screen-caption p { color: var(--muted); font-size: 14px; }
+    .screen-note { white-space: nowrap; color: var(--blue); background: var(--blue-soft); border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 800; }
+    .demo-label {
+      color: var(--red);
+      background: var(--red-soft);
+      border: 1px solid #fecaca;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .browser {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid #cbd5e1;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .browser-bar { height: 38px; display: flex; align-items: center; gap: 6px; padding: 0 14px; background: #eef1f5; border-bottom: 1px solid #d7dce4; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
+    .dot.r { background: #ff6b6b; } .dot.y { background: #fbbf24; } .dot.g { background: #34d399; }
+    .address { flex: 1; max-width: 520px; margin-left: 8px; padding: 4px 12px; border-radius: 999px; background: white; color: #64748b; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .screen { min-height: 430px; background: #f5f5f7; }
+
+    .mini-header { color: white; background: var(--blue); padding: 18px 26px; }
+    .mini-header.dark { background: var(--navy); }
+    .mini-header h4 { margin: 0; font-size: 18px; }
+    .mini-header p { margin: 2px 0 0; opacity: .86; font-size: 12px; }
+    .mini-body { width: min(860px, calc(100% - 28px)); margin: 18px auto; background: white; border: 1px solid #d2d2d7; border-radius: 14px; padding: 20px; }
+    .verified { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; padding: 10px 12px; background: #eef7ff; border: 1px solid #b9dcf6; border-radius: 9px; font-size: 12px; }
+    .verified strong { color: var(--blue-dark); }
+    .mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+    .field { border: 1px solid #d8dee8; border-radius: 9px; padding: 11px 12px; background: #fff; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { display: block; font-size: 11px; font-weight: 800; color: #475569; margin-bottom: 5px; }
+    .fake-input { min-height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px 9px; color: #334155; font-size: 12px; background: #fff; }
+    .fake-file { border: 1px dashed #94a3b8; background: #f8fafc; color: #64748b; text-align: center; padding: 12px; border-radius: 7px; font-size: 12px; }
+    .mini-btn { display: inline-block; margin-top: 14px; background: var(--blue); color: white; border-radius: 7px; padding: 9px 16px; font-size: 12px; font-weight: 800; }
+
+    .tabs { display: flex; gap: 4px; margin: 14px 0; border-bottom: 1px solid #d8dee8; }
+    .tabs span { padding: 8px 11px; color: #64748b; font-size: 11px; font-weight: 800; border-bottom: 3px solid transparent; }
+    .tabs .active { color: var(--blue); border-bottom-color: var(--blue); }
+    .summary-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .summary { border: 1px solid #d8dee8; background: #f8fafc; border-radius: 8px; padding: 9px 6px; text-align: center; font-size: 9px; }
+    .summary b { display: block; color: var(--navy); font-size: 19px; line-height: 1.1; }
+    .lesson-card { border: 1px solid #d8dee8; border-radius: 9px; padding: 11px 12px; margin-top: 9px; background: white; font-size: 11px; }
+    .lesson-card strong { color: var(--navy); }
+    .lesson-meta { margin-top: 4px; color: #475569; }
+    .lesson-card.error { border-color: #fecaca; background: #fffafa; }
+    .error-text { color: var(--red); font-weight: 700; }
+
+    .student-screen { background: #f5f5f7; min-height: 440px; }
+    .student-nav { display: flex; justify-content: space-between; align-items: center; padding: 13px 24px; background: white; border-bottom: 1px solid #d8dee8; }
+    .student-brand { font-size: 13px; font-weight: 900; color: var(--navy); }
+    .student-links { display: flex; gap: 8px; }
+    .student-links span { color: #64748b; font-size: 10px; padding: 5px 9px; border-radius: 999px; }
+    .student-links .on { color: var(--blue); background: var(--blue-soft); }
+    .student-main { width: min(900px, calc(100% - 28px)); margin: 18px auto; }
+    .welcome { background: white; border: 1px solid #d8dee8; border-radius: 18px; padding: 24px; }
+    .welcome h4 { font-size: 21px; margin: 0 0 4px; color: var(--navy); }
+    .welcome p { color: #64748b; font-size: 12px; }
+    .student-btns span { display: inline-block; margin: 8px 6px 0 0; padding: 7px 12px; border-radius: 999px; font-size: 10px; font-weight: 800; }
+    .student-btns .primary { background: var(--blue); color: white; }
+    .student-btns .secondary { border: 1px solid #d8dee8; color: #334155; }
+    .student-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .student-card { background: white; border: 1px solid #d8dee8; border-radius: 13px; padding: 14px; }
+    .student-card b { display: block; color: var(--navy); font-size: 12px; }
+    .student-card span { color: #64748b; font-size: 10px; }
+
+    .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .check { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; background: white; border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .check-mark { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: var(--blue-soft); color: var(--blue); font-weight: 900; }
+    .check b { display: block; color: var(--navy); }
+    .check p { color: var(--muted); font-size: 13px; margin: 3px 0 0; }
+
+    .decision-list { counter-reset: decision; display: grid; gap: 12px; }
+    .decision { counter-increment: decision; display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; background: white; border: 1px solid var(--line); border-radius: 15px; padding: 16px; }
+    .decision::before { content: counter(decision); width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--navy); color: white; font-weight: 900; }
+    .decision b { display: block; color: var(--navy); }
+    .decision span { color: var(--muted); font-size: 13px; }
+
+    .footer { color: #cbd5e1; background: var(--navy); padding: 34px 0; }
+    .footer strong { color: white; }
+    .footer p { margin: 4px 0; font-size: 13px; }
+    .source-list { color: #94a3b8; font-size: 12px; }
+
+    @media (max-width: 900px) {
+      .cards, .flow { grid-template-columns: 1fr 1fr; }
+      .flow-step:not(:last-child)::after { display: none; }
+      .status-line { grid-template-columns: 1fr 1fr; }
+      .summary-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .topbar-inner { align-items: flex-start; padding: 12px 0; }
+      .nav { display: none; }
+      .hero { padding: 48px 0 42px; }
+      .cards, .flow, .status-line, .checklist, .mini-grid, .student-cards { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .screen-caption { display: block; }
+      .screen-note, .demo-label { display: inline-block; margin-top: 8px; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .student-links { display: none; }
+      .mini-body { padding: 14px; }
+    }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .topbar { display: none; }
+      .hero { padding: 34px 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      main { padding-top: 28px; }
+      section { break-inside: avoid; margin-bottom: 32px; }
+      .browser, .card, .table-wrap, .notice { box-shadow: none; }
+      .browser { break-inside: avoid; }
+      .screen { min-height: 0; }
+      .flow-step, .status-chip, .summary, .lesson-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand"><span>ASTONE</span> Architecture</div>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#overview">全体像</a>
+        <a href="#office">事務局の役割</a>
+        <a href="#screens">画面</a>
+        <a href="#exceptions">困ったとき</a>
+        <a href="#start">運用開始前</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">神学校事務局向け・運用共有資料</span>
+      <h1>授業動画を、受領から公開まで<br>安全に自動でつなぐ仕組み</h1>
+      <p class="hero-lead">ASTONE Architectureで進めている神学校授業配信プロダクトを、事務局が日常運用で必要とする部分に絞って説明します。</p>
+      <div class="hero-meta">
+        <span>基準日：2026年11月1日</span>
+        <span>対象：神学校事務局</span>
+        <span>範囲：運用説明中心</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section id="overview">
+      <div class="section-head">
+        <div class="section-kicker">01｜まず結論</div>
+        <h2>12月から講師が直接アップロードできる運用を目指します</h2>
+        <p class="sublead">これまで人が行っていた動画変換・音声作成・公開作業をシステムが担当します。事務局は「必要な授業が届いたか」「処理が終わったか」「予定どおり公開されたか」を確認します。</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-number">1</div>
+          <h3>12月から講師アップロードへ</h3>
+          <p>通常授業は、2026年12月から講師本人が講師専用ページへアップロードする運用の開始を目指します。</p>
+        </article>
+        <article class="card">
+          <div class="card-number">2</div>
+          <h3>Teams掲載はA STONEが継続</h3>
+          <p>Microsoft Teamsへの授業データのアップロードは、これまでどおりA STONEスタッフが担当します。</p>
+        </article>
+        <article class="card">
+          <div class="card-number">3</div>
+          <h3>事務局は状態を確認する</h3>
+          <p>受領済み、処理中、公開予約、公開済み、エラーを一覧で確認し、必要なときだけ対応します。</p>
+        </article>
+      </div>
+
+      <div class="notice important">
+        <div class="notice-icon">!</div>
+        <div>
+          <strong>移行方針</strong>
+          現在はA STONE担当者による登録を使用できますが、通常授業は2026年12月から講師本人によるアップロードを目指します。牧会学のアップロード方法は通常授業と分け、別途検討・確定します。
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:20px">
+        <table>
+          <thead>
+            <tr><th>対象</th><th>方針</th><th>事務局が押さえる点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>通常授業の提出</strong></td><td>2026年12月から、講師本人による専用ページへのアップロード開始を目指す</td><td>講師への専用URL案内と、提出状況の確認が必要</td></tr>
+            <tr><td><strong>Microsoft Teams</strong></td><td>A STONEスタッフが、これまでどおりアップロードする</td><td>講師による専用ページへの提出とは担当を分けて考える</td></tr>
+            <tr><td><strong>学生向けサイト</strong></td><td>新しいサイトの完成後、おおむね1週間を目安に切り替える</td><td>切替日、学生への案内、旧サイトの扱いを事前に確認する</td></tr>
+            <tr><td><strong>牧会学</strong></td><td>アップロード方法は別途検討し、確定する</td><td>通常授業の方法をそのまま適用せず、決定まで現行運用を維持する</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="section-head">
+        <div class="section-kicker">02｜全体の流れ</div>
+        <h2>ファイルを受け取った後は、5つの段階で公開まで進みます</h2>
+      </div>
+
+      <div class="flow" aria-label="授業データ公開までの流れ">
+        <article class="flow-step">
+          <div class="who">講師</div>
+          <h3>① 専用ページへ提出</h3>
+          <p>通常授業は、12月から講師本人が動画・音声・PDFを登録する運用を目指します。</p>
+        </article>
+        <article class="flow-step">
+          <div class="who">講師／A STONE</div>
+          <h3>② 登録を受け付け</h3>
+          <p>講師からの直接提出、または必要に応じたA STONEの登録を受け付けます。Teams掲載はA STONEが継続します。</p>
+        </article>
+        <article class="flow-step">
+          <div class="who">システム</div>
+          <h3>③ 自動で整える</h3>
+          <p>動画形式、画面の向き、明るさ、音量を配信用にそろえます。</p>
+        </article>
+        <article class="flow-step">
+          <div class="who">システム</div>
+          <h3>④ 公開予約</h3>
+          <p>授業日の午前0時（日本時間）を基準に、公開予定を管理します。</p>
+        </article>
+        <article class="flow-step">
+          <div class="who">学生・事務局</div>
+          <h3>⑤ 公開・確認</h3>
+          <p>学生サイトに表示され、事務局は公開済みかを確認できます。</p>
+        </article>
+      </div>
+
+      <div class="status-line" aria-label="状態の意味">
+        <div class="status-chip"><b>受領済</b><span>登録を受け付けた状態</span></div>
+        <div class="status-chip wait"><b>処理中</b><span>動画・音声を変換中</span></div>
+        <div class="status-chip wait"><b>公開予約</b><span>処理完了・公開時刻待ち</span></div>
+        <div class="status-chip ok"><b>公開済</b><span>学生サイトで閲覧可能</span></div>
+        <div class="status-chip err"><b>要確認</b><span>処理または公開に問題あり</span></div>
+      </div>
+    </section>
+
+    <section id="office">
+      <div class="section-head">
+        <div class="section-kicker">03｜事務局が必要な部分</div>
+        <h2>事務局・A STONE・システムの役割を分けます</h2>
+        <p class="sublead">「誰が何をするか」が曖昧だと、自動化しても連絡漏れが残ります。事務局は提出予定と公開結果の管理、A STONEは登録と技術対応、システムは定型処理を担当します。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>場面</th>
+              <th>神学校事務局</th>
+              <th>A STONE</th>
+              <th>システム</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>授業前</strong></td>
+              <td><span class="role-office">提出予定を把握</span><br>授業日・科目・講師・提出期限を確認する</td>
+              <td><span class="role-astone">登録準備</span><br>担当科目データと登録環境を整える</td>
+              <td><span class="role-system">予定管理</span><br>登録後の公開日時を自動計算する</td>
+            </tr>
+            <tr>
+              <td><strong>ファイル受領</strong></td>
+              <td><span class="role-office">不足を確認</span><br>講師から動画・音声・資料が提出されたか確認する</td>
+              <td><span class="role-astone">Teams掲載を継続</span><br>Microsoft Teamsには、これまでどおりA STONEスタッフがアップロードする</td>
+              <td><span class="role-system">受領記録</span><br>講師またはA STONEからの登録内容と作業者を内部記録する</td>
+            </tr>
+            <tr>
+              <td><strong>処理中</strong></td>
+              <td><span class="role-office">原則待つ</span><br>通常は作業不要。長時間止まったときだけ確認する</td>
+              <td><span class="role-astone">異常時に調査</span><br>エラー内容を確認し、再処理や修正を行う</td>
+              <td><span class="role-system">自動変換</span><br>映像・音声・資料を検査し、配信用に整える</td>
+            </tr>
+            <tr>
+              <td><strong>公開前</strong></td>
+              <td><span class="role-office">公開予定を確認</span><br>授業日と公開予定が合っているか見る</td>
+              <td><span class="role-astone">必要時に修正</span><br>日付修正、差し替え、資料変更等を行う</td>
+              <td><span class="role-system">公開を待機</span><br>予定時刻前は学生サイトに出さない</td>
+            </tr>
+            <tr>
+              <td><strong>公開後</strong></td>
+              <td><span class="role-office">公開済みを確認</span><br>学生が見られる状態か確認し、問い合わせに対応する</td>
+              <td><span class="role-astone">技術対応</span><br>表示・再生・資料の不具合を調査する</td>
+              <td><span class="role-system">学生サイトへ表示</span><br>動画・音声・PDFを一覧と詳細画面に反映する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="section-head">
+        <div class="section-kicker">04｜実装済みの画面</div>
+        <h2>利用者ごとに、見る画面とできることが違います</h2>
+        <p class="sublead">以下は実装済み画面を資料用に縮小再現したものです。オペレーター画面と事務局ステータス画面の授業データは、説明用のサンプルです。</p>
+      </div>
+
+      <div class="screens">
+        <figure class="screen-figure">
+          <figcaption class="screen-caption">
+            <div>
+              <h3>A. 講師専用アップロード画面</h3>
+              <p>講師と担当科目は専用URLから自動で決まり、講師は授業日とファイルを選びます。通常授業では、2026年12月からこの画面を使う運用を目指します。</p>
+            </div>
+            <span class="screen-note">実装済み画面の資料用再現</span>
+          </figcaption>
+          <div class="browser">
+            <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="address">tleaseminary.net/2026program/lecturer-upload/</div></div>
+            <div class="screen">
+              <div class="mini-header"><h4>神学校 授業動画・資料提出システム</h4><p>講師専用アップロードポータル</p></div>
+              <div class="mini-body">
+                <div class="verified"><strong>🔒 講師専用ページとして認証済みです</strong><span>担当講師：サンプル講師　／　担当科目：サンプル科目</span></div>
+                <div class="mini-grid">
+                  <div class="field full"><label>1. 授業実施日</label><div class="fake-input">2026-11-05</div></div>
+                  <div class="field full"><label>2. 授業動画・音声ファイル</label><div class="fake-file">MP4動画、またはMP3/M4A音声を選択</div></div>
+                  <div class="field full"><label>講義資料・レジュメ（任意）</label><div class="fake-file">PDFを複数選択できます</div></div>
+                </div>
+                <span class="mini-btn">アップロードを開始する</span>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="screen-figure">
+          <figcaption class="screen-caption">
+            <div>
+              <h3>B. A STONE オペレーター登録画面</h3>
+              <p>A STONE担当者が科目・講師・授業日を選び、動画・音声・PDFを登録する画面です。講師直接アップロード開始後も、必要時の登録や運用対応に使用します。</p>
+            </div>
+            <span class="demo-label">デモ画面（サンプルデータ）</span>
+          </figcaption>
+          <div class="browser">
+            <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="address">tleaseminary.net/2026program/operator-upload/</div></div>
+            <div class="screen">
+              <div class="mini-header dark"><h4>神学校 授業データ登録</h4><p>A STONE 運用オペレーター専用ポータル</p></div>
+              <div class="mini-body">
+                <div class="verified"><strong>認証済みオペレーター：A STONE 担当者</strong><span>担当講師・参加者とは分けて内部記録</span></div>
+                <div class="tabs"><span class="active">通常授業登録</span><span>牧会学・複合授業登録</span><span>進捗・公開ステータス</span></div>
+                <div class="mini-grid">
+                  <div class="field"><label>科目</label><div class="fake-input">旧約聖書概論</div></div>
+                  <div class="field"><label>講師（自動表示）</label><div class="fake-input">サンプル講師</div></div>
+                  <div class="field"><label>授業日</label><div class="fake-input">2026-11-05</div></div>
+                  <div class="field"><label>公開予定（日本時間）</label><div class="fake-input">2026-11-05 00:00</div></div>
+                  <div class="field full"><label>メディアと資料</label><div class="fake-file">MP4 / MOV / MP3 / M4A ＋ PDF</div></div>
+                </div>
+                <span class="mini-btn">アップロード</span>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="screen-figure">
+          <figcaption class="screen-caption">
+            <div>
+              <h3>C. 事務局が確認する進捗・公開ステータス</h3>
+              <p>独立した別サイトではなく、オペレーター専用ポータル内のタブとして実装されています。通常授業と牧会学・複合授業を確認できます。</p>
+            </div>
+            <span class="demo-label">デモ画面（サンプルデータ）</span>
+          </figcaption>
+          <div class="browser">
+            <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="address">operator-upload / 進捗・公開ステータス</div></div>
+            <div class="screen">
+              <div class="mini-header dark"><h4>神学校 授業データ登録</h4><p>A STONE 運用オペレーター専用ポータル</p></div>
+              <div class="mini-body">
+                <div class="tabs"><span>通常授業登録</span><span>牧会学・複合授業登録</span><span class="active">進捗・公開ステータス</span></div>
+                <div class="summary-grid">
+                  <div class="summary"><b>4</b>受領済</div>
+                  <div class="summary"><b>1</b>処理中</div>
+                  <div class="summary"><b>2</b>公開予約</div>
+                  <div class="summary"><b>1</b>公開済</div>
+                  <div class="summary"><b>3</b>資料あり</div>
+                  <div class="summary"><b style="color:#b91c1c">1</b>要確認</div>
+                </div>
+                <h4 style="font-size:13px;margin:15px 0 4px">通常授業</h4>
+                <div class="lesson-card"><strong>旧約聖書概論（サンプル講師）— 2026-11-05</strong><div class="lesson-meta">受領 ✅ ｜ 動画処理 ✅ ｜ 音量補正 ✅ ｜ 資料 ✅ ｜ 公開予定 11/05 00:00 ｜ 状態 SCHEDULED</div></div>
+                <div class="lesson-card"><strong>新約聖書概論（サンプル講師）— 2026-11-03</strong><div class="lesson-meta">受領 ✅ ｜ 動画処理 ✅ ｜ 音量補正 ✅ ｜ 資料 ➖ ｜ 公開予定 11/03 00:00 ｜ 状態 PUBLISHED</div></div>
+                <div class="lesson-card error"><strong>実践神学（サンプル講師）— 2026-11-06</strong><div class="lesson-meta">受領 ✅ ｜ 動画処理 ❌ ｜ 音量補正 ⏳ ｜ 資料 ✅ ｜ 状態 FAILED</div><div class="error-text">エラー詳細：A STONEによる確認が必要です</div></div>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="screen-figure">
+          <figcaption class="screen-caption">
+            <div>
+              <h3>D. 学生が見るオンライン受講ポータル</h3>
+              <p>学生は既存のID・パスワードでアクセスし、科目一覧・講義一覧から動画、音声、PDFを利用します。</p>
+            </div>
+            <span class="screen-note">実装済み画面の資料用再現</span>
+          </figcaption>
+          <div class="browser">
+            <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="address">2026student.tleaseminary.net/</div></div>
+            <div class="student-screen">
+              <div class="student-nav"><div class="student-brand">神学校オンライン受講ポータル</div><div class="student-links"><span class="on">ホーム</span><span>科目一覧</span><span>講義一覧</span></div></div>
+              <div class="student-main">
+                <div class="welcome"><h4>受講生ポータルへようこそ</h4><p>履修中の講義ビデオ・音声・配布資料を、いつでもオンラインで視聴・復習できます。</p><div class="student-btns"><span class="primary">科目一覧を見る →</span><span class="secondary">講義一覧を見る →</span></div></div>
+                <div class="student-cards">
+                  <div class="student-card"><b>現在の授業</b><span>2026年度後期の受講対象科目</span></div>
+                  <div class="student-card"><b>特別授業</b><span>再配信・特別講義</span></div>
+                  <div class="student-card"><b>継続視聴講義</b><span>現在も継続して視聴する講義</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="functions">
+      <div class="section-head">
+        <div class="section-kicker">05｜自動で行うこと</div>
+        <h2>動画の専門知識がなくても、一定の品質にそろえます</h2>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="card-number">映</div><h3>スマートフォン動画に対応</h3><p>MP4だけでなく、iPhone等のMOV・HEVC動画、縦向き・回転情報付き動画、HDR動画にも対応します。</p></article>
+        <article class="card"><div class="card-number">音</div><h3>音量をそろえる</h3><p>動画と音声の音量を基準に合わせます。異常に小さい音や無音は、無理に大きくせず要確認にします。</p></article>
+        <article class="card"><div class="card-number">時</div><h3>授業日に自動公開</h3><p>先に提出されても、処理だけ済ませて公開予定時刻まで学生から見えないようにします。</p></article>
+      </div>
+      <div class="notice warning">
+        <div class="notice-icon">⚠</div>
+        <div><strong>自動処理は「内容が正しいか」までは判断しません</strong>科目・講師・授業日、動画の内容、資料の版が正しいかは、人が確認する必要があります。自動化できるのは形式変換・音量調整・公開制御などの定型部分です。</div>
+      </div>
+    </section>
+
+    <section id="exceptions">
+      <div class="section-head">
+        <div class="section-kicker">06｜困ったとき</div>
+        <h2>事務局は、状態を見て次の連絡先を判断します</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>状況</th><th>事務局の確認</th><th>次の対応</th></tr></thead>
+          <tbody>
+            <tr><td><strong>提出予定日を過ぎても届かない</strong></td><td>講師・提出者、授業日、必要ファイルを確認</td><td>提出者へ連絡。将来の未提出通知ルールは運用開始前に決める</td></tr>
+            <tr><td><strong>「処理中」のまま長時間変わらない</strong></td><td>登録時刻と授業日を確認</td><td>A STONEへ連絡し、処理状態とログを確認してもらう</td></tr>
+            <tr><td><strong>「要確認」「FAILED」と表示</strong></td><td>対象の科目・講師・授業日とエラー表示を確認</td><td>A STONEへ連絡。事務局が再アップロードやクラウド操作をしない</td></tr>
+            <tr><td><strong>授業日や科目を間違えた</strong></td><td>正しい情報を確認</td><td>A STONEへ修正を依頼。日付変更機能を使用する</td></tr>
+            <tr><td><strong>公開後に動画・資料の誤りが見つかった</strong></td><td>差し替えるファイル、対象日、理由を確認</td><td>A STONEへ差し替え・資料変更・一時非公開を依頼する</td></tr>
+            <tr><td><strong>公開予定を過ぎても学生に見えない</strong></td><td>学生サイトの認証、対象講義、公開状態を確認</td><td>「SCHEDULED」「PUBLISHED」「publish failed」のどれかをA STONEと確認する</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="security">
+      <div class="section-head">
+        <div class="section-kicker">07｜安全に使うための約束</div>
+        <h2>専用URLは鍵と同じ扱いにします</h2>
+      </div>
+      <div class="checklist">
+        <div class="check"><div class="check-mark">✓</div><div><b>専用URLを転送しない</b><p>講師用・オペレーター用の専用URLは、権限を持つ本人以外へ転送しません。</p></div></div>
+        <div class="check"><div class="check-mark">✓</div><div><b>事務局はGCPを直接操作しない</b><p>通常業務は画面確認と連絡に限定し、クラウド管理画面や保存領域を直接変更しません。</p></div></div>
+        <div class="check"><div class="check-mark">✓</div><div><b>公開前の内容を外部共有しない</b><p>予約公開中の動画・音声・資料を、公開予定前に別経路で配布しません。</p></div></div>
+        <div class="check"><div class="check-mark">✓</div><div><b>誤りは上書きで直さない</b><p>差し替え・日付修正・一時非公開など、履歴を残せる管理手順で対応します。</p></div></div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="section-head">
+        <div class="section-kicker">08｜本格運用の前に</div>
+        <h2>システムは本番反映済みですが、運用ルールの確定が残っています</h2>
+        <p class="sublead">2026年11月1日時点で、オペレーター機能とステータス表示は本番環境へ反映されています。通常授業は2026年12月から講師本人によるアップロード開始を目指し、新しい学生向けサイトは完成後おおむね1週間を目安に切り替えます。</p>
+      </div>
+
+      <div class="notice warning">
+        <div class="notice-icon">⚑</div>
+        <div>
+          <strong>通知機能について</strong>
+          受領・処理完了・処理失敗・公開完了・公開失敗・未提出を表す通知イベントの仕組みは実装済みです。ただし、実際のメール送信先や送信ルールはまだ設定されていません。
+        </div>
+      </div>
+
+      <div class="decision-list">
+        <div class="decision"><div><b>12月開始に向けて講師専用URLを準備する</b><span>対象講師と担当科目を確認し、専用URLの案内方法と簡単な操作説明を決めます。</span></div></div>
+        <div class="decision"><div><b>事務局の確認担当と確認頻度を決める</b><span>誰が、いつ、どの画面を確認するかを明文化します。</span></div></div>
+        <div class="decision"><div><b>提出期限と未提出連絡の基準を決める</b><span>何日前までに提出するか、遅れた場合に誰が連絡するかを決めます。</span></div></div>
+        <div class="decision"><div><b>エラー時の連絡経路を一本化する</b><span>事務局からA STONEへ伝える必須項目と、緊急度の基準を決めます。</span></div></div>
+        <div class="decision"><div><b>実データで1本、最初から最後まで試す</b><span>受領、登録、自動処理、公開予約、学生サイト表示までを共同で確認します。</span></div></div>
+        <div class="decision"><div><b>通知の送信先と条件を決める</b><span>失敗時だけ送るのか、受領・公開完了も送るのかを事務局とA STONEで合意します。</span></div></div>
+        <div class="decision"><div><b>新サイト完成後の1週間で切替準備を行う</b><span>切替日、学生への案内、ID・パスワード、旧サイトの扱い、表示確認を整理します。</span></div></div>
+        <div class="decision"><div><b>牧会学のアップロード方法を別途決める</b><span>提出者、提出単位、講評動画との組み合わせ、確認担当を通常授業とは分けて検討します。</span></div></div>
+        <div class="decision"><div><b>Teams掲載の担当を維持する</b><span>Microsoft Teamsへのアップロードは、これまでどおりA STONEスタッフが行うことを運用表に明記します。</span></div></div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="section-head">
+        <div class="section-kicker">09｜事務局向けまとめ</div>
+        <h2>覚えることは、この5点です</h2>
+      </div>
+      <div class="cards" style="grid-template-columns: repeat(2, 1fr)">
+        <article class="card"><div class="card-number">1</div><h3>12月から講師提出を目指す</h3><p>通常授業は、講師本人が専用ページへアップロードする運用へ移行します。</p></article>
+        <article class="card"><div class="card-number">2</div><h3>TeamsはA STONEが継続</h3><p>Microsoft Teamsへのアップロードは、これまでどおりA STONEスタッフが行います。</p></article>
+        <article class="card"><div class="card-number">3</div><h3>新サイトは完成後約1週間で切替</h3><p>案内・認証・表示確認を行ったうえで、新しい学生向けサイトへ切り替えます。</p></article>
+        <article class="card"><div class="card-number">4</div><h3>牧会学は別途決める</h3><p>通常授業と同じ方法に決め打ちせず、アップロード方法を別途検討します。</p></article>
+        <article class="card"><div class="card-number">5</div><h3>事務局は状態を確認する</h3><p>受領、処理中、公開予約、公開済み、要確認を見て、異常時はA STONEへ連絡します。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <strong>ASTONE Architecture｜神学校授業動画自動配信システム</strong>
+      <p>神学校事務局向け共有資料　基準日：2026年11月1日</p>
+      <p class="source-list">確認元：seminary-video-automation リポジトリの requirements.md / architecture.md / implementation_status.md、および実装済み lecturer-upload / operator-upload / student-portal 画面。最新本番反映コミット：80e2bf9、記録コミット：b203bd9。</p>
+      <p class="source-list">注：画面内の人物名・科目名・件数・授業日は説明用サンプルです。本資料には費用・業務委託料の説明を含みません。</p>
+    </div>
+  </footer>
+</body>
+</html>
